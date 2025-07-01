@@ -1,12 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Объявка</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Объявка — Главная</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Объявка</h1>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/login.html">Войти</a>
+      <a href="/register.html">Регистрация</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Последние объявления</h2>
+    <div id="ads-container">
+      <!-- Здесь будут загружаться объявления -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Объявка</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
 </html>
