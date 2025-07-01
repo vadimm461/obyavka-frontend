@@ -5,181 +5,210 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка — Главная</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
       color: #333;
-      line-height: 1.6;
     }
+
     header {
-      background-color: #444;
+      background-color: #222;
       color: white;
       padding: 15px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
     .logo {
-      font-size: 1.8rem;
       font-weight: bold;
+      color: #fff;
+      font-size: 20px;
     }
-    nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-    nav button {
-      padding: 10px 15px;
-      border: none;
-      background-color: #e0e0e0;
-      color: #222;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    nav button:hover {
-      background-color: #d0d0d0;
-    }
-    main {
-      max-width: 1100px;
+
+    .container {
+      max-width: 1200px;
       margin: 20px auto;
-      background: white;
-      padding: 30px 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      padding: 0 15px;
     }
-    .filter-bar {
+
+    .filters {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 20px;
     }
-    .filter-bar input,
-    .filter-bar select {
+
+    .filters input, .filters select {
       padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      font-size: 1rem;
+      font-size: 14px;
       width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
-    .ads-section {
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .ads {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
     }
+
     .ad-card {
+      border: 1px solid #ddd;
+      border-radius: 0;
+      padding: 16px;
       background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      flex: 1 1 calc(30% - 20px);
-      min-width: 250px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+      width: calc(33.333% - 10px);
+      box-sizing: border-box;
+      transition: box-shadow 0.3s;
     }
+
     .ad-card:hover {
-      transform: translateY(-3px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .ad-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      color: #222;
+      margin-top: 0;
+      font-size: 18px;
     }
+
     .ad-card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 10px;
-    }
-    .ad-actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 5px;
-    }
-    .ad-actions button {
-      flex: 1;
-      padding: 6px;
-      font-size: 0.85rem;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      cursor: pointer;
-    }
-    .ad-actions button:hover {
-      background-color: #e0e0e0;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      background-color: #eee;
+      font-size: 14px;
       color: #555;
     }
 
+    .ad-actions {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 6px 10px;
+      font-size: 13px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 0;
+      transition: background-color 0.2s, border 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .btn.fav {
+      border-color: #ffcc00;
+      color: #c69300;
+    }
+
+    .btn.edit {
+      border-color: #00aaff;
+      color: #0077aa;
+    }
+
+    .btn.delete {
+      border-color: #ff4d4f;
+      color: #c70000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
     max-width: 768px {
-      nav { justify-content: center; }
-      header { flex-direction: column; align-items: flex-start; }
-      .logo { margin-bottom: 10px; }
-      .ad-card { flex: 1 1 100%; }
+      .ad-card {
+        width: 100%;
+      }
+
+      .filters input, .filters select {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">Объявка</div>
-    <nav>
-      <button onclick="alert('Вход')">Вход</button>
-      <button onclick="alert('Регистрация')">Регистрация</button>
-      <button onclick="alert('Добавить')">Добавить</button>
-      <button onclick="alert('Выйти')">Выйти</button>
-    </nav>
+    <div class="logo">📦 Объявка</div>
+    <div>
+      <button class="btn">Вход</button>
+      <button class="btn">Регистрация</button>
+    </div>
   </header>
-  <main>
-    <div class="filter-bar">
-      <input type="text" placeholder="Поиск объявлений..." />
+
+  <div class="container">
+    <div class="filters">
+      <input type="text" placeholder="Поиск объявлений…" />
       <select>
-        <option value="">Категория</option>
-        <option value="tech">Техника</option>
-        <option value="home">Для дома</option>
-        <option value="auto">Авто</option>
+        <option>Категория</option>
+        <option>Электроника</option>
+        <option>Авто</option>
+        <option>Мебель</option>
       </select>
       <input type="number" placeholder="Мин. цена" />
       <input type="number" placeholder="Макс. цена" />
     </div>
 
     <h2>Последние объявления</h2>
-    <section class="ads-section">
+
+    <div class="ads">
+
       <div class="ad-card">
-        <h3>Ноутбук ASUS</h3>
-        <p>Состояние отличное. 16GB RAM, SSD 512GB. Быстрая доставка!</p>
-        <div class="ad-actions">
-          <button>Избранное</button>
-          <button>Редактировать</button>
-          <button>Удалить</button>
-        </div>
-      </div>
-      <div class="ad-card">
-        <h3>iPhone 13 Pro</h3>
+        <h3>📱 iPhone 13 Pro</h3>
         <p>128GB, как новый. Возможен торг. Гарантия.</p>
         <div class="ad-actions">
-          <button>Избранное</button>
-
-
-tton>Редактировать</button>
-          <button>Удалить</button>
+          <button class="btn fav">★ Избранное</button>
+          <button class="btn edit">✎ Редактировать</button>
+          <button class="btn delete">🗑 Удалить</button>
         </div>
       </div>
+
       <div class="ad-card">
-        <h3>Диван угловой</h3>
-        <p>Мягкий и удобный, ткань не маркая. Самовывоз.</p>
+        <h3>💻 Ноутбук ASUS</h3>
+        <p>Состояние отличное. 16GB RAM, SSD 512GB. Быстрая доставка!</p>
         <div class="ad-actions">
-          <button>Избранное</button>
-          <button>Редактировать</button>
-          <button>Удалить</button>
+          <button class="btn fav">★ Избранное</button>
+          <button class="btn edit">✎ Редактировать</button>
+          <button class="btn delete">🗑 Удалить</button>
         </div>
       </div>
-    </section>
-  </main>
+
+      <div class="ad-card">
+        <h3>🛋 Диван угловой</h3>
+        <p>Мягкий и удобный. В отличном состоянии. Самовывоз.</p>
+        <div class="ad-actions">
+          <button class="btn fav">★
+
+
+е</button>
+          <button class="btn edit">✎ Редактировать</button>
+          <button class="btn delete">🗑 Удалить</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <footer>
-    &copy; 2025 Объявка. Все права защищены.
+    © 2025 Объявка. Все права защищены.
   </footer>
+
 </body>
-</html> 
+</html>
