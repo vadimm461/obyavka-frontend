@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка — Главная</title>
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
@@ -51,9 +49,19 @@
       padding: 30px 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
-    h2 {
-      font-size: 1.8rem;
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 20px;
+    }
+    .filter-bar input,
+    .filter-bar select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 1rem;
+      width: 200px;
     }
     .ads-section {
       display: flex;
@@ -61,24 +69,42 @@
       gap: 20px;
     }
     .ad-card {
-      background-color: #f4f4f4;
+      background-color: #fff;
       border: 1px solid #ccc;
-      padding: 20px;
-      flex: 1 1 calc(100% - 20px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      padding: 15px;
+      flex: 1 1 calc(30% - 20px);
+      min-width: 250px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
       transition: transform 0.2s ease;
     }
     .ad-card:hover {
       transform: translateY(-3px);
     }
-    .ad-card.large { flex: 1 1 100%; }
-    .ad-card.medium { flex: 1 1 48%; }
     .ad-card h3 {
       margin-bottom: 10px;
-      color: #333;
+      font-size: 1.1rem;
+      color: #222;
     }
     .ad-card p {
+      font-size: 0.95rem;
       color: #555;
+      margin-bottom: 10px;
+    }
+    .ad-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+    }
+    .ad-actions button {
+      flex: 1;
+      padding: 6px;
+      font-size: 0.85rem;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .ad-actions button:hover {
+      background-color: #e0e0e0;
     }
     footer {
       text-align: center;
@@ -88,22 +114,11 @@
       color: #555;
     }
 
-    /* 📱 Адаптация для телефонов */
     max-width: 768px {
-      nav {
-        justify-content: center;
-      }
-      .ad-card.medium,
-      .ad-card {
-        flex: 1 1 100%;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .logo {
-        margin-bottom: 10px;
-      }
+      nav { justify-content: center; }
+      header { flex-direction: column; align-items: flex-start; }
+      .logo { margin-bottom: 10px; }
+      .ad-card { flex: 1 1 100%; }
     }
   </style>
 </head>
@@ -111,38 +126,55 @@
   <header>
     <div class="logo">Объявка</div>
     <nav>
-      <button onclick="alert('Переход на страницу входа')">Вход</button>
-      <button onclick="alert('Переход на регистрацию')">Регистрация</button>
-      <button onclick="alert('Добавление объявления')">Добавить</button>
-      <button onclick="alert('Выход из аккаунта')">Выйти</button>
+      <button onclick="alert('Вход')">Вход</button>
+      <button onclick="alert('Регистрация')">Регистрация</button>
+      <button onclick="alert('Добавить')">Добавить</button>
+      <button onclick="alert('Выйти')">Выйти</button>
     </nav>
   </header>
   <main>
+    <div class="filter-bar">
+      <input type="text" placeholder="Поиск объявлений..." />
+      <select>
+        <option value="">Категория</option>
+        <option value="tech">Техника</option>
+        <option value="home">Для дома</option>
+        <option value="auto">Авто</option>
+      </select>
+      <input type="number" placeholder="Мин. цена" />
+      <input type="number" placeholder="Макс. цена" />
+    </div>
+
     <h2>Последние объявления</h2>
     <section class="ads-section">
-      <div class="ad-card large">
-        <h3>Объявление №1</h3>
-        <p>Крупное объявление с подробным описанием. Здесь можно добавить фотографию, цену и местоположение.</p>
-      </div>
-      <div class="ad-card medium">
-        <h3>Объявление №2</h3>
-        <p>Средний по размеру блок с кратким описанием.</p>
+      <div class="ad-card">
+        <h3>Ноутбук ASUS</h3>
+        <p>Состояние отличное. 16GB RAM, SSD 512GB. Быстрая доставка!</p>
+        <div class="ad-actions">
+          <button>Избранное</button>
+          <button>Редактировать</button>
+          <button>Удалить</button>
+        </div>
       </div>
       <div class="ad-card">
-        <h3>Объявление №3</h3>
-        <p>Минимальное объявление для показа краткой информации.</p>
+        <h3>iPhone 13 Pro</h3>
+        <p>128GB, как новый. Возможен торг. Гарантия.</p>
+        <div class="ad-actions">
+          <button>Избранное</button>
+
+
+tton>Редактировать</button>
+          <button>Удалить</button>
+        </div>
       </div>
       <div class="ad-card">
-        <h3>Объявление №4</h3>
-        <p>Продажа вещей. Быстрый контакт. Без регистрации.</p>
-      </div>
-      <div class="ad-card medium">
-        <h3>Объявление №5</h3>
-        <p>Здесь можно указать цену, ссылку на товар, фото и контакт продавца.</p>
-      </div>
-      <div class="ad-card">
-        <h3>Объявление №6</h3>
-        <p>Простой блок с базовой информацией о товаре или услуге.</p>
+        <h3>Диван угловой</h3>
+        <p>Мягкий и удобный, ткань не маркая. Самовывоз.</p>
+        <div class="ad-actions">
+          <button>Избранное</button>
+          <button>Редактировать</button>
+          <button>Удалить</button>
+        </div>
       </div>
     </section>
   </main>
@@ -150,4 +182,4 @@
     &copy; 2025 Объявка. Все права защищены.
   </footer>
 </body>
-</html>
+</html> <bu
