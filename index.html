@@ -2,197 +2,201 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
   <style>
     body {
-      background-color: #f8f9fa;
-    }
-
-    .header {
-      background-color: #111;
-      color: gold;
-      padding: 20px;
-      text-align: left;
-    }
-
-    .logo {
-      font-family: 'Brush Script MT', cursive;
-      font-size: 48px;
-      font-weight: bold;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
       margin: 0;
+      padding: 0;
     }
-
-    .slogan {
-      color: #eee;
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    .auth-buttons {
+    header {
+      background-color: #1e1e1e;
+      color: white;
+      padding: 10px 20px;
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
     }
-
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: gold;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    .tagline {
+      font-size: 14px;
+      color: #ccc;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    .header-actions button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    main {
+      padding: 20px;
+    }
     .filters {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 20px 0;
+      margin-bottom: 20px;
     }
-
     .filters input, .filters select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
       flex: 1 1 150px;
     }
-
     .categories {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
       margin-bottom: 30px;
+      flex-wrap: wrap;
     }
-
     .category {
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 20px;
-      width: 140px;
-      height: 140px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      padding: 20px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      width: 120px;
+      background: white;
     }
-
-    .category:hover {
-      transform: scale(1.05);
-    }
-
     .category img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
+      width: 40px;
+      height: 40px;
       margin-bottom: 10px;
     }
-
-    .ads-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .ads-section h2 {
+      margin-bottom: 20px;
+    }
+    .ads {
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      margin-bottom: 40px;
     }
-
-    .ad-card {
-      background-color: white;
+    .ad {
       border: 1px solid #ccc;
-      border-radius: 8px;
+      border-radius: 10px;
+      background: white;
       padding: 15px;
-      height: 100%;
+      flex: 1 1 250px;
+      min-width: 220px;
     }
-
-    .ad-card h5 {
-      font-weight: bold;
+    .ad h3 {
+      margin-top: 0;
     }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #777;
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-
-    @media (max-width: 768px) {
-      .logo {
-        font-size: 48px;
-        text-align: center;
+    .buttons button {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+      cursor: pointer;
+    }
+    .buttons .favorite {
+      background-color: gold;
+    }
+    .buttons .edit {
+      color: #007bff;
+    }
+    .buttons .delete {
+      color: #dc3545;
+    }
+    @media (max-width: 600px) {
+      .filters, .categories, .ads {
+        flex-direction: column;
+        align-items: stretch;
       }
-
-      .slogan {
-        text-align: center;
-        font-size: 16px;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
       }
-
-      .auth-buttons {
-        justify-content: center;
+      .header-actions {
+        justify-content: flex-end;
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="header">
-    <h1 class="logo">ОБЪЯВКА</h1>
-    <p class="slogan">У нас покупают и продают</p>
-    <div class="auth-buttons">
-      <button class="btn btn-outline-light">Вход</button>
-      <button class="btn btn-light">🛒 Регистрация</button>
+  <header>
+    <div>
+      <div class="logo">ОБЪЯВКА</div>
+      <div class="tagline">У нас покупают и продают</div>
     </div>
-  </div>
+    <div class="header-actions">
+      <button>🛒 Корзина</button>
+      <button>Вход</button>
+      <button>Регистрация</button>
+    </div>
+  </header>
 
-  <div class="container mt-4">
+  <main>
     <div class="filters">
-      <input class="form-control" type="text" placeholder="Поиск объявлений...">
-      <select class="form-select">
-        <option selected>Категория</option>
-        <option>Авто</option>
-        <option>Недвижимость</option>
-        <option>Техника</option>
+      <input type="text" placeholder="Поиск объявлений...">
+      <select>
+        <option>Категория</option>
       </select>
-      <input class="form-control" type="number" placeholder="Мин. цена">
-      <input class="form-control" type="number" placeholder="Макс. цена">
+      <input type="text" placeholder="Мин. цена">
+      <input type="text" placeholder="Макс. цена">
     </div>
 
     <div class="categories">
       <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/741/741407.png" alt="Авто">
-        <span>Авто</span>
+        <img src="https://img.icons8.com/color/48/car--v1.png" alt="Авто" />
+        <div>Авто</div>
       </div>
       <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/616/616490.png" alt="Недвижимость">
-        <span>Недвижимость</span>
+        <img src="https://img.icons8.com/ios-filled/50/real-estate.png" alt="Недвижимость" />
+        <div>Недвижимость</div>
       </div>
       <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/681/681494.png" alt="Техника">
-        <span>Техника</span>
+        <img src="https://img.icons8.com/ios/50/box--v1.png" alt="Техника" />
+        <div>Техника</div>
       </div>
     </div>
 
-    <h3 class="mb-3">Последние объявления</h3>
-    <div class="ads-container">
-      <div class="ad-card">
-        <h5>iPhone 13 Pro</h5>
-        <p>128GB, как новый. Возможен торг. Гарантия.</p>
-        <button class="btn btn-warning btn-sm">★ Избранное</button>
-        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
-        <button class="btn btn-outline-danger btn-sm">Удалить</button>
-      </div>
-      <div class="ad-card">
-        <h5>Ноутбук ASUS</h5>
-        <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
-        <button class="btn btn-warning btn-sm">★ Избранное</button>
-        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
-        <button class="btn btn-outline-danger btn-sm">Удалить</button>
-      </div>
-      <div class="ad-card">
-        <h5>Диван угловой</h5>
-        <p>Ткань приятная. Цвет серый. В отличном состоянии.</p>
-        <button class="btn btn-warning btn-sm">★ Избранное</button>
-        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
-        <button class="btn btn-outline-danger btn-sm">Удалить</button>
+    <div class="ads-section">
+      <h2>Последние объявления</h2>
+      <div class="ads">
+        <div class="ad">
+          <h3>iPhone 13 Pro</h3>
+          <p>128GB, как новый. Возможен торг. Гарантия.</p>
+          <div class="buttons">
+            <button class="favorite">★ Избранное</button>
+            <button class="edit">Редактировать</button>
+            <button class="delete">Удалить</button>
+          </div>
+        </div>
+        <div class="ad">
+          <h3>Ноутбук ASUS</h3>
+          <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
+          <div class="buttons">
+            <button class="favorite">★ Избранное</button>
+            <button class="edit">Редактировать</button>
+            <button class="delete">Удалить</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <footer>
-    © 2025 Объявка. Все права защищены.
-  </footer>
-
+  </main>
 </body>
 </html>
