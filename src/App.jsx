@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
-import { fetchWelcome } from "./api";
-
-function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const getWelcomeMessage = async () => {
-      const data = await fetchWelcome();
-      if (data) {
-        setMessage(data);
-      }
-    };
-
-    getWelcomeMessage();
-  }, []);
-
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import AddPostPage from './pages/AddPostPage';
+export default function App() {
   return (
-    <div>
-      <h1>Главная страница</h1>
-      <p>{message}</p>
-    </div>
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/add' element={<AddPostPage />} />
+    </Routes>
   );
 }
-
-export default App;
