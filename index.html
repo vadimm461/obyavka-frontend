@@ -1,47 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка</title>
   <style>
     body {
+      font-family: sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      padding: 0;
+      background: #f4f4f4;
     }
 
     header {
-      background-color: #222;
-      color: #f9c922;
+      background-color: #1a1a1a;
+      color: #ffc107;
       padding: 1rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
 
-    .logo {
+    header h1 {
+      margin: 0;
       font-size: 2rem;
-      font-weight: 900;
-      font-family: 'Courier New', monospace;
+      font-family: 'Arial Black', sans-serif;
     }
 
-    .search-bar {
+    .search-filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 1rem;
       padding: 1rem;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #fff;
+      justify-content: center;
     }
 
-    .search-bar input,
-    .search-bar select {
+    .search-filters input, .search-filters select {
       padding: 0.5rem;
       font-size: 1rem;
-      flex: 1;
-      min-width: 150px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      min-width: 140px;
     }
 
     .categories {
@@ -52,22 +51,18 @@
     }
 
     .category {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+      width: 100px;
+      height: 100px;
+      padding: 0.5rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      background-color: #fff;
-      border: 2px solid #ddd;
-      padding: 1rem;
-      border-radius: 12px;
-      width: 120px;
-      height: 120px;
       justify-content: center;
-      text-align: center;
-    }
-
-    .category img {
-      max-width: 40px;
-      margin-bottom: 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
     }
 
     main {
@@ -75,107 +70,108 @@
     }
 
     h2 {
-      margin-top: 1rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
 
-    .ads-container {
+    .ads-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      justify-content: center;
     }
 
-    .ad {
-      background-color: #fff;
+    .ad-card {
+      background: #fff;
       border: 1px solid #ccc;
-      border-radius: 0;
-      padding: 1rem;
-      width: calc(33% - 1rem);
-      box-sizing: border-box;
+      border-radius: 0px;
+      padding: 0.8rem;
+      width: 180px;
+      min-height: 160px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .ad h3 {
-      margin: 0 0 0.5rem 0;
+    .ad-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .ad-buttons {
-      margin-top: 1rem;
-    }
-
-    .ad-buttons button {
-      margin-right: 0.5rem;
-      padding: 0.3rem 0.6rem;
+    .ad-card p {
       font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .ad-card .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .ad-card button {
+      flex: 1 1 45%;
+      padding: 0.3rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #f8f8f8;
+      border-radius: 5px;
     }
 
     footer {
-      margin-top: 2rem;
-      padding: 1rem;
       text-align: center;
-      color: #888;
-      background-color: #f0f0f0;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #777;
+      background: #fff;
+      margin-top: 2rem;
     }
 
-    @media (max-width: 768px) {
-      .ads-container {
-        flex-direction: column;
-      }
-
-      .ad {
+    @media (max-width: 600px) {
+      .ad-card {
         width: 100%;
-      }
-
-      .categories {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">ОБЪЯВКА</div>
+    <h1>ОБЪЯВКА</h1>
   </header>
 
-  <section class="search-bar">
+  <div class="search-filters">
     <input type="text" placeholder="Поиск объявлений…">
     <select>
       <option>Категория</option>
     </select>
     <input type="number" placeholder="Мин. цена">
     <input type="number" placeholder="Макс. цена">
-  </section>
+  </div>
 
-  <section class="categories">
-    <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто"><span>Авто</span></div>
-    <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/891/891419.png" alt="Недвижимость"><span>Недвижимость</span></div>
-    <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920215.png" alt="Техника"><span>Техника</span></div>
-  </section>
+  <div class="categories">
+    <div class="category"><span>🚗</span> Авто</div>
+    <div class="category"><span>🏠</span> Недвижимость</div>
+    <div class="category"><span>🛒</span> Техника</div>
+  </div>
 
   <main>
     <h2>Последние объявления</h2>
-    <div class="ads-container">
-      <div class="ad">
+    <div class="ads-grid">
+      <div class="ad-card">
         <h3>iPhone 13 Pro</h3>
         <p>128GB, как новый. Возможен торг. Гарантия.</p>
-        <div class="ad-buttons">
+        <div class="buttons">
           <button>★ Избранное</button>
           <button>Редактировать</button>
           <button>Удалить</button>
         </div>
       </div>
-      <div class="ad">
+      <div class="ad-card">
         <h3>Ноутбук ASUS</h3>
         <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
-        <div class="ad-buttons">
-          <button>★ Избранное</button>
-          <button>Редактировать</button>
-          <button>Удалить</button>
-        </div>
-      </div>
-      <div class="ad">
-        <h3>Диван угловой</h3>
-        <p>Ткань приятная. Цвет серый. В отличном состоянии. Самовывоз.</p>
-        <div class="ad-buttons">
+        <div class="buttons">
           <button>★ Избранное</button>
           <button>Редактировать</button>
           <button>Удалить</button>
