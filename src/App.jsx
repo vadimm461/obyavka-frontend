@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
-import { fetchWelcome } from "./api";
+import React, { useEffect, useState } from 'react';
+import { fetchWelcome } from './api';
 
-function App() {
-  const [message, setMessage] = useState("");
+const App = () => {
+  const [welcomeText, setWelcomeText] = useState('');
 
   useEffect(() => {
-    const getWelcomeMessage = async () => {
+    const getData = async () => {
       const data = await fetchWelcome();
       if (data) {
-        setMessage(data);
+        setWelcomeText(data.message || 'Ответ получен!');
       }
     };
-
-    getWelcomeMessage();
+    getData();
   }, []);
 
   return (
-    <div>
-      <h1>Главная страница</h1>
-      <p>{message}</p>
+    <div style={{ padding: '2rem', fontFamily: 'Arial' }}>
+      <h1>Добро пожаловать в Объявку!</h1>
+      <p>Frontend подключён. Скоро здесь появятся объявления.</p>
+      <p style={{ color: 'gray' }}>{welcomeText}</p>
     </div>
   );
-}
+};
 
 export default App;
