@@ -6,132 +6,91 @@
   <title>Объявка</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f4f4f4;
     }
-
     header {
-      background-color: #1a1a1a;
-      color: #ffc107;
-      padding: 1rem;
+      background-color: #222;
+      color: #f4c10f;
+      padding: 15px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
     }
-
     header h1 {
-      margin: 0;
-      font-size: 2rem;
-      font-family: 'Arial Black', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
     }
-
-    .search-filters {
+    header .auth-buttons button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      font-weight: bold;
+    }
+    .search-bar {
+      padding: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1rem;
-      background: #fff;
       justify-content: center;
+      background: #fff;
     }
-
-    .search-filters input, .search-filters select {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 5px;
+    .search-bar input,
+    .search-bar select {
+      margin: 10px;
+      padding: 10px;
       border: 1px solid #ccc;
-      min-width: 140px;
+      border-radius: 4px;
     }
-
     .categories {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      padding: 1rem;
+      gap: 20px;
+      padding: 20px;
     }
-
     .category {
-      background: #fff;
+      background: white;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      padding: 15px;
+      width: 120px;
       text-align: center;
-      width: 100px;
-      height: 100px;
-      padding: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 0.9rem;
+      border-radius: 10px;
     }
-
-    main {
-      padding: 1rem;
+    .category img {
+      width: 50px;
+      height: 50px;
     }
-
-    h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+    .ads-section {
+      padding: 20px;
     }
-
     .ads-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
+      gap: 15px;
     }
-
     .ad-card {
       background: #fff;
       border: 1px solid #ccc;
-      border-radius: 0px;
-      padding: 0.8rem;
-      width: 180px;
-      min-height: 160px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border-radius: 0;
+      padding: 10px;
+      width: 220px;
     }
-
     .ad-card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+      margin: 0 0 10px 0;
     }
-
-    .ad-card p {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .ad-card .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-    }
-
     .ad-card button {
-      flex: 1 1 45%;
-      padding: 0.3rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      background: #f8f8f8;
-      border-radius: 5px;
+      margin-top: 5px;
+      margin-right: 5px;
     }
-
     footer {
       text-align: center;
-      padding: 1rem;
-      font-size: 0.8rem;
-      color: #777;
-      background: #fff;
-      margin-top: 2rem;
+      padding: 20px;
+      background: #eee;
     }
-
     @media (max-width: 600px) {
-      .ad-card {
-        width: 100%;
+      .ads-grid {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -139,49 +98,40 @@
 <body>
   <header>
     <h1>ОБЪЯВКА</h1>
+    <div class="auth-buttons">
+      <button>Войти</button>
+      <button>Регистрация</button>
+    </div>
   </header>
 
-  <div class="search-filters">
-    <input type="text" placeholder="Поиск объявлений…">
+  <div class="search-bar">
+    <input type="text" placeholder="Поиск объявлений…" />
     <select>
       <option>Категория</option>
     </select>
-    <input type="number" placeholder="Мин. цена">
-    <input type="number" placeholder="Макс. цена">
+    <input type="number" placeholder="Мин. цена" />
+    <input type="number" placeholder="Макс. цена" />
   </div>
 
   <div class="categories">
-    <div class="category"><span>🚗</span> Авто</div>
-    <div class="category"><span>🏠</span> Недвижимость</div>
-    <div class="category"><span>🛒</span> Техника</div>
+    <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/744/744465.png" alt="Авто"><p>Авто</p></div>
+    <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/619/619034.png" alt="Недвижимость"><p>Недвижимость</p></div>
+    <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="Техника"><p>Техника</p></div>
   </div>
 
-  <main>
+  <section class="ads-section">
     <h2>Последние объявления</h2>
     <div class="ads-grid">
-      <div class="ad-card">
-        <h3>iPhone 13 Pro</h3>
-        <p>128GB, как новый. Возможен торг. Гарантия.</p>
-        <div class="buttons">
-          <button>★ Избранное</button>
-          <button>Редактировать</button>
-          <button>Удалить</button>
-        </div>
-      </div>
-      <div class="ad-card">
-        <h3>Ноутбук ASUS</h3>
-        <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
-        <div class="buttons">
-          <button>★ Избранное</button>
-          <button>Редактировать</button>
-          <button>Удалить</button>
-        </div>
-      </div>
+      <div class="ad-card"><h3>iPhone 13 Pro</h3><p>128GB, как новый. Возможен торг. Гарантия.</p><button>★ Избранное</button><button>Редактировать</button><button>Удалить</button></div>
+      <div class="ad-card"><h3>Ноутбук ASUS</h3><p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p><button>★ Избранное</button><button>Редактировать</button><button>Удалить</button></div>
+      <div class="ad-card"><h3>Диван угловой</h3><p>Серый. В отличном состоянии. Самовывоз.</p><button>★ Избранное</button><button>Редактировать</button><button>Удалить</button></div>
+      <div class="ad-card"><h3>PlayStation 5</h3><p>Состояние отличное. С играми.</p><button>★ Избранное</button><button>Редактировать</button><button>Удалить</button></div>
+      <div class="ad-card"><h3>Смарт ТВ Samsung</h3><p>50 дюймов, 4K. Без повреждений.</p><button>★ Избранное</button><button>Редактировать</button><button>Удалить</button></div>
     </div>
-  </main>
+  </section>
 
   <footer>
-    © 2025 Объявка. Все права защищены.
+    <p>© 2025 Объявка. Все права защищены.</p>
   </footer>
 </body>
 </html>
