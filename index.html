@@ -6,7 +6,7 @@
   <title>Объявка — Главная</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       margin: 0;
       background-color: #f4f4f4;
       color: #333;
@@ -15,21 +15,19 @@
     header {
       background-color: #222;
       color: white;
-      padding: 15px 20px;
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 20px;
-    }
-
     .logo {
-      font-weight: bold;
-      color: #fff;
-      font-size: 20px;
+      font-family: 'Impact', 'Arial Black', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: #ffd700;
+      text-transform: uppercase;
+      user-select: none;
     }
 
     .container {
@@ -51,6 +49,35 @@
       width: 200px;
       border: 1px solid #ccc;
       border-radius: 4px;
+    }
+
+    .catalog {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .catalog-item {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 150px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .catalog-item:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    .catalog-item img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
     }
 
     h2 {
@@ -110,20 +137,9 @@
       background-color: #f0f0f0;
     }
 
-    .btn.fav {
-      border-color: #ffcc00;
-      color: #c69300;
-    }
-
-    .btn.edit {
-      border-color: #00aaff;
-      color: #0077aa;
-    }
-
-    .btn.delete {
-      border-color: #ff4d4f;
-      color: #c70000;
-    }
+    .btn.fav { border-color: #ffcc00; color: #c69300; }
+    .btn.edit { border-color: #00aaff; color: #0077aa; }
+    .btn.delete { border-color: #ff4d4f; color: #c70000; }
 
     footer {
       text-align: center;
@@ -133,12 +149,22 @@
     }
 
     max-width: 768px {
-      .ad-card {
+      .ad-card, .catalog-item {
         width: 100%;
       }
 
       .filters input, .filters select {
         width: 100%;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo {
+        font-size: 26px;
+        margin-bottom: 10px;
       }
     }
   </style>
@@ -146,7 +172,7 @@
 <body>
 
   <header>
-    <div class="logo">📦 Объявка</div>
+    <div class="logo">Объявка</div>
     <div>
       <button class="btn">Вход</button>
       <button class="btn">Регистрация</button>
@@ -154,6 +180,7 @@
   </header>
 
   <div class="container">
+
     <div class="filters">
       <input type="text" placeholder="Поиск объявлений…" />
       <select>
@@ -166,10 +193,26 @@
       <input type="number" placeholder="Макс. цена" />
     </div>
 
+    <div class="catalog">
+      <div class="catalog-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/744/744465.png" alt="Авто">
+        <div>Авто</div>
+      </div>
+      <div class="catalog-item">
+        <img src="https://cdn-icons-png
+
+
+flaticon.com/512/3075/3075977.png" alt="Недвижимость">
+        <div>Недвижимость</div>
+      </div>
+      <div class="catalog-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041880.png" alt="Техника">
+        <div>Техника</div>
+      </div>
+    </div>
+
     <h2>Последние объявления</h2>
-
     <div class="ads">
-
       <div class="ad-card">
         <h3>📱 iPhone 13 Pro</h3>
         <p>128GB, как новый. Возможен торг. Гарантия.</p>
@@ -182,7 +225,7 @@
 
       <div class="ad-card">
         <h3>💻 Ноутбук ASUS</h3>
-        <p>Состояние отличное. 16GB RAM, SSD 512GB. Быстрая доставка!</p>
+        <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
         <div class="ad-actions">
           <button class="btn fav">★ Избранное</button>
           <button class="btn edit">✎ Редактировать</button>
@@ -192,17 +235,13 @@
 
       <div class="ad-card">
         <h3>🛋 Диван угловой</h3>
-        <p>Мягкий и удобный. В отличном состоянии. Самовывоз.</p>
+        <p>Ткань приятная. Цвет серый. В отличном состоянии.</p>
         <div class="ad-actions">
-          <button class="btn fav">★
-
-
-е</button>
+          <button class="btn fav">★ Избранное</button>
           <button class="btn edit">✎ Редактировать</button>
           <button class="btn delete">🗑 Удалить</button>
         </div>
       </div>
-
     </div>
   </div>
 
