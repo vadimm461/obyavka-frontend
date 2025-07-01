@@ -1,1 +1,0 @@
-export default function NewAd() { return <h1>Новое объявление</h1>; }
