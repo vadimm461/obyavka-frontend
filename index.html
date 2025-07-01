@@ -2,31 +2,65 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка — Главная</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f2f5, #dce6f1);
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    main h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #0077cc;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background-color: #f4f4f4;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Объявка</h1>
-    <nav>
-      <a href="/">Главная</a>
-      <a href="/login.html">Войти</a>
-      <a href="/register.html">Регистрация</a>
-    </nav>
   </header>
-
   <main>
-    <h2>Последние объявления</h2>
-    <div id="ads-container">
-      <!-- Здесь будут загружаться объявления -->
-    </div>
+    <h2>Добро пожаловать на сайт объявлений!</h2>
+    <p>Вы можете зарегистрироваться, войти в свой аккаунт и начать публиковать объявления прямо сейчас. Также доступны функции редактирования и удаления ваших объявлений, загрузка изображений и фильтрация по категориям.</p>
   </main>
-
   <footer>
-    <p>&copy; 2025 Объявка</p>
+    &copy; 2025 Объявка. Все права защищены.
   </footer>
-
-  <script src="main.js"></script>
 </body>
 </html>
