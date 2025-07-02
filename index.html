@@ -24,7 +24,7 @@
     }
 
     .logo {
-      font-family: 'Dancing Script', cursive; /* Используем шрифт Dancing Script */
+      font-family: 'Dancing Script', cursive;
       font-size: 48px;
       font-weight: bold;
       margin: 0;
@@ -85,12 +85,12 @@
     }
 
     .category img {
-      width: 40px; /* Уменьшаем иконку на 20% */
+      width: 40px;
       height: 40px;
       object-fit: contain;
       margin-bottom: 10px;
       margin-left: auto;
-      margin-right: auto; /* Выравниваем по центру */
+      margin-right: auto;
     }
 
     .category h6 {
@@ -168,6 +168,36 @@
         padding: 10px;
       }
     }
+
+    /* Иконки в правом углу */
+    .icon-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .icon-buttons a {
+      color: white;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .icon-buttons a:hover {
+      color: gold;
+    }
+
+    .btn-post-ad {
+      background-color: gold;
+      color: black;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-post-ad:hover {
+      background-color: #cfa300;
+    }
   </style>
 </head>
 <body>
@@ -178,9 +208,21 @@
       <p class="slogan">У нас покупают и продают</p>
     </div>
     
+    <!-- Панель с кнопками Вход и Регистрация -->
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
       <button class="btn btn-light">Регистрация</button>
+    </div>
+
+    <!-- Панель с иконками корзины, избранного и кнопкой "Разместить объявление" -->
+    <div class="icon-buttons">
+      <a href="#" title="Корзина">
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Корзина" width="24" height="24">
+      </a>
+      <a href="#" title="Избранное">
+        <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Избранное" width="24" height="24">
+      </a>
+      <a href="#" class="btn-post-ad">Разместить объявление</a>
     </div>
   </div>
 
