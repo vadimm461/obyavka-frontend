@@ -16,6 +16,9 @@
       padding: 20px;
       text-align: left;
       position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
@@ -33,31 +36,31 @@
 
     .auth-buttons {
       display: flex;
-      gap: 10px;
-      position: absolute;
-      right: 20px;
-      top: 20px;
+      gap: 15px;
+      align-items: center;
     }
 
     .auth-buttons button {
       border-radius: 20px;
     }
 
-    /* Новый стиль для корзины и избранного */
+    /* Корзина и избранное */
     .cart-favorites {
       display: flex;
       gap: 20px;
       font-size: 24px;
-      color: white; /* Белый цвет для иконок */
-      position: absolute;
-      right: 10px; /* Сдвиг влево */
-      top: 90px; /* Сдвиг вниз */
+      color: white; /* Белые иконки */
       align-items: center;
     }
 
     .cart-favorites .cart, .cart-favorites .favorites {
       cursor: pointer;
-      position: relative;
+    }
+
+    .cart-favorites .cart img, .cart-favorites .favorites img {
+      width: 30px;
+      height: 30px;
+      filter: invert(100%); /* Делаем иконки белыми */
     }
 
     .cart-favorites .cart:after, .cart-favorites .favorites:after {
@@ -162,7 +165,7 @@
       }
 
       .cart-favorites {
-        top: 120px; /* Смещаем внизу на мобильных */
+        gap: 10px;
       }
     }
   </style>
@@ -173,21 +176,21 @@
     <h1 class="logo">ОБЪЯВКА</h1>
     <p class="slogan">У нас покупают и продают</p>
     
-    <!-- Корзина и избранное, расположены справа -->
-    <div class="cart-favorites">
-      <div class="cart" data-count="3">
-        <img src="https://cdn-icons-png.flaticon.com/512/34/34663.png" alt="Корзина" width="30" height="30">
-        🛒
-      </div>
-      <div class="favorites" data-count="5">
-        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="Избранное" width="30" height="30">
-        ★
-      </div>
-    </div>
-    
+    <!-- Все элементы в одном ряду: Вход, Регистрация, Корзина и Избранное -->
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
       <button class="btn btn-light">🛒 Регистрация</button>
+      
+      <div class="cart-favorites">
+        <div class="cart" data-count="3">
+          <img src="https://cdn-icons-png.flaticon.com/512/34/34663.png" alt="Корзина">
+          🛒
+        </div>
+        <div class="favorites" data-count="5">
+          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="Избранное">
+          ★
+        </div>
+      </div>
     </div>
   </div>
 
