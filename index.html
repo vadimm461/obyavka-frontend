@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -32,31 +33,35 @@
       flex-wrap: wrap;
     }
 
+    .auth-buttons .btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
     .search-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       gap: 8px;
-      background-color: #ffcc00;
-      padding: 10px 12px;
-      border-radius: 14px;
+      background-color: #fff8dc;
+      padding: 12px 16px;
+      border-radius: 12px;
       margin: 25px auto;
       max-width: 95%;
-      min-width: 300px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .search-bar input,
     .search-bar select {
       border: 1px solid #ccc;
       border-radius: 10px;
-      padding: 6px 10px;
+      padding: 8px 12px;
       font-size: 14px;
-      outline: none;
-      width: 100%;
-      max-width: 160px;
-      flex: 1 1 140px;
+      flex: 1 1 160px;
+      min-width: 140px;
     }
 
     .search-bar input[type="text"] {
@@ -64,14 +69,14 @@
       background-position: 10px center;
       background-repeat: no-repeat;
       background-size: 16px;
-      padding-left: 30px;
+      padding-left: 32px;
     }
 
     .search-bar button {
       background-color: #111;
       color: gold;
       border: none;
-      padding: 8px 14px;
+      padding: 8px 16px;
       font-size: 14px;
       border-radius: 14px;
       cursor: pointer;
@@ -103,7 +108,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: transform 0.2s;
     }
 
@@ -133,10 +138,6 @@
       height: 100%;
     }
 
-    .ad-card h5 {
-      font-weight: bold;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -149,61 +150,18 @@
         flex-direction: column;
         align-items: stretch;
         gap: 6px;
-        padding: 12px;
-        border-radius: 12px;
-        background-color: #fff3c4;
-        border: 1px solid #f1e69c;
       }
 
       .search-bar input,
       .search-bar select,
       .search-bar button {
         width: 100%;
-        max-width: 100%;
         height: 36px;
         font-size: 14px;
-        padding: 5px 10px;
-      }
-
-      .search-bar input[type="text"] {
-        padding-left: 30px;
-      }
-
-      .search-bar button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-      }
-
-      .categories {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .category {
-        width: 100px;
-        height: 100px;
-        padding: 10px;
-      }
-
-      .category img {
-        width: 36px;
-        height: 36px;
       }
 
       .auth-buttons {
         justify-content: center;
-      }
-
-      .auth-buttons .btn {
-        padding: 6px 14px;
-        font-size: 14px;
-        border-radius: 20px;
-        min-width: 90px;
-        text-align: center;
       }
     }
   </style>
@@ -212,14 +170,11 @@
 
   <div class="header">
     <div class="logo">
-      <img
-        src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true"
-        alt="Логотип Объявка"
-      />
+      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка"/>
     </div>
     <div class="auth-buttons">
-      <button class="btn" style="background-color: gold; color: #111; border-radius: 20px;">Вход</button>
-      <button class="btn" style="background-color: #111; color: gold; border-radius: 20px;">Регистрация</button>
+      <button class="btn" style="background-color: gold; color: #111;">Вход</button>
+      <button class="btn" style="background-color: #111; color: gold;">Регистрация</button>
     </div>
   </div>
 
@@ -274,13 +229,6 @@
       <div class="ad-card">
         <h5>Ноутбук ASUS</h5>
         <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
-        <button class="btn btn-warning btn-sm">★ Избранное</button>
-        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
-        <button class="btn btn-outline-danger btn-sm">Удалить</button>
-      </div>
-      <div class="ad-card">
-        <h5>Диван угловой</h5>
-        <p>Ткань приятная. Цвет серый. В отличном состоянии.</p>
         <button class="btn btn-warning btn-sm">★ Избранное</button>
         <button class="btn btn-outline-primary btn-sm">Редактировать</button>
         <button class="btn btn-outline-danger btn-sm">Удалить</button>
