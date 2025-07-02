@@ -43,6 +43,34 @@
       border-radius: 20px;
     }
 
+    /* Новый стиль для корзины и избранного */
+    .cart-favorites {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: white; /* Белый цвет для иконок */
+      position: absolute;
+      right: 20px;
+      top: 60px; /* Немного ниже, чтобы не перекрывать кнопки */
+    }
+
+    .cart-favorites .cart, .cart-favorites .favorites {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cart-favorites .cart:after, .cart-favorites .favorites:after {
+      content: attr(data-count);
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -117,30 +145,6 @@
       color: #777;
     }
 
-    .cart-favorites {
-      display: flex;
-      gap: 15px;
-      font-size: 20px;
-      color: #111;
-    }
-
-    .cart-favorites .cart, .cart-favorites .favorites {
-      cursor: pointer;
-      position: relative;
-    }
-
-    .cart-favorites .cart:after, .cart-favorites .favorites:after {
-      content: attr(data-count);
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background-color: red;
-      color: white;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 50%;
-    }
-
     @media (max-width: 768px) {
       .logo {
         font-size: 48px;
@@ -155,6 +159,10 @@
       .auth-buttons {
         justify-content: center;
       }
+
+      .cart-favorites {
+        top: 80px; /* Смещаем внизу на мобильных */
+      }
     }
   </style>
 </head>
@@ -164,7 +172,7 @@
     <h1 class="logo">ОБЪЯВКА</h1>
     <p class="slogan">У нас покупают и продают</p>
     
-    <!-- Корзина и избранное -->
+    <!-- Корзина и избранное, расположены справа -->
     <div class="cart-favorites">
       <div class="cart" data-count="3">
         <img src="https://cdn-icons-png.flaticon.com/512/34/34663.png" alt="Корзина" width="30" height="30">
