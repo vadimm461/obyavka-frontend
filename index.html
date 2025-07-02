@@ -14,11 +14,10 @@
       background-color: #111;
       color: gold;
       padding: 20px;
-      text-align: left;
-      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     .logo {
@@ -28,51 +27,14 @@
       margin: 0;
     }
 
-    .slogan {
-      color: #eee;
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
     .auth-buttons {
       display: flex;
-      gap: 15px;
       align-items: center;
+      gap: 20px;
     }
 
     .auth-buttons button {
       border-radius: 20px;
-    }
-
-    /* Корзина и избранное */
-    .cart-favorites {
-      display: flex;
-      gap: 20px;
-      font-size: 24px;
-      color: white; /* Белые иконки */
-      align-items: center;
-    }
-
-    .cart-favorites .cart, .cart-favorites .favorites {
-      cursor: pointer;
-    }
-
-    .cart-favorites .cart img, .cart-favorites .favorites img {
-      width: 30px;
-      height: 30px;
-      filter: invert(100%); /* Делаем иконки белыми */
-    }
-
-    .cart-favorites .cart:after, .cart-favorites .favorites:after {
-      content: attr(data-count);
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background-color: red;
-      color: white;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 50%;
     }
 
     .filters {
@@ -163,10 +125,6 @@
       .auth-buttons {
         justify-content: center;
       }
-
-      .cart-favorites {
-        gap: 10px;
-      }
     }
   </style>
 </head>
@@ -176,21 +134,9 @@
     <h1 class="logo">ОБЪЯВКА</h1>
     <p class="slogan">У нас покупают и продают</p>
     
-    <!-- Все элементы в одном ряду: Вход, Регистрация, Корзина и Избранное -->
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
       <button class="btn btn-light">🛒 Регистрация</button>
-      
-      <div class="cart-favorites">
-        <div class="cart" data-count="3">
-          <img src="https://cdn-icons-png.flaticon.com/512/34/34663.png" alt="Корзина">
-          🛒
-        </div>
-        <div class="favorites" data-count="5">
-          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="Избранное">
-          ★
-        </div>
-      </div>
     </div>
   </div>
 
