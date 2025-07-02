@@ -24,10 +24,6 @@
       height: 50px;
       user-drag: none;
       user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
     }
 
     .auth-buttons {
@@ -46,34 +42,46 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      padding: 12px 16px;
-      border-radius: 16px;
+      background-color: #ffcc00;
+      border: 1px solid #111;
+      padding: 10px 12px;
+      border-radius: 14px;
       margin: 25px auto;
-      max-width: 700px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      max-width: 600px;
+      min-width: 300px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .search-bar input,
     .search-bar select {
       border: 1px solid #ccc;
-      border-radius: 12px;
-      padding: 8px 12px;
+      border-radius: 10px;
+      padding: 6px 10px;
       font-size: 14px;
       outline: none;
       width: 100%;
-      max-width: 180px;
-      flex: 1 1 160px;
+      max-width: 160px;
+      flex: 1 1 140px;
+    }
+
+    .search-bar input[type="text"] {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png');
+      background-position: 10px center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      padding-left: 30px;
     }
 
     .search-bar button {
       background-color: #111;
       color: gold;
       border: none;
-      padding: 8px 18px;
+      padding: 8px 14px;
       font-size: 14px;
-      border-radius: 16px;
+      border-radius: 14px;
       cursor: pointer;
       transition: background-color 0.3s, color 0.3s;
     }
@@ -170,13 +178,12 @@
   </style>
 </head>
 <body>
+
   <div class="header">
     <div class="logo">
       <img
         src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true"
         alt="Логотип Объявка"
-        oncontextmenu="return false;"
-        ondragstart="return false;"
       />
     </div>
     <div class="auth-buttons">
@@ -253,5 +260,6 @@
   <footer>
     © 2025 Объявка. Все права защищены.
   </footer>
+
 </body>
 </html>
