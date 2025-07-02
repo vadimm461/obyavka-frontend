@@ -15,6 +15,7 @@
       color: gold;
       padding: 20px;
       text-align: left;
+      position: relative;
     }
 
     .logo {
@@ -33,8 +34,13 @@
     .auth-buttons {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    .auth-buttons button {
+      border-radius: 20px;
     }
 
     .filters {
@@ -111,6 +117,30 @@
       color: #777;
     }
 
+    .cart-favorites {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #111;
+    }
+
+    .cart-favorites .cart, .cart-favorites .favorites {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cart-favorites .cart:after, .cart-favorites .favorites:after {
+      content: attr(data-count);
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
     @media (max-width: 768px) {
       .logo {
         font-size: 48px;
@@ -133,6 +163,19 @@
   <div class="header">
     <h1 class="logo">ОБЪЯВКА</h1>
     <p class="slogan">У нас покупают и продают</p>
+    
+    <!-- Корзина и избранное -->
+    <div class="cart-favorites">
+      <div class="cart" data-count="3">
+        <img src="https://cdn-icons-png.flaticon.com/512/34/34663.png" alt="Корзина" width="30" height="30">
+        🛒
+      </div>
+      <div class="favorites" data-count="5">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" alt="Избранное" width="30" height="30">
+        ★
+      </div>
+    </div>
+    
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
       <button class="btn btn-light">🛒 Регистрация</button>
