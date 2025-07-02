@@ -21,7 +21,7 @@
     }
 
     .logo img {
-      max-height: 200px;
+      max-height: 200px; /* Логотип 200px высотой */
       height: auto;
       user-drag: none;
       user-select: none;
@@ -73,6 +73,7 @@
       font-size: 14px;
       border-radius: 20px;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .search-bar button:hover {
@@ -141,6 +142,7 @@
       .logo img {
         display: block;
         margin: 0 auto;
+        max-height: 150px;
       }
 
       .auth-buttons {
@@ -150,6 +152,7 @@
 
       .search-bar {
         flex-direction: column;
+        gap: 12px;
       }
 
       .search-bar input,
@@ -176,7 +179,7 @@
   <div class="header">
     <div class="logo">
       <img
-        src="https://github.com/vadimm461/obyavka-frontend/blob/main/f909ed44-6409-4367-aa89-1c0a733f3db3-removebg-preview%20(1).jpg"
+        src="https://github.com/vadimm461/obyavka-frontend/blob/main/f909ed44-6409-4367-aa89-1c0a733f3db3-removebg-preview%20(1).jpg?raw=true"
         alt="Логотип Объявка"
         oncontextmenu="return false;"
         ondragstart="return false;"
