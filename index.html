@@ -49,9 +49,8 @@
     }
 
     .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 20px;
       margin-bottom: 30px;
     }
@@ -61,8 +60,7 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 20px;
-      width: 140px;
-      height: 140px;
+      height: 180px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -80,6 +78,11 @@
       height: 50px;
       object-fit: contain;
       margin-bottom: 10px;
+    }
+
+    .category h6 {
+      font-size: 16px;
+      margin-top: 10px;
     }
 
     .ads-container {
@@ -130,12 +133,10 @@
   <div class="header">
     <h1 class="logo">ОБЪЯВКА</h1>
     <p class="slogan">У нас покупают и продают</p>
-  <div class="auth-buttons">
-  <button class="btn btn-outline-light">Вход</button>
-  <button class="btn btn-light">
-    🛒 Регистрация
-  </button>
-</div>
+    <div class="auth-buttons">
+      <button class="btn btn-outline-light">Вход</button>
+      <button class="btn btn-light">🛒 Регистрация</button>
+    </div>
   </div>
 
   <div class="container mt-4">
@@ -151,18 +152,31 @@
       <input class="form-control" type="number" placeholder="Макс. цена">
     </div>
 
+    <h3 class="mb-3">Категории</h3>
     <div class="categories">
       <div class="category">
         <img src="https://cdn-icons-png.flaticon.com/512/741/741407.png" alt="Авто">
-        <span>Авто</span>
+        <h6>Авто</h6>
       </div>
       <div class="category">
         <img src="https://cdn-icons-png.flaticon.com/512/616/616490.png" alt="Недвижимость">
-        <span>Недвижимость</span>
+        <h6>Недвижимость</h6>
       </div>
       <div class="category">
         <img src="https://cdn-icons-png.flaticon.com/512/681/681494.png" alt="Техника">
-        <span>Техника</span>
+        <h6>Техника</h6>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Работа">
+        <h6>Работа</h6>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/1315/1315448.png" alt="Электроника">
+        <h6>Электроника</h6>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Услуги">
+        <h6>Услуги</h6>
       </div>
     </div>
 
