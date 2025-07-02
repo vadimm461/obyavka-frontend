@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <style>
     body {
       background-color: #f8f9fa;
@@ -49,6 +49,7 @@
       max-width: 95%;
       min-width: 300px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      
     }
 
     .search-bar input,
@@ -149,12 +150,81 @@
     }
 
     @media (max-width: 768px) {
-      .search-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        padding: 15px;
-      }
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .search-bar input,
+  .search-bar select,
+  .search-bar button {
+    width: 100%;
+    max-width: 100%;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .search-bar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .search-bar input[type="text"] {
+    padding-left: 32px;
+  }
+
+  .categories {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .category {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+  }
+
+  .category img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .auth-buttons {
+    justify-content: center;
+  }
+}
+
+  .search-bar input,
+  .search-bar select,
+  .search-bar button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .categories {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .category {
+    width: 120px;
+    height: auto;
+    padding: 15px;
+  }
+
+  .auth-buttons {
+    justify-content: center;
+  }
+}
 
       .search-bar input,
       .search-bar select,
@@ -164,16 +234,8 @@
       }
 
       .categories {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .category {
-        width: 120px;
-        height: auto;
-        padding: 15px;
+        flex-direction: column;
+        align-items: center;
       }
 
       .auth-buttons {
@@ -183,13 +245,9 @@
   </style>
 </head>
 <body>
-
   <div class="header">
     <div class="logo">
-      <img
-        src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true"
-        alt="Логотип Объявка"
-      />
+      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка" />
     </div>
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
@@ -265,6 +323,5 @@
   <footer>
     © 2025 Объявка. Все права защищены.
   </footer>
-
 </body>
 </html>
