@@ -8,6 +8,7 @@
   <style>
     body {
       background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
     }
 
     .header {
@@ -29,8 +30,8 @@
 
     .auth-buttons {
       display: flex;
-      align-items: center;
       gap: 20px;
+      align-items: center;
     }
 
     .auth-buttons button {
@@ -111,19 +112,39 @@
       color: #777;
     }
 
+    /* Адаптивность для мобильных */
     @media (max-width: 768px) {
       .logo {
-        font-size: 48px;
+        font-size: 36px;
         text-align: center;
-      }
-
-      .slogan {
-        text-align: center;
-        font-size: 16px;
       }
 
       .auth-buttons {
         justify-content: center;
+        margin-top: 10px;
+      }
+
+      .filters input, .filters select {
+        flex: 1 1 100%;
+      }
+
+      .categories {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .category {
+        height: 150px;
+        padding: 15px;
+      }
+
+      .ads-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .ad-card {
+        padding: 10px;
       }
     }
   </style>
@@ -132,11 +153,10 @@
 
   <div class="header">
     <h1 class="logo">ОБЪЯВКА</h1>
-    <p class="slogan">У нас покупают и продают</p>
     
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
-      <button class="btn btn-light">🛒 Регистрация</button>
+      <button class="btn btn-light">Регистрация</button>
     </div>
   </div>
 
