@@ -19,6 +19,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -26,6 +27,12 @@
       font-size: 48px;
       font-weight: bold;
       margin: 0;
+    }
+
+    .slogan {
+      font-size: 18px;
+      color: #eee;
+      margin-top: 10px;
     }
 
     .auth-buttons {
@@ -38,11 +45,13 @@
       border-radius: 20px;
     }
 
-    .filters {
+    /* Панель поиска в шапке */
+    .search-bar {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin: 20px 0;
+      width: 100%;
+      margin-top: 20px;
+      justify-content: center;
     }
 
     .filters input, .filters select {
@@ -124,8 +133,13 @@
         margin-top: 10px;
       }
 
+      .search-bar {
+        flex-direction: column;
+        margin-top: 10px;
+      }
+
       .filters input, .filters select {
-        flex: 1 1 100%;
+        width: 100%;
       }
 
       .categories {
@@ -152,7 +166,10 @@
 <body>
 
   <div class="header">
-    <h1 class="logo">ОБЪЯВКА</h1>
+    <div>
+      <h1 class="logo">ОБЪЯВКА</h1>
+      <p class="slogan">У нас покупают и продают</p>
+    </div>
     
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
@@ -161,7 +178,8 @@
   </div>
 
   <div class="container mt-4">
-    <div class="filters">
+    <!-- Панель поиска в шапке -->
+    <div class="search-bar">
       <input class="form-control" type="text" placeholder="Поиск объявлений...">
       <select class="form-select">
         <option selected>Категория</option>
