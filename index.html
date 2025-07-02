@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Объявка</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
   <style>
     body {
       background-color: #f8f9fa;
@@ -49,9 +49,6 @@
       max-width: 95%;
       min-width: 300px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .search-bar input,
@@ -156,6 +153,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
+        padding: 15px;
       }
 
       .search-bar input,
@@ -166,8 +164,16 @@
       }
 
       .categories {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .category {
+        width: 120px;
+        height: auto;
+        padding: 15px;
       }
 
       .auth-buttons {
@@ -177,9 +183,13 @@
   </style>
 </head>
 <body>
+
   <div class="header">
     <div class="logo">
-      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка" />
+      <img
+        src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true"
+        alt="Логотип Объявка"
+      />
     </div>
     <div class="auth-buttons">
       <button class="btn btn-outline-light">Вход</button>
@@ -255,5 +265,6 @@
   <footer>
     © 2025 Объявка. Все права защищены.
   </footer>
+
 </body>
 </html>
