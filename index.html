@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -31,29 +30,73 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .auth-buttons .btn {
-      padding: 8px 16px;
-      font-size: 14px;
       border-radius: 20px;
-      text-align: center;
+      padding: 6px 14px;
+      font-size: 14px;
+      min-width: 90px;
     }
 
     .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
       background-color: #ffcc00;
-      padding: 12px 16px;
+      padding: 10px 12px;
       border-radius: 14px;
       margin: 25px auto;
+      max-width: 95%;
+      min-width: 300px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .search-bar input,
+    .search-bar select,
+    .search-bar button {
+      width: 100%;
       max-width: 100%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      height: 40px;
+      font-size: 14px;
+      border-radius: 10px;
+      padding: 5px 10px;
+      box-sizing: border-box;
+    }
+
+    .search-bar input[type="text"] {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png');
+      background-position: 10px center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      padding-left: 32px;
+    }
+
+    .search-bar button {
+      background-color: #111;
+      color: gold;
+      font-weight: bold;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: gold;
+      color: #111;
     }
 
     .categories {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       margin-bottom: 30px;
     }
 
@@ -61,9 +104,9 @@
       background-color: white;
       border: 1px solid #ccc;
       border-radius: 10px;
-      padding: 20px;
-      width: 140px;
-      height: 140px;
+      padding: 15px;
+      width: 100px;
+      height: auto;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -78,8 +121,8 @@
     }
 
     .category img {
-      width: 50px;
-      height: 50px;
+      width: 36px;
+      height: 36px;
       object-fit: contain;
       margin-bottom: 10px;
     }
@@ -99,11 +142,46 @@
       height: 100%;
     }
 
+    .ad-card h5 {
+      font-weight: bold;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       color: #777;
+    }
+
+    @media (max-width: 576px) {
+      .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 12px;
+        border-radius: 12px;
+        background-color: #fff8dc;
+      }
+
+      .category {
+        width: 90px !important;
+        height: 90px !important;
+        padding: 8px !important;
+      }
+
+      .category img {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .ad-card button {
+        width: 100%;
+        margin-bottom: 6px;
+      }
+
+      .ad-card .btn + .btn {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
@@ -113,20 +191,45 @@
       <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка" />
     </div>
     <div class="auth-buttons">
-      <button class="btn" style="background-color: gold; color: #111;">Вход</button>
-      <button class="btn" style="background-color: #111; color: gold;">Регистрация</button>
+      <button class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
+      <a href="register.html" class="btn" style="background-color: #111; color: gold;">Регистрация</a>
     </div>
   </div>
 
   <div class="container">
     <div class="search-bar">
-      <div class="row w-100 g-2 align-items-center">
-        <div class="col-md-3 col-12">
-          <input type="text" placeholder="Поиск объявлений..." class="form-control">
-        </div>
-        <div class="col-md-2 col-6">
-          <select class="form-select">
-            <option selected>Категория</option>
+      <input class="form-control" type="text" placeholder="Поиск объявлений...">
+      <select class="form-select">
+        <option selected>Категория</option>
+        <option>Авто</option>
+        <option>Недвижимость</option>
+        <option>Техника</option>
+        <option>Мото</option>
+        <option>Работа</option>
+      </select>
+      <input class="form-control" type="number" placeholder="Мин. цена">
+      <input class="form-control" type="number" placeholder="Макс. цена">
+      <button class="btn">🔍 Найти</button>
+    </div>
+
+    <div class="categories">
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто"><span>Авто</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость"><span>Недвижимость</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Техника"><span>Техника</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png" alt="Мото"><span>Мото</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа"><span>Работа</span></div>
+    </div>
+
+    <h3 class="mb-3">Последние объявления</h3>
+    <div class="ads-container" id="ads-output"></div>
+
+    <div class="container my-5">
+      <h4 class="mb-3">📢 Подать объявление</h4>
+      <form class="row g-3" onsubmit="event.preventDefault(); alert('Объявление отправлено!');">
+        <div class="col-md-6"><input type="text" class="form-control" placeholder="Заголовок" required></div>
+        <div class="col-md-6">
+          <select class="form-select" required>
+            <option selected disabled>Выберите категорию</option>
             <option>Авто</option>
             <option>Недвижимость</option>
             <option>Техника</option>
@@ -134,62 +237,35 @@
             <option>Работа</option>
           </select>
         </div>
-        <div class="col-md-2 col-6">
-          <input type="number" placeholder="Мин. цена" class="form-control">
-        </div>
-        <div class="col-md-2 col-6">
-          <input type="number" placeholder="Макс. цена" class="form-control">
-        </div>
-        <div class="col-md-3 col-6">
-          <button class="btn w-100" style="background-color: #111; color: gold; border-radius: 10px;">🔍 Найти</button>
-        </div>
-      </div>
+        <div class="col-12"><textarea class="form-control" rows="3" placeholder="Описание" required></textarea></div>
+        <div class="col-md-6"><input type="number" class="form-control" placeholder="Цена" required></div>
+        <div class="col-md-6"><input type="file" class="form-control"></div>
+        <div class="col-12"><button type="submit" class="btn btn-dark w-100">📤 Опубликовать</button></div>
+      </form>
     </div>
+  </div>
 
-    <div class="categories">
-      <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто">
-        <span>Авто</span>
-      </div>
-      <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость">
-        <span>Недвижимость</span>
-      </div>
-      <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Техника">
-        <span>Техника</span>
-      </div>
-      <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/809/809957.png" alt="Мото">
-        <span>Мото</span>
-      </div>
-      <div class="category">
-        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа">
-        <span>Работа</span>
-      </div>
-    </div>
+  <footer>© 2025 Объявка. Все права защищены.</footer>
 
-    <h3 class="mb-3">Последние объявления</h3>
-    <div class="ads-container">
-      <div class="ad-card">
-        <h5>iPhone 13 Pro</h5>
-        <p>128GB, как новый. Возможен торг. Гарантия.</p>
-        <button class="btn btn-warning btn-sm">★ Избранное</button>
-        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
-        <button class="btn btn-outline-danger btn-sm">Удалить</button>
-      </div>
-      <div class="ad-card">
-        <h5>Ноутбук ASUS</h5>
-        <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
-        <button class="btn btn-warning btn-sm">★ Избранное</button>
-        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
-        <button class="btn btn-outline-danger btn-sm">Удалить</button>
+  <!-- Модальное окно входа -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Вход</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
+            <input type="email" class="form-control mb-2" placeholder="Email" required>
+            <input type="password" class="form-control mb-2" placeholder="Пароль" required>
+            <button type="submit" class="btn btn-dark w-100">Войти</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    © 2025 Объявка. Все права защищены.
-  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
