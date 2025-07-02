@@ -12,12 +12,10 @@
       font-family: Arial, sans-serif;
       transition: background 0.3s, color 0.3s;
     }
-
     body.dark {
       background-color: #121212;
       color: #f1f1f1;
     }
-
     .header {
       background-color: #111;
       padding: 20px;
@@ -26,68 +24,30 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
     .logo img {
       height: 50px;
       user-drag: none;
       user-select: none;
     }
-
     .auth-buttons {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
-
-    .auth-buttons button {
+    .auth-buttons .btn {
+      padding: 8px 16px;
+      font-size: 14px;
       border-radius: 20px;
+      text-align: center;
     }
-
     .search-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
       background-color: #ffcc00;
-      padding: 10px 12px;
+      padding: 12px 16px;
       border-radius: 14px;
       margin: 25px auto;
-      max-width: 95%;
-      min-width: 300px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      max-width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-
-    .search-bar input,
-    .search-bar select {
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 6px 10px;
-      font-size: 14px;
-      outline: none;
-      width: 100%;
-      max-width: 160px;
-      flex: 1 1 140px;
-    }
-
-    .search-bar input[type="text"] {
-      background-image: url('https://cdn-icons-png.flaticon.com/512/54/54481.png');
-      background-position: 10px center;
-      background-repeat: no-repeat;
-      background-size: 16px;
-      padding-left: 30px;
-    }
-
-    .search-bar button {
-      background-color: #111;
-      color: gold;
-      border: none;
-      padding: 8px 14px;
-      font-size: 14px;
-      border-radius: 14px;
-      cursor: pointer;
-    }
-
     .categories {
       display: flex;
       flex-wrap: wrap;
@@ -95,7 +55,6 @@
       gap: 20px;
       margin-bottom: 30px;
     }
-
     .category {
       background-color: white;
       border: 1px solid #ccc;
@@ -111,25 +70,21 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
     }
-
     .category:hover {
       transform: scale(1.05);
     }
-
     .category img {
       width: 50px;
       height: 50px;
       object-fit: contain;
       margin-bottom: 10px;
     }
-
     .ads-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       margin-bottom: 40px;
     }
-
     .ad-card {
       background-color: white;
       border: 1px solid #ccc;
@@ -137,18 +92,12 @@
       padding: 15px;
       height: 100%;
     }
-
-    .ad-card h5 {
-      font-weight: bold;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       color: #777;
     }
-
     @media (max-width: 576px) {
       .search-bar input,
       .search-bar select,
@@ -157,24 +106,20 @@
         font-size: 15px !important;
         padding: 8px 10px !important;
       }
-
       .category {
         width: 90px !important;
         height: 90px !important;
         padding: 8px !important;
       }
-
       .category img {
         width: 32px !important;
         height: 32px !important;
       }
-
       .auth-buttons {
         justify-content: center;
         flex-wrap: wrap;
         gap: 8px;
       }
-
       .ad-card button {
         width: 100%;
         margin-bottom: 6px;
@@ -195,42 +140,61 @@
 
   <div class="container">
     <div class="search-bar">
-      <input type="text" placeholder="Поиск...">
-      <select>
-        <option selected>Категория</option>
-        <option>Авто</option>
-        <option>Недвижимость</option>
-      </select>
-      <button onclick="filterAds()">🔍</button>
+      <div class="row w-100 g-2 align-items-center">
+        <div class="col-md-3 col-12">
+          <input type="text" placeholder="Поиск объявлений..." class="form-control">
+        </div>
+        <div class="col-md-2 col-6">
+          <select class="form-select">
+            <option selected>Категория</option>
+            <option>Авто</option>
+            <option>Недвижимость</option>
+            <option>Техника</option>
+            <option>Мото</option>
+            <option>Работа</option>
+          </select>
+        </div>
+        <div class="col-md-2 col-6">
+          <input type="number" placeholder="Мин. цена" class="form-control">
+        </div>
+        <div class="col-md-2 col-6">
+          <input type="number" placeholder="Макс. цена" class="form-control">
+        </div>
+        <div class="col-md-3 col-6">
+          <button class="btn w-100 btn-dark text-warning">🔍 Найти</button>
+        </div>
+      </div>
     </div>
 
+    <div class="categories">
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто"><span>Авто</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость"><span>Недвижимость</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Техника"><span>Техника</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png" alt="Мото"><span>Мото</span></div>
+      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа"><span>Работа</span></div>
+    </div>
+
+    <h3 class="mb-3">Последние объявления</h3>
     <div id="ads-output" class="ads-container"></div>
 
     <div class="container my-5">
       <h4 class="mb-3">📢 Подать объявление</h4>
       <form id="adForm" class="row g-3">
-        <div class="col-md-6">
-          <input type="text" class="form-control" placeholder="Заголовок" required>
-        </div>
+        <div class="col-md-6"><input type="text" class="form-control" placeholder="Заголовок" required></div>
         <div class="col-md-6">
           <select class="form-select" required>
             <option disabled selected>Выберите категорию</option>
             <option>Авто</option>
             <option>Недвижимость</option>
+            <option>Техника</option>
+            <option>Мото</option>
+            <option>Работа</option>
           </select>
         </div>
-        <div class="col-12">
-          <textarea class="form-control" rows="3" placeholder="Описание" required></textarea>
-        </div>
-        <div class="col-md-6">
-          <input type="number" class="form-control" placeholder="Цена" required>
-        </div>
-        <div class="col-md-6">
-          <input type="file" class="form-control">
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-dark w-100">📤 Опубликовать</button>
-        </div>
+        <div class="col-12"><textarea class="form-control" rows="3" placeholder="Описание" required></textarea></div>
+        <div class="col-md-6"><input type="number" class="form-control" placeholder="Цена" required></div>
+        <div class="col-md-6"><input type="file" class="form-control"></div>
+        <div class="col-12"><button type="submit" class="btn btn-dark w-100">📤 Опубликовать</button></div>
       </form>
     </div>
   </div>
@@ -238,16 +202,11 @@
   <footer>© 2025 Объявка. Все права защищены.</footer>
 
   <script>
-    // Тема
     function toggleTheme() {
       document.body.classList.toggle('dark');
     }
-
-    // Язык браузера
     const lang = navigator.language || navigator.userLanguage;
     console.log('Язык браузера:', lang);
-
-    // Отображение объявлений
     function showAds() {
       const container = document.getElementById('ads-output');
       container.innerHTML = '';
@@ -255,16 +214,10 @@
       ads.forEach(ad => {
         const card = document.createElement('div');
         card.className = 'ad-card';
-        card.innerHTML = `
-          <h5>${ad.title}</h5>
-          <p>${ad.desc}</p>
-          <strong>${ad.price} ₽</strong>
-        `;
+        card.innerHTML = `<h5>${ad.title}</h5><p>${ad.desc}</p><strong>${ad.price} ₽</strong>`;
         container.appendChild(card);
       });
     }
-
-    // Добавление объявления
     document.getElementById('adForm').addEventListener('submit', e => {
       e.preventDefault();
       const [title, category, desc, price] = [
@@ -280,21 +233,12 @@
       e.target.reset();
       showAds();
     });
-
-    // Очистка
     function clearAds() {
       if (confirm('Очистить все объявления?')) {
         localStorage.removeItem('ads');
         showAds();
       }
     }
-
-    // Фильтрация (пример)
-    function filterAds() {
-      alert('Фильтрация пока не реализована 😄');
-    }
-
-    // При загрузке
     document.addEventListener('DOMContentLoaded', showAds);
   </script>
 </body>
