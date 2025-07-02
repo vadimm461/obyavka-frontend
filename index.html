@@ -10,12 +10,8 @@
     body {
       background-color: #f8f9fa;
       font-family: Arial, sans-serif;
-      transition: background 0.3s, color 0.3s;
     }
-    body.dark {
-      background-color: #121212;
-      color: #f1f1f1;
-    }
+
     .header {
       background-color: #111;
       padding: 20px;
@@ -24,22 +20,26 @@
       align-items: center;
       flex-wrap: wrap;
     }
+
     .logo img {
       height: 50px;
       user-drag: none;
       user-select: none;
     }
+
     .auth-buttons {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .auth-buttons .btn {
       padding: 8px 16px;
       font-size: 14px;
       border-radius: 20px;
       text-align: center;
     }
+
     .search-bar {
       background-color: #ffcc00;
       padding: 12px 16px;
@@ -48,6 +48,7 @@
       max-width: 100%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+
     .categories {
       display: flex;
       flex-wrap: wrap;
@@ -55,6 +56,7 @@
       gap: 20px;
       margin-bottom: 30px;
     }
+
     .category {
       background-color: white;
       border: 1px solid #ccc;
@@ -70,21 +72,25 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
     }
+
     .category:hover {
       transform: scale(1.05);
     }
+
     .category img {
       width: 50px;
       height: 50px;
       object-fit: contain;
       margin-bottom: 10px;
     }
+
     .ads-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       margin-bottom: 40px;
     }
+
     .ad-card {
       background-color: white;
       border: 1px solid #ccc;
@@ -92,38 +98,12 @@
       padding: 15px;
       height: 100%;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       color: #777;
-    }
-    @media (max-width: 576px) {
-      .search-bar input,
-      .search-bar select,
-      .search-bar button {
-        width: 100% !important;
-        font-size: 15px !important;
-        padding: 8px 10px !important;
-      }
-      .category {
-        width: 90px !important;
-        height: 90px !important;
-        padding: 8px !important;
-      }
-      .category img {
-        width: 32px !important;
-        height: 32px !important;
-      }
-      .auth-buttons {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .ad-card button {
-        width: 100%;
-        margin-bottom: 6px;
-      }
     }
   </style>
 </head>
@@ -133,8 +113,8 @@
       <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка" />
     </div>
     <div class="auth-buttons">
-      <button class="btn btn-light" onclick="toggleTheme()">🌗 Тема</button>
-      <button class="btn btn-warning" onclick="clearAds()">🧹 Очистить</button>
+      <button class="btn" style="background-color: gold; color: #111;">Вход</button>
+      <button class="btn" style="background-color: #111; color: gold;">Регистрация</button>
     </div>
   </div>
 
@@ -161,85 +141,55 @@
           <input type="number" placeholder="Макс. цена" class="form-control">
         </div>
         <div class="col-md-3 col-6">
-          <button class="btn w-100 btn-dark text-warning">🔍 Найти</button>
+          <button class="btn w-100" style="background-color: #111; color: gold; border-radius: 10px;">🔍 Найти</button>
         </div>
       </div>
     </div>
 
     <div class="categories">
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто"><span>Авто</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость"><span>Недвижимость</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Техника"><span>Техника</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png" alt="Мото"><span>Мото</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа"><span>Работа</span></div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто">
+        <span>Авто</span>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость">
+        <span>Недвижимость</span>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Техника">
+        <span>Техника</span>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/809/809957.png" alt="Мото">
+        <span>Мото</span>
+      </div>
+      <div class="category">
+        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа">
+        <span>Работа</span>
+      </div>
     </div>
 
     <h3 class="mb-3">Последние объявления</h3>
-    <div id="ads-output" class="ads-container"></div>
-
-    <div class="container my-5">
-      <h4 class="mb-3">📢 Подать объявление</h4>
-      <form id="adForm" class="row g-3">
-        <div class="col-md-6"><input type="text" class="form-control" placeholder="Заголовок" required></div>
-        <div class="col-md-6">
-          <select class="form-select" required>
-            <option disabled selected>Выберите категорию</option>
-            <option>Авто</option>
-            <option>Недвижимость</option>
-            <option>Техника</option>
-            <option>Мото</option>
-            <option>Работа</option>
-          </select>
-        </div>
-        <div class="col-12"><textarea class="form-control" rows="3" placeholder="Описание" required></textarea></div>
-        <div class="col-md-6"><input type="number" class="form-control" placeholder="Цена" required></div>
-        <div class="col-md-6"><input type="file" class="form-control"></div>
-        <div class="col-12"><button type="submit" class="btn btn-dark w-100">📤 Опубликовать</button></div>
-      </form>
+    <div class="ads-container">
+      <div class="ad-card">
+        <h5>iPhone 13 Pro</h5>
+        <p>128GB, как новый. Возможен торг. Гарантия.</p>
+        <button class="btn btn-warning btn-sm">★ Избранное</button>
+        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
+        <button class="btn btn-outline-danger btn-sm">Удалить</button>
+      </div>
+      <div class="ad-card">
+        <h5>Ноутбук ASUS</h5>
+        <p>16GB RAM, SSD 512GB. Почти новый. Доставка по городу.</p>
+        <button class="btn btn-warning btn-sm">★ Избранное</button>
+        <button class="btn btn-outline-primary btn-sm">Редактировать</button>
+        <button class="btn btn-outline-danger btn-sm">Удалить</button>
+      </div>
     </div>
   </div>
 
-  <footer>© 2025 Объявка. Все права защищены.</footer>
-
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
-    const lang = navigator.language || navigator.userLanguage;
-    console.log('Язык браузера:', lang);
-    function showAds() {
-      const container = document.getElementById('ads-output');
-      container.innerHTML = '';
-      const ads = JSON.parse(localStorage.getItem('ads') || '[]');
-      ads.forEach(ad => {
-        const card = document.createElement('div');
-        card.className = 'ad-card';
-        card.innerHTML = `<h5>${ad.title}</h5><p>${ad.desc}</p><strong>${ad.price} ₽</strong>`;
-        container.appendChild(card);
-      });
-    }
-    document.getElementById('adForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const [title, category, desc, price] = [
-        e.target[0].value,
-        e.target[1].value,
-        e.target[2].value,
-        e.target[3].value
-      ];
-      const ad = { title, category, desc, price };
-      const ads = JSON.parse(localStorage.getItem('ads') || '[]');
-      ads.push(ad);
-      localStorage.setItem('ads', JSON.stringify(ads));
-      e.target.reset();
-      showAds();
-    });
-    function clearAds() {
-      if (confirm('Очистить все объявления?')) {
-        localStorage.removeItem('ads');
-        showAds();
-      }
-    }
-    document.addEventListener('DOMContentLoaded', showAds);
-  </script>
+  <footer>
+    © 2025 Объявка. Все права защищены.
+  </footer>
 </body>
 </html>
