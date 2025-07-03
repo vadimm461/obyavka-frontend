@@ -3,197 +3,153 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Объявка</title>
+  <title>Объявка — Маркетплейс</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <style>
-    body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
-    .header { background-color: #111; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-    .logo img { height: 50px; user-drag: none; user-select: none; }
-    .auth-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
-    .auth-buttons .btn { border-radius: 20px; padding: 6px 14px; font-size: 14px; min-width: 90px; }
-    .search-bar {
-      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-      gap: 8px; background-color: #ffcc00; padding: 10px 12px;
-      border-radius: 14px; margin: 25px auto; max-width: 95%; min-width: 300px;
+    body { font-family: 'Segoe UI', sans-serif; background-color: #fefefe; }
+    .header {
+      background-color: #000;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .search-bar input, .search-bar select, .search-bar button {
-      height: 40px; font-size: 14px; border-radius: 10px;
-      padding: 5px 10px; box-sizing: border-box;
+    .logo img { height: 45px; }
+    .auth-buttons .btn {
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: bold;
     }
-    .search-bar button { background-color: #111; color: gold; border: none; }
-    .category {
-      background: #fff; padding: 15px; border-radius: 10px;
-      width: 100px; text-align: center; margin: 5px;
-      flex: 1 1 90px; max-width: 120px;
+    .search-section {
+      background: #fff700;
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    .category img { width: 36px; height: 36px; }
-    footer { text-align: center; padding: 20px; font-size: 14px; color: #777; }
+    .search-section input,
+    .search-section select,
+    .search-section button {
+      height: 48px;
+      margin-bottom: 10px;
+    }
+    .search-section button {
+      background: #000;
+      color: #fff700;
+      border: none;
+    }
+    .categories {
+      margin-top: 40px;
+    }
+    .category-card {
+      background: #fff;
+      border: 2px solid #111;
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+      transition: transform 0.2s ease-in-out;
+    }
+    .category-card:hover {
+      transform: scale(1.05);
+      border-color: #ffc107;
+    }
+    .category-card img {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .ads-preview {
+      margin-top: 40px;
+    }
+    .product-card {
+      border: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.2s ease-in-out;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card .btn {
+      background: #000;
+      color: #fff700;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="logo">
-      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка" />
+      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Объявка">
     </div>
     <div class="auth-buttons">
-      <button class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
-      <button class="btn" style="background-color: #111; color: gold;" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
+      <button class="btn btn-outline-light me-2">Вход</button>
+      <button class="btn btn-light text-dark">Регистрация</button>
     </div>
   </div>
 
   <div class="container">
-    <!-- Поисковая форма -->
-    <form id="search-form" onsubmit="event.preventDefault(); handleSearch();">
-      <div class="search-bar">
-        <input type="text" name="query" class="form-control" placeholder="Поиск объявлений..." />
-        <select name="category" class="form-select">
-          <option selected>Категория</option>
-          <option>Авто</option>
-          <option>Недвижимость</option>
-          <option>Техника</option>
-          <option>Мото</option>
-          <option>Работа</option>
-        </select>
-        <input type="number" name="minPrice" class="form-control" placeholder="Мин. цена" />
-        <input type="number" name="maxPrice" class="form-control" placeholder="Макс. цена" />
-        <button class="btn" type="submit">🔍 Найти</button>
+    <div class="search-section">
+      <div class="row g-2">
+        <div class="col-md-4"><input type="text" class="form-control" placeholder="Поиск товаров..."></div>
+        <div class="col-md-2"><select class="form-select"><option>Категория</option></select></div>
+        <div class="col-md-2"><input type="number" class="form-control" placeholder="Мин. цена"></div>
+        <div class="col-md-2"><input type="number" class="form-control" placeholder="Макс. цена"></div>
+        <div class="col-md-2"><button class="btn w-100">🔍 Найти</button></div>
       </div>
-    </form>
-
-    <!-- Категории -->
-    <div class="categories d-flex flex-wrap justify-content-center">
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто"><span>Авто</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость"><span>Недвижимость</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Техника"><span>Техника</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png" alt="Мото"><span>Мото</span></div>
-      <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа"><span>Работа</span></div>
     </div>
 
-    <!-- Объявления -->
-    <h3 class="mt-4 mb-3 text-center">Последние объявления</h3>
-    <div class="ads-container" id="ads-output">
-      <!-- Объявления будут добавлены сюда -->
+    <div class="categories row text-center justify-content-center">
+      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png"><div>Авто</div></div></div>
+      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png"><div>Недвижимость</div></div></div>
+      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"><div>Техника</div></div></div>
+      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png"><div>Мото</div></div></div>
+      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png"><div>Работа</div></div></div>
+    </div>
+
+    <div class="ads-preview row mt-4">
+      <h3 class="text-center mb-4">Популярные товары</h3>
+      <div class="col-md-4 mb-4">
+        <div class="card product-card">
+          <img src="https://via.placeholder.com/400x250?text=Смартфон" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Смартфон Samsung A52</h5>
+            <p class="card-text">Практически новый. Гарантия 10 мес. Цена: 22 000₽</p>
+            <a href="#" class="btn">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card product-card">
+          <img src="https://via.placeholder.com/400x250?text=Ноутбук" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Ноутбук Lenovo</h5>
+            <p class="card-text">Подходит для работы и игр. SSD 512GB. Цена: 35 000₽</p>
+            <a href="#" class="btn">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card product-card">
+          <img src="https://via.placeholder.com/400x250?text=Куртка" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Зимняя куртка</h5>
+            <p class="card-text">Размер M, почти новая. Тёплая. Цена: 4 500₽</p>
+            <a href="#" class="btn">Подробнее</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <footer>© 2025 Объявка. Все права защищены.</footer>
-
-  <!-- Модальное окно входа -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Вход</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
-            <input type="email" class="form-control mb-2" placeholder="Email" required />
-            <input type="password" class="form-control mb-2" placeholder="Пароль" required />
-            <button type="submit" class="btn btn-dark w-100">Войти</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Модальное окно регистрации -->
-  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Регистрация</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="event.preventDefault(); handleRegister();">
-            <input type="text" class="form-control mb-2" placeholder="Имя" required />
-            <input type="email" class="form-control mb-2" placeholder="Email" required />
-            <input type="password" class="form-control mb-2" placeholder="Пароль" required />
-            <input type="password" class="form-control mb-2" placeholder="Подтвердите пароль" required />
-            <button type="submit" class="btn btn-dark w-100">Зарегистрироваться</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Скрипты -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Загрузка объявлений из localStorage
-    function renderAds() {
-      const ads = JSON.parse(localStorage.getItem("ads") || "[]");
-      const adsOutput = document.getElementById("ads-output");
-      adsOutput.innerHTML = "";
-
-      ads.forEach(ad => {
-        const adHTML = `
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title">${ad.title}</h5>
-              <p class="card-text">${ad.description} Цена: ${ad.price}</p>
-              <p class="card-text"><small class="text-muted">Категория: ${ad.category}</small></p>
-            </div>
-          </div>
-        `;
-        adsOutput.innerHTML += adHTML;
-      });
-    }
-
-    function saveAdToLocalStorage(ad) {
-      let ads = JSON.parse(localStorage.getItem("ads") || "[]");
-      ads.unshift(ad); // Новое сверху
-      localStorage.setItem("ads", JSON.stringify(ads));
-      renderAds();
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (!localStorage.getItem("ads")) {
-        saveAdToLocalStorage({
-          title: "Продам велосипед",
-          description: "Почти новый, ездил 3 раза. В подарок насос.",
-          category: "Мото",
-          price: "15 000₽"
-        });
-      } else {
-        renderAds();
-      }
-    });
-
-    // Обработка поиска
-    function handleSearch() {
-      const form = document.getElementById("search-form");
-      const data = new FormData(form);
-      const query = data.get("query");
-      const category = data.get("category");
-      const minPrice = data.get("minPrice");
-      const maxPrice = data.get("maxPrice");
-
-      alert(`Поиск: ${query}\nКатегория: ${category}\nЦена: ${minPrice} - ${maxPrice}`);
-    }
-
-    // Обработка регистрации
-    function handleRegister() {
-      const form = document.querySelector("#registerModal form");
-      const inputs = form.querySelectorAll("input");
-      const name = inputs[0].value;
-      const email = inputs[1].value;
-      const password = inputs[2].value;
-      const confirm = inputs[3].value;
-
-      if (password !== confirm) {
-        alert("Пароли не совпадают!");
-        return;
-      }
-
-      // Заглушка для отправки данных
-      console.log("Регистрация:", { name, email, password });
-
-      alert("Регистрация прошла успешно!");
-      const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
-      modal.hide();
-    }
-  </script>
 </body>
 </html>
