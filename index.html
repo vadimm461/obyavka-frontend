@@ -121,31 +121,47 @@
   <!-- Скрипты -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Пример объявления
-    document.addEventListener("DOMContentLoaded", () => {
+    // Загрузка объявлений из localStorage
+    function renderAds() {
+      const ads = JSON.parse(localStorage.getItem("ads") || "[]");
       const adsOutput = document.getElementById("ads-output");
+      adsOutput.innerHTML = "";
 
-      const exampleAd = {
-        title: "Продам велосипед",
-        description: "Почти новый, ездил 3 раза. В подарок насос.",
-        category: "Мото",
-        price: "15 000₽"
-      };
-
-      const adHTML = `
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">${exampleAd.title}</h5>
-            <p class="card-text">${exampleAd.description} Цена: ${exampleAd.price}</p>
-            <p class="card-text"><small class="text-muted">Категория: ${exampleAd.category}</small></p>
+      ads.forEach(ad => {
+        const adHTML = `
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">${ad.title}</h5>
+              <p class="card-text">${ad.description} Цена: ${ad.price}</p>
+              <p class="card-text"><small class="text-muted">Категория: ${ad.category}</small></p>
+            </div>
           </div>
-        </div>
-      `;
+        `;
+        adsOutput.innerHTML += adHTML;
+      });
+    }
 
-      adsOutput.innerHTML += adHTML;
+    function saveAdToLocalStorage(ad) {
+      let ads = JSON.parse(localStorage.getItem("ads") || "[]");
+      ads.unshift(ad); // Новое сверху
+      localStorage.setItem("ads", JSON.stringify(ads));
+      renderAds();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!localStorage.getItem("ads")) {
+        saveAdToLocalStorage({
+          title: "Продам велосипед",
+          description: "Почти новый, ездил 3 раза. В подарок насос.",
+          category: "Мото",
+          price: "15 000₽"
+        });
+      } else {
+        renderAds();
+      }
     });
 
-    // Поиск
+    // Обработка поиска
     function handleSearch() {
       const form = document.getElementById("search-form");
       const data = new FormData(form);
@@ -157,8 +173,23 @@
       alert(`Поиск: ${query}\nКатегория: ${category}\nЦена: ${minPrice} - ${maxPrice}`);
     }
 
-    // Регистрация
+    // Обработка регистрации
     function handleRegister() {
+      const form = document.querySelector("#registerModal form");
+      const inputs = form.querySelectorAll("input");
+      const name = inputs[0].value;
+      const email = inputs[1].value;
+      const password = inputs[2].value;
+      const confirm = inputs[3].value;
+
+      if (password !== confirm) {
+        alert("Пароли не совпадают!");
+        return;
+      }
+
+      // Заглушка для отправки данных
+      console.log("Регистрация:", { name, email, password });
+
       alert("Регистрация прошла успешно!");
       const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
       modal.hide();
