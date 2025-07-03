@@ -11,10 +11,21 @@
     .logo img { height: 50px; user-drag: none; user-select: none; }
     .auth-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
     .auth-buttons .btn { border-radius: 20px; padding: 6px 14px; font-size: 14px; min-width: 90px; }
-    .search-bar { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; background-color: #ffcc00; padding: 10px 12px; border-radius: 14px; margin: 25px auto; max-width: 95%; min-width: 300px; }
-    .search-bar input, .search-bar select, .search-bar button { height: 40px; font-size: 14px; border-radius: 10px; padding: 5px 10px; box-sizing: border-box; }
+    .search-bar {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 8px; background-color: #ffcc00; padding: 10px 12px;
+      border-radius: 14px; margin: 25px auto; max-width: 95%; min-width: 300px;
+    }
+    .search-bar input, .search-bar select, .search-bar button {
+      height: 40px; font-size: 14px; border-radius: 10px;
+      padding: 5px 10px; box-sizing: border-box;
+    }
     .search-bar button { background-color: #111; color: gold; border: none; }
-    .category { background: #fff; padding: 15px; border-radius: 10px; width: 100px; text-align: center; margin: 5px; }
+    .category {
+      background: #fff; padding: 15px; border-radius: 10px;
+      width: 100px; text-align: center; margin: 5px;
+      flex: 1 1 90px; max-width: 120px;
+    }
     .category img { width: 36px; height: 36px; }
     footer { text-align: center; padding: 20px; font-size: 14px; color: #777; }
   </style>
@@ -31,21 +42,25 @@
   </div>
 
   <div class="container">
-    <div class="search-bar">
-      <input type="text" class="form-control" placeholder="Поиск объявлений...">
-      <select class="form-select">
-        <option selected>Категория</option>
-        <option>Авто</option>
-        <option>Недвижимость</option>
-        <option>Техника</option>
-        <option>Мото</option>
-        <option>Работа</option>
-      </select>
-      <input type="number" class="form-control" placeholder="Мин. цена">
-      <input type="number" class="form-control" placeholder="Макс. цена">
-      <button class="btn">🔍 Найти</button>
-    </div>
+    <!-- Поисковая форма -->
+    <form id="search-form" onsubmit="event.preventDefault(); handleSearch();">
+      <div class="search-bar">
+        <input type="text" name="query" class="form-control" placeholder="Поиск объявлений..." />
+        <select name="category" class="form-select">
+          <option selected>Категория</option>
+          <option>Авто</option>
+          <option>Недвижимость</option>
+          <option>Техника</option>
+          <option>Мото</option>
+          <option>Работа</option>
+        </select>
+        <input type="number" name="minPrice" class="form-control" placeholder="Мин. цена" />
+        <input type="number" name="maxPrice" class="form-control" placeholder="Макс. цена" />
+        <button class="btn" type="submit">🔍 Найти</button>
+      </div>
+    </form>
 
+    <!-- Категории -->
     <div class="categories d-flex flex-wrap justify-content-center">
       <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png" alt="Авто"><span>Авто</span></div>
       <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png" alt="Недвижимость"><span>Недвижимость</span></div>
@@ -54,9 +69,10 @@
       <div class="category"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png" alt="Работа"><span>Работа</span></div>
     </div>
 
+    <!-- Объявления -->
     <h3 class="mt-4 mb-3 text-center">Последние объявления</h3>
     <div class="ads-container" id="ads-output">
-      <!-- Объявления будут добавлены сюда -->
+      <!-- Пример объявления -->
     </div>
   </div>
 
@@ -81,6 +97,45 @@
     </div>
   </div>
 
+  <!-- Скрипты -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Загружаем пример объявления
+    document.addEventListener("DOMContentLoaded", () => {
+      const adsOutput = document.getElementById("ads-output");
+
+      const exampleAd = {
+        title: "Продам велосипед",
+        description: "Почти новый, ездил 3 раза. В подарок насос.",
+        category: "Мото",
+        price: "15 000₽"
+      };
+
+      const adHTML = `
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">${exampleAd.title}</h5>
+            <p class="card-text">${exampleAd.description} Цена: ${exampleAd.price}</p>
+            <p class="card-text"><small class="text-muted">Категория: ${exampleAd.category}</small></p>
+          </div>
+        </div>
+      `;
+
+      adsOutput.innerHTML += adHTML;
+    });
+
+    // Поиск
+    function handleSearch() {
+      const form = document.getElementById("search-form");
+      const data = new FormData(form);
+      const query = data.get("query");
+      const category = data.get("category");
+      const minPrice = data.get("minPrice");
+      const maxPrice = data.get("maxPrice");
+
+      alert(`Поиск: ${query}\nКатегория: ${category}\nЦена: ${minPrice} - ${maxPrice}`);
+      // Здесь можно будет делать fetch или фильтрацию объявлений
+    }
+  </script>
 </body>
 </html>
