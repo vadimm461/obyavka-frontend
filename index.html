@@ -24,7 +24,7 @@
       font-weight: bold;
     }
     .search-section {
-      background: #fff700;
+      background: #f8f9fa;
       padding: 30px;
       border-radius: 16px;
       margin-top: 30px;
@@ -38,7 +38,7 @@
     }
     .search-section button {
       background: #000;
-      color: #fff700;
+      color: #ffc107;
       border: none;
     }
     .categories {
@@ -73,7 +73,7 @@
     }
     .product-card .btn {
       background: #000;
-      color: #fff700;
+      color: #ffc107;
       font-weight: bold;
     }
     footer {
@@ -91,8 +91,8 @@
       <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Объявка">
     </div>
     <div class="auth-buttons">
-      <button class="btn btn-outline-light me-2">Вход</button>
-      <button class="btn btn-light text-dark">Регистрация</button>
+      <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
+      <button class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
     </div>
   </div>
 
@@ -151,5 +151,47 @@
   </div>
 
   <footer>© 2025 Объявка. Все права защищены.</footer>
+
+<!-- Модальное окно входа -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Вход</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
+          <input type="email" class="form-control mb-2" placeholder="Email" required>
+          <input type="password" class="form-control mb-2" placeholder="Пароль" required>
+          <button type="submit" class="btn btn-dark w-100">Войти</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно регистрации -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Регистрация</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="event.preventDefault(); alert('Регистрация успешна!');">
+          <input type="email" class="form-control mb-2" placeholder="Email" required>
+          <input type="password" class="form-control mb-2" placeholder="Пароль" required>
+          <input type="password" class="form-control mb-2" placeholder="Повторите пароль" required>
+          <button type="submit" class="btn btn-warning w-100 text-dark fw-bold">Зарегистрироваться</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
