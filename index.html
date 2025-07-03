@@ -37,7 +37,7 @@
     </div>
     <div class="auth-buttons">
       <button class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
-      <a href="/register.html" class="btn" style="background-color: #111; color: gold;">Регистрация</a>
+      <button class="btn" style="background-color: #111; color: gold;" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
     </div>
   </div>
 
@@ -72,7 +72,7 @@
     <!-- Объявления -->
     <h3 class="mt-4 mb-3 text-center">Последние объявления</h3>
     <div class="ads-container" id="ads-output">
-      <!-- Пример объявления -->
+      <!-- Объявления будут добавлены сюда -->
     </div>
   </div>
 
@@ -88,9 +88,30 @@
         </div>
         <div class="modal-body">
           <form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
-            <input type="email" class="form-control mb-2" placeholder="Email" required>
-            <input type="password" class="form-control mb-2" placeholder="Пароль" required>
+            <input type="email" class="form-control mb-2" placeholder="Email" required />
+            <input type="password" class="form-control mb-2" placeholder="Пароль" required />
             <button type="submit" class="btn btn-dark w-100">Войти</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно регистрации -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Регистрация</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="event.preventDefault(); handleRegister();">
+            <input type="text" class="form-control mb-2" placeholder="Имя" required />
+            <input type="email" class="form-control mb-2" placeholder="Email" required />
+            <input type="password" class="form-control mb-2" placeholder="Пароль" required />
+            <input type="password" class="form-control mb-2" placeholder="Подтвердите пароль" required />
+            <button type="submit" class="btn btn-dark w-100">Зарегистрироваться</button>
           </form>
         </div>
       </div>
@@ -100,7 +121,7 @@
   <!-- Скрипты -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Загружаем пример объявления
+    // Пример объявления
     document.addEventListener("DOMContentLoaded", () => {
       const adsOutput = document.getElementById("ads-output");
 
@@ -134,7 +155,13 @@
       const maxPrice = data.get("maxPrice");
 
       alert(`Поиск: ${query}\nКатегория: ${category}\nЦена: ${minPrice} - ${maxPrice}`);
-      // Здесь можно будет делать fetch или фильтрацию объявлений
+    }
+
+    // Регистрация
+    function handleRegister() {
+      alert("Регистрация прошла успешно!");
+      const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+      modal.hide();
     }
   </script>
 </body>
