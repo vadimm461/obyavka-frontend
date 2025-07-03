@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Объявка — Маркетплейс</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Объявка — Маркетплейс</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
     body { font-family: 'Segoe UI', sans-serif; background-color: #fefefe; }
     .header {
       background-color: #000;
@@ -26,6 +27,11 @@
     .search-section {
       background: #f8f9fa;
       padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 2px solid #fff9c4;
+}
       border-radius: 16px;
       margin-top: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -86,112 +92,104 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">
-      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Объявка">
-    </div>
-    <div class="auth-buttons">
-      <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
-      <button class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
-    </div>
-  </div>
+<div class="header">
+<div class="logo">
+<img alt="Объявка" src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true"/>
+</div>
+<div class="auth-buttons">
+<button class="btn btn-outline-light me-2" data-bs-target="#loginModal" data-bs-toggle="modal">Вход</button>
+<button class="btn btn-light text-dark" data-bs-target="#registerModal" data-bs-toggle="modal">Регистрация</button>
+</div>
+</div>
+<div class="container">
+<div class="search-section">
+<div class="row g-2">
+<div class="col-md-4"><input class="form-control" placeholder="Поиск товаров..." type="text"/></div>
+<div class="col-md-2"><select class="form-select"><option>Категория</option></select></div>
+<div class="col-md-2"><input class="form-control" placeholder="Мин. цена" type="number"/></div>
+<div class="col-md-2"><input class="form-control" placeholder="Макс. цена" type="number"/></div>
+<div class="col-md-2"><button class="btn w-100">🔍 Найти</button></div>
+</div>
+</div>
+<div class="categories row text-center justify-content-center">
+<div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png"/><div>Авто</div></div></div>
+<div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png"/><div>Недвижимость</div></div></div>
+<div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"/><div>Техника</div></div></div>
+<div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png"/><div>Мото</div></div></div>
+<div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png"/><div>Работа</div></div></div>
+</div>
+<div class="ads-preview row mt-4">
+<h3 class="text-center mb-4">Популярные товары</h3>
+<div class="col-md-4 mb-4">
+<div class="card product-card">
+<img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/01/22/19/20/smartphone-2004312_1280.jpg"/>
+<div class="card-body"><div class="mb-2 text-start" style="background:#fff3cd; color:#d32f2f; font-weight:bold; padding:8px 12px; border-radius:6px; display:inline-block;">Практически новый. Гарантия 10 мес. &lt;span style="color:#d32f2f; font-weight:bold; font-size: 1.2rem;"&gt;22 000₽&lt;/span&gt;</div>
+<h5 class="card-title">Смартфон Samsung A52</h5>
 
-  <div class="container">
-    <div class="search-section">
-      <div class="row g-2">
-        <div class="col-md-4"><input type="text" class="form-control" placeholder="Поиск товаров..."></div>
-        <div class="col-md-2"><select class="form-select"><option>Категория</option></select></div>
-        <div class="col-md-2"><input type="number" class="form-control" placeholder="Мин. цена"></div>
-        <div class="col-md-2"><input type="number" class="form-control" placeholder="Макс. цена"></div>
-        <div class="col-md-2"><button class="btn w-100">🔍 Найти</button></div>
-      </div>
-    </div>
+<a class="btn" href="#">Подробнее</a>
+</div>
+</div>
+</div>
+<div class="col-md-4 mb-4">
+<div class="card product-card">
+<img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/05/02/21/50/home-office-336373_1280.jpg"/>
+<div class="card-body"><div class="mb-2 text-start" style="background:#fff3cd; color:#d32f2f; font-weight:bold; padding:8px 12px; border-radius:6px; display:inline-block;">Подходит для работы и игр. SSD 512GB. &lt;span style="color:#d32f2f; font-weight:bold; font-size: 1.2rem;"&gt;35 000₽&lt;/span&gt;</div>
+<h5 class="card-title">Ноутбук Lenovo</h5>
 
-    <div class="categories row text-center justify-content-center">
-      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/743/743007.png"><div>Авто</div></div></div>
-      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/3944/3944390.png"><div>Недвижимость</div></div></div>
-      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png"><div>Техника</div></div></div>
-      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/809/809957.png"><div>Мото</div></div></div>
-      <div class="col-6 col-sm-4 col-md-2 p-2"><div class="category-card"><img src="https://cdn-icons-png.flaticon.com/512/1995/1995562.png"><div>Работа</div></div></div>
-    </div>
+<a class="btn" href="#">Подробнее</a>
+</div>
+</div>
+</div>
+<div class="col-md-4 mb-4">
+<div class="card product-card">
+<img class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/12/14/59/jacket-984396_1280.jpg"/>
+<div class="card-body"><div class="mb-2 text-start" style="background:#fff3cd; color:#d32f2f; font-weight:bold; padding:8px 12px; border-radius:6px; display:inline-block;">Размер M, почти новая. Тёплая. &lt;span style="color:#d32f2f; font-weight:bold; font-size: 1.2rem;"&gt;4 500₽&lt;/span&gt;</div>
+<h5 class="card-title">Зимняя куртка</h5>
 
-    <div class="ads-preview row mt-4">
-      <h3 class="text-center mb-4">Популярные товары</h3>
-      <div class="col-md-4 mb-4">
-        <div class="card product-card">
-          <img src="https://cdn.pixabay.com/photo/2017/01/22/19/20/smartphone-2004312_1280.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Смартфон Samsung A52</h5>
-            <p class="card-text">Практически новый. Гарантия 10 мес. <span style="color:#d32f2f; font-weight:bold; font-size: 1.2rem;">22 000₽</span></p>
-            <a href="#" class="btn">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card product-card">
-          <img src="https://cdn.pixabay.com/photo/2014/05/02/21/50/home-office-336373_1280.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Ноутбук Lenovo</h5>
-            <p class="card-text">Подходит для работы и игр. SSD 512GB. <span style="color:#d32f2f; font-weight:bold; font-size: 1.2rem;">35 000₽</span></p>
-            <a href="#" class="btn">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card product-card">
-          <img src="https://cdn.pixabay.com/photo/2015/10/12/14/59/jacket-984396_1280.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Зимняя куртка</h5>
-            <p class="card-text">Размер M, почти новая. Тёплая. <span style="color:#d32f2f; font-weight:bold; font-size: 1.2rem;">4 500₽</span></p>
-            <a href="#" class="btn">Подробнее</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>© 2025 Объявка. Все права защищены.</footer>
-
+<a class="btn" href="#">Подробнее</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>© 2025 Объявка. Все права защищены.</footer>
 <!-- Модальное окно входа -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Вход</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-      </div>
-      <div class="modal-body">
-        <form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
-          <input type="email" class="form-control mb-2" placeholder="Email" required>
-          <input type="password" class="form-control mb-2" placeholder="Пароль" required>
-          <button type="submit" class="btn btn-dark w-100">Войти</button>
-        </form>
-      </div>
-    </div>
-  </div>
+<div aria-hidden="true" aria-labelledby="loginModalLabel" class="modal fade" id="loginModal" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Вход</h5>
+<button aria-label="Закрыть" class="btn-close" data-bs-dismiss="modal" type="button"></button>
 </div>
-
+<div class="modal-body">
+<form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
+<input class="form-control mb-2" placeholder="Email" required="" type="email"/>
+<input class="form-control mb-2" placeholder="Пароль" required="" type="password"/>
+<button class="btn btn-dark w-100" type="submit">Войти</button>
+</form>
+</div>
+</div>
+</div>
+</div>
 <!-- Модальное окно регистрации -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Регистрация</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-      </div>
-      <div class="modal-body">
-        <form onsubmit="event.preventDefault(); alert('Регистрация успешна!');">
-          <input type="email" class="form-control mb-2" placeholder="Email" required>
-          <input type="password" class="form-control mb-2" placeholder="Пароль" required>
-          <input type="password" class="form-control mb-2" placeholder="Повторите пароль" required>
-          <button type="submit" class="btn btn-warning w-100 text-dark fw-bold">Зарегистрироваться</button>
-        </form>
-      </div>
-    </div>
-  </div>
+<div aria-hidden="true" aria-labelledby="registerModalLabel" class="modal fade" id="registerModal" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Регистрация</h5>
+<button aria-label="Закрыть" class="btn-close" data-bs-dismiss="modal" type="button"></button>
 </div>
-
+<div class="modal-body">
+<form onsubmit="event.preventDefault(); alert('Регистрация успешна!');">
+<input class="form-control mb-2" placeholder="Email" required="" type="email"/>
+<input class="form-control mb-2" placeholder="Пароль" required="" type="password"/>
+<input class="form-control mb-2" placeholder="Повторите пароль" required="" type="password"/>
+<button class="btn btn-warning w-100 text-dark fw-bold" type="submit">Зарегистрироваться</button>
+</form>
+</div>
+</div>
+</div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
