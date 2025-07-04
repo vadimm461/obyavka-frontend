@@ -37,114 +37,82 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">
-      <img src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true" alt="Логотип Объявка" />
-    </div>
-    <div class="auth-buttons">
-      <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
-      <button class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
-    </div>
+  <div class="container py-5 text-center">
+    <h1>Объявка</h1>
+    <p>Добро пожаловать! Вход или регистрация:</p>
+    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
+    <button class="btn btn-warning text-dark" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
   </div>
 
-  <div class="container mt-5">
-    <h1 class="text-center">Добро пожаловать!</h1>
-    <p class="text-center">Найдите всё, что нужно, или разместите объявление прямо сейчас.</p>
-  </div>
-
-  <!-- Модальные окна -->
-  <!-- ВХОД -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Вход</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body">
-          <form id="loginForm">
-            <div id="loginError" class="text-danger mb-2"></div>
-            <input type="email" id="loginEmail" class="form-control mb-2" placeholder="Email" required />
-            <input type="password" id="loginPassword" class="form-control mb-2" placeholder="Пароль" required />
-            <button type="submit" class="btn btn-dark w-100">Войти</button>
-          </form>
-        </div>
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Вход</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div id="loginError" class="text-danger mb-2"></div>
+          <input type="email" id="loginEmail" class="form-control mb-2" placeholder="Email" required />
+          <input type="password" id="loginPassword" class="form-control mb-2" placeholder="Пароль" required />
+          <button type="submit" class="btn btn-dark w-100">Войти</button>
+        </form>
       </div>
-    </div>
+    </div></div>
   </div>
 
-  <!-- РЕГИСТРАЦИЯ -->
-  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Регистрация</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body">
-          <form id="registerForm">
-            <div id="registerError" class="text-danger mb-2"></div>
-            <input type="email" id="regEmail" class="form-control mb-2" placeholder="Email" required />
-            <input type="password" id="regPassword" class="form-control mb-2" placeholder="Пароль" required />
-            <input type="password" id="regConfirm" class="form-control mb-2" placeholder="Повторите пароль" required />
-            <button type="submit" class="btn btn-warning w-100 text-dark fw-bold">Зарегистрироваться</button>
-          </form>
-        </div>
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Регистрация</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <form id="registerForm">
+          <div id="registerError" class="text-danger mb-2"></div>
+          <input type="email" id="regEmail" class="form-control mb-2" placeholder="Email" required />
+          <input type="password" id="regPassword" class="form-control mb-2" placeholder="Пароль" required />
+          <input type="password" id="regConfirm" class="form-control mb-2" placeholder="Повторите пароль" required />
+          <button type="submit" class="btn btn-warning text-dark w-100">Зарегистрироваться</button>
+        </form>
       </div>
-    </div>
+    </div></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('registerForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const email = document.getElementById('regEmail').value;
-      const password = document.getElementById('regPassword').value;
-      const confirm = document.getElementById('regConfirm').value;
-      const errorDiv = document.getElementById('registerError');
-      errorDiv.innerText = '';
+      const email = regEmail.value, password = regPassword.value, confirm = regConfirm.value;
+      if (password !== confirm) return registerError.innerText = 'Пароли не совпадают';
 
-      if (password !== confirm) {
-        errorDiv.innerText = 'Пароли не совпадают';
-        return;
-      }
-
-      const response = await fetch('/api/account/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/account/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
-
-      if (response.ok) {
-        alert('Регистрация успешна!');
+      if (res.ok) {
+        alert("Регистрация успешна!");
         location.reload();
       } else {
-        const data = await response.json();
-        errorDiv.innerText = data.message || 'Ошибка регистрации';
+        const data = await res.json();
+        registerError.innerText = data.message || "Ошибка регистрации";
       }
     });
 
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
-      const errorDiv = document.getElementById('loginError');
-      errorDiv.innerText = '';
+      const email = loginEmail.value, password = loginPassword.value;
 
-      const response = await fetch('/api/account/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/account/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
-
-      if (response.ok) {
-        alert('Вы вошли!');
+      if (res.ok) {
+        alert("Успешный вход!");
         location.reload();
       } else {
-        const data = await response.json();
-        errorDiv.innerText = data.message || 'Ошибка входа';
+        const data = await res.json();
+        loginError.innerText = data.message || "Ошибка входа";
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
