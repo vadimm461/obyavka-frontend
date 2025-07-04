@@ -96,7 +96,7 @@
     }
   </style>
 </head>
-<body>
+    <body>
 <div class="header">
 <div class="logo">
 <img alt="Объявка" src="https://github.com/vadimm461/obyavka-frontend/blob/main/cropped_text_image.png?raw=true"/>
@@ -155,43 +155,99 @@
 </div>
 </div>
 <footer>© 2025 Объявка. Все права защищены.</footer>
-<!-- Модальное окно входа -->
-<div aria-hidden="true" aria-labelledby="loginModalLabel" class="modal fade" id="loginModal" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Вход</h5>
-<button aria-label="Закрыть" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+
+<!-- ВХОД -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Вход</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div id="loginError" class="text-danger mb-2"></div>
+          <input type="email" id="loginEmail" class="form-control mb-2" placeholder="Email" required />
+          <input type="password" id="loginPassword" class="form-control mb-2" placeholder="Пароль" required />
+          <button type="submit" class="btn btn-dark w-100">Войти</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="modal-body">
-<form onsubmit="event.preventDefault(); alert('Вход выполнен!');">
-<input class="form-control mb-2" placeholder="Email" required="" type="email"/>
-<input class="form-control mb-2" placeholder="Пароль" required="" type="password"/>
-<button class="btn btn-dark w-100" type="submit">Войти</button>
-</form>
+
+<!-- РЕГИСТРАЦИЯ -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Регистрация</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form id="registerForm">
+          <div id="registerError" class="text-danger mb-2"></div>
+          <input type="email" id="regEmail" class="form-control mb-2" placeholder="Email" required />
+          <input type="password" id="regPassword" class="form-control mb-2" placeholder="Пароль" required />
+          <input type="password" id="regConfirm" class="form-control mb-2" placeholder="Повторите пароль" required />
+          <button type="submit" class="btn btn-warning w-100 text-dark fw-bold">Зарегистрироваться</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-<!-- Модальное окно регистрации -->
-<div aria-hidden="true" aria-labelledby="registerModalLabel" class="modal fade" id="registerModal" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Регистрация</h5>
-<button aria-label="Закрыть" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-</div>
-<div class="modal-body">
-<form onsubmit="event.preventDefault(); alert('Регистрация успешна!');">
-<input class="form-control mb-2" placeholder="Email" required="" type="email"/>
-<input class="form-control mb-2" placeholder="Пароль" required="" type="password"/>
-<input class="form-control mb-2" placeholder="Повторите пароль" required="" type="password"/>
-<button class="btn btn-warning w-100 text-dark fw-bold" type="submit">Зарегистрироваться</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('regEmail').value;
+  const password = document.getElementById('regPassword').value;
+  const confirm = document.getElementById('regConfirm').value;
+  const errorDiv = document.getElementById('registerError');
+  errorDiv.innerText = '';
+
+  if (password !== confirm) {
+    errorDiv.innerText = 'Пароли не совпадают';
+    return;
+  }
+
+  const response = await fetch('/api/account/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+
+  if (response.ok) {
+    alert('Регистрация успешна!');
+    location.reload();
+  } else {
+    const data = await response.json();
+    errorDiv.innerText = data.message || 'Ошибка регистрации';
+  }
+});
+
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  const errorDiv = document.getElementById('loginError');
+  errorDiv.innerText = '';
+
+  const response = await fetch('/api/account/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+
+  if (response.ok) {
+    alert('Вы вошли!');
+    location.reload();
+  } else {
+    const data = await response.json();
+    errorDiv.innerText = data.message || 'Ошибка входа';
+  }
+});
+</script>
+
+    </body>
 </html>
