@@ -5,41 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Объявка</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
-    }
-    .header {
-      background-color: #111;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .logo img {
-      height: 50px;
-      user-drag: none;
-      user-select: none;
-    }
-    .auth-buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .auth-buttons .btn {
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 14px;
-      min-width: 90px;
-    }
-  </style>
 </head>
-<body>
-  <div class="container py-5 text-center">
-    <h1>Объявка</h1>
-    <p>Добро пожаловать! Вход или регистрация:</p>
+<body class="bg-light text-center py-5">
+  <h1>Объявка</h1>
+  <p>Маркетплейс с регистрацией и входом</p>
+  <div class="mb-3">
     <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
     <button class="btn btn-warning text-dark" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
   </div>
@@ -69,50 +39,39 @@
           <input type="email" id="regEmail" class="form-control mb-2" placeholder="Email" required />
           <input type="password" id="regPassword" class="form-control mb-2" placeholder="Пароль" required />
           <input type="password" id="regConfirm" class="form-control mb-2" placeholder="Повторите пароль" required />
-          <button type="submit" class="btn btn-warning text-dark w-100">Зарегистрироваться</button>
+          <button type="submit" class="btn btn-warning w-100 text-dark">Зарегистрироваться</button>
         </form>
       </div>
     </div></div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('registerForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const email = regEmail.value, password = regPassword.value, confirm = regConfirm.value;
       if (password !== confirm) return registerError.innerText = 'Пароли не совпадают';
 
-      const res = await fetch("/api/account/register", {
+      const res = await fetch("https://obyavka-backend.onrender.com/api/account/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
-      if (res.ok) {
-        alert("Регистрация успешна!");
-        location.reload();
-      } else {
-        const data = await res.json();
-        registerError.innerText = data.message || "Ошибка регистрации";
-      }
+      if (res.ok) alert("Регистрация успешна!");
+      else registerError.innerText = 'Ошибка регистрации';
     });
 
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const email = loginEmail.value, password = loginPassword.value;
-
-      const res = await fetch("/api/account/login", {
+      const res = await fetch("https://obyavka-backend.onrender.com/api/account/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
-      if (res.ok) {
-        alert("Успешный вход!");
-        location.reload();
-      } else {
-        const data = await res.json();
-        loginError.innerText = data.message || "Ошибка входа";
-      }
+      if (res.ok) alert("Вход выполнен!");
+      else loginError.innerText = 'Ошибка входа';
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
