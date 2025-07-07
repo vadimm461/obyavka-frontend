@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Маркетплейс</title>
+  <title>Объявка</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -29,6 +29,11 @@
     .search-input {
       max-width: 600px;
       margin: 0 auto;
+    }
+    .slogan {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 10px;
     }
     .categories .card {
       transition: transform 0.2s ease;
@@ -61,7 +66,7 @@
   <!-- Навбар -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">🛒 Маркетплейс</a>
+      <a class="navbar-brand" href="#">🛍 Объявка</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -69,7 +74,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Категории</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Добавить товар</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Добавить</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Войти</a></li>
         </ul>
       </div>
@@ -79,8 +84,9 @@
   <!-- Поиск -->
   <section class="search-wrapper">
     <div class="container">
-      <h2 class="mb-4">Найдите нужный товар</h2>
-      <form class="search-input d-flex">
+      <h2 class="mb-2">Найдите нужный товар</h2>
+      <p class="slogan">Объявка — найдите то, что ищете</p>
+      <form class="search-input d-flex mt-3">
         <input type="text" class="form-control me-2" placeholder="Поиск по товарам..." />
         <button class="btn btn-dark">Поиск</button>
       </form>
@@ -123,9 +129,9 @@
       <div class="row">
         <div class="col-md-3 mb-4">
           <div class="product-card">
-            <img src="https://via.placeholder.com/300x200" class="w-100" alt="Объявление 1">
+            <img src="https://images.unsplash.com/photo-1587202372775-e09dd23f0b6c?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Ноутбук">
             <div class="p-3">
-              <h5>Продам ноутбук ASUS</h5>
+              <h5>Ноутбук ASUS Vivobook</h5>
               <p class="text-muted">35 000 ₽</p>
               <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
             </div>
@@ -133,9 +139,9 @@
         </div>
         <div class="col-md-3 mb-4">
           <div class="product-card">
-            <img src="https://via.placeholder.com/300x200" class="w-100" alt="Объявление 2">
+            <img src="https://images.unsplash.com/photo-1618354691419-bde8c720b894?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Кроссовки">
             <div class="p-3">
-              <h5>Кроссовки Nike</h5>
+              <h5>Кроссовки Nike Air</h5>
               <p class="text-muted">6 000 ₽</p>
               <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
             </div>
@@ -143,7 +149,7 @@
         </div>
         <div class="col-md-3 mb-4">
           <div class="product-card">
-            <img src="https://via.placeholder.com/300x200" class="w-100" alt="Объявление 3">
+            <img src="https://images.unsplash.com/photo-1606813904815-17831a9e27e3?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Стиралка">
             <div class="p-3">
               <h5>Стиральная машина Bosch</h5>
               <p class="text-muted">12 500 ₽</p>
@@ -153,7 +159,7 @@
         </div>
         <div class="col-md-3 mb-4">
           <div class="product-card">
-            <img src="https://via.placeholder.com/300x200" class="w-100" alt="Объявление 4">
+            <img src="https://images.unsplash.com/photo-1589391886645-d519c84b25c0?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Шины">
             <div class="p-3">
               <h5>Шины зимние R16</h5>
               <p class="text-muted">8 000 ₽</p>
@@ -168,7 +174,7 @@
   <!-- Подвал -->
   <footer class="footer">
     <div class="container">
-      <p>© 2025 Маркетплейс. Все права защищены.</p>
+      <p>© 2025 Объявка. Все права защищены.</p>
     </div>
   </footer>
 
