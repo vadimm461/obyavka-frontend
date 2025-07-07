@@ -2,13 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Объявка</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #fff;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
     }
     .navbar {
       background-color: #000;
@@ -20,15 +20,6 @@
     }
     .nav-link {
       color: #fff !important;
-    }
-    .search-wrapper {
-      background-color: #ffeb3b;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .search-input {
-      max-width: 600px;
-      margin: 0 auto;
     }
     .slogan {
       font-size: 1.1rem;
@@ -59,125 +50,196 @@
       text-align: center;
       margin-top: 50px;
     }
+    .dropdown .list-group-item:hover {
+      background-color: #f1f1f1;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Навбар -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="#">🛍 Объявка</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Категории</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Добавить</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Войти</a></li>
-        </ul>
+<!-- Навбар -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">🛍 Объявка</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Категории</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Добавить</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Войти</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Мегаменю + Поиск -->
+<div class="container py-4 d-flex align-items-start gap-3">
+  <div class="dropdown position-relative">
+    <button class="btn btn-outline-primary px-4" id="categoryToggle">Все категории</button>
+
+    <div class="d-none position-absolute bg-white shadow rounded border mt-2" id="megaMenu" style="width: 700px; z-index: 999;">
+      <div class="row g-0">
+        <div class="col-4 border-end" id="mainCategories">
+          <div class="list-group list-group-flush">
+            <button class="list-group-item list-group-item-action active" data-cat="realty">Недвижимость</button>
+            <button class="list-group-item list-group-item-action" data-cat="auto">Транспорт</button>
+            <button class="list-group-item list-group-item-action" data-cat="work">Работа</button>
+            <button class="list-group-item list-group-item-action" data-cat="services">Услуги</button>
+          </div>
+        </div>
+        <div class="col-8 p-3" id="subCategories">
+          <div data-sub="realty">
+            <strong>Купить жильё</strong>
+            <ul><li>Квартиры</li><li>Вторичка</li><li>Новостройки</li></ul>
+            <strong class="mt-2">Снять жильё</strong>
+            <ul><li>Квартиры</li><li>Комнаты</li></ul>
+          </div>
+          <div data-sub="auto" class="d-none">
+            <strong>Легковые авто</strong>
+            <ul><li>С пробегом</li><li>Новые</li></ul>
+            <strong>Мотоциклы</strong>
+            <ul><li>Круизёры</li><li>Эндуро</li></ul>
+          </div>
+          <div data-sub="work" class="d-none">
+            <strong>Работа</strong>
+            <ul><li>IT</li><li>Строительство</li><li>Курьеры</li></ul>
+          </div>
+          <div data-sub="services" class="d-none">
+            <strong>Ремонт</strong>
+            <ul><li>Сантехник</li><li>Электрик</li></ul>
+            <strong>Красота</strong>
+            <ul><li>Парикмахер</li><li>Косметолог</li></ul>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
 
   <!-- Поиск -->
-  <section class="search-wrapper">
-    <div class="container">
-      <h2 class="mb-2">Найдите нужный товар</h2>
-      <p class="slogan">Объявка — найдите то, что ищете</p>
-      <form class="search-input d-flex mt-3">
-        <input type="text" class="form-control me-2" placeholder="Поиск по товарам..." />
-        <button class="btn btn-dark">Поиск</button>
-      </form>
-    </div>
-  </section>
+  <div class="flex-grow-1">
+    <h2 class="mb-2">Найдите нужный товар</h2>
+    <p class="slogan">Объявка — найдите то, что ищете</p>
+    <form class="d-flex mt-2">
+      <input type="text" class="form-control me-2" placeholder="Поиск по объявлениям" />
+      <button class="btn btn-dark">Найти</button>
+    </form>
+  </div>
+</div>
 
-  <!-- Категории -->
-  <section class="categories py-5">
-    <div class="container">
-      <h2 class="mb-4 text-center">Категории</h2>
-      <div class="row text-center">
-        <div class="col-md-3 mb-4">
-          <div class="card p-4 bg-light">
-            <strong>Электроника</strong>
+<!-- Категории -->
+<section class="categories py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Категории</h2>
+    <div class="row text-center">
+      <div class="col-md-3 mb-4">
+        <div class="card p-4 bg-light">
+          <strong>Электроника</strong>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card p-4 bg-light">
+          <strong>Одежда</strong>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card p-4 bg-light">
+          <strong>Дом и сад</strong>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card p-4 bg-light">
+          <strong>Авто</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Новые объявления -->
+<section class="latest-products py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Новые объявления</h2>
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1587202372775-e09dd23f0b6c?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Ноутбук">
+          <div class="p-3">
+            <h5>Ноутбук ASUS Vivobook</h5>
+            <p class="text-muted">35 000 ₽</p>
+            <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="card p-4 bg-light">
-            <strong>Одежда</strong>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1618354691419-bde8c720b894?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Кроссовки">
+          <div class="p-3">
+            <h5>Кроссовки Nike Air</h5>
+            <p class="text-muted">6 000 ₽</p>
+            <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="card p-4 bg-light">
-            <strong>Дом и сад</strong>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1606813904815-17831a9e27e3?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Стиралка">
+          <div class="p-3">
+            <h5>Стиральная машина Bosch</h5>
+            <p class="text-muted">12 500 ₽</p>
+            <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
           </div>
         </div>
-        <div class="col-md-3 mb-4">
-          <div class="card p-4 bg-light">
-            <strong>Авто</strong>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1589391886645-d519c84b25c0?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Шины">
+          <div class="p-3">
+            <h5>Шины зимние R16</h5>
+            <p class="text-muted">8 000 ₽</p>
+            <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Новые объявления -->
-  <section class="latest-products py-5">
-    <div class="container">
-      <h2 class="mb-4 text-center">Новые объявления</h2>
-      <div class="row">
-        <div class="col-md-3 mb-4">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1587202372775-e09dd23f0b6c?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Ноутбук">
-            <div class="p-3">
-              <h5>Ноутбук ASUS Vivobook</h5>
-              <p class="text-muted">35 000 ₽</p>
-              <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1618354691419-bde8c720b894?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Кроссовки">
-            <div class="p-3">
-              <h5>Кроссовки Nike Air</h5>
-              <p class="text-muted">6 000 ₽</p>
-              <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1606813904815-17831a9e27e3?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Стиралка">
-            <div class="p-3">
-              <h5>Стиральная машина Bosch</h5>
-              <p class="text-muted">12 500 ₽</p>
-              <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1589391886645-d519c84b25c0?auto=format&fit=crop&w=600&q=80" class="w-100" alt="Шины">
-            <div class="p-3">
-              <h5>Шины зимние R16</h5>
-              <p class="text-muted">8 000 ₽</p>
-              <a href="#" class="btn btn-sm btn-dark w-100">Подробнее</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Подвал -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Объявка. Все права защищены.</p>
+  </div>
+</footer>
 
-  <!-- Подвал -->
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 Объявка. Все права защищены.</p>
-    </div>
-  </footer>
+<!-- Скрипт для мегаменю -->
+<script>
+  const toggle = document.getElementById('categoryToggle');
+  const megaMenu = document.getElementById('megaMenu');
+  const mainCats = document.querySelectorAll('#mainCategories button');
+  const subCats = document.querySelectorAll('#subCategories > div');
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  toggle.addEventListener('mouseenter', () => {
+    megaMenu.classList.remove('d-none');
+  });
+
+  megaMenu.addEventListener('mouseleave', () => {
+    megaMenu.classList.add('d-none');
+  });
+
+  mainCats.forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      mainCats.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      subCats.forEach(div => {
+        div.classList.toggle('d-none', div.dataset.sub !== btn.dataset.cat);
+      });
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
