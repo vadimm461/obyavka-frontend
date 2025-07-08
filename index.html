@@ -352,6 +352,7 @@
 <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
 
 <!-- СКРИПТЫ -->
+<!-- Скрипт категорий и подкатегорий -->
 <script>
   const toggle = document.getElementById('categoryToggle');
   const megaMenu = document.getElementById('megaMenu');
@@ -369,6 +370,22 @@
     });
   });
 
+  // Инициализация — показать первую категорию при загрузке
+  window.addEventListener('DOMContentLoaded', () => {
+    const firstBtn = document.querySelector('#mainCategories button');
+    if (firstBtn) {
+      firstBtn.classList.add('active');
+      const firstCat = firstBtn.dataset.cat;
+
+      subCats.forEach(div => {
+        div.classList.toggle('d-none', div.dataset.sub !== firstCat);
+      });
+    }
+  });
+</script>
+
+<!-- Скрипт генерации объявлений -->
+<script>
   const ads = Array.from({length: 50}).map((_, i) => ({
     title: `Товар #${i + 1}`,
     price: `${(Math.random() * 30000 + 1000).toFixed(0)} ₽`,
@@ -411,7 +428,7 @@
   renderAds();
 </script>
 
-<!-- Поисковый скрипт -->
+<!-- Скрипт подсказок в поиске -->
 <script>
   const searchInput = document.getElementById('searchInput');
   const suggestionsBox = document.getElementById('searchSuggestions');
@@ -462,6 +479,7 @@
     }
   });
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
