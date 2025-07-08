@@ -191,10 +191,62 @@
     <div class="flex-grow-1">
       <h2 class="mb-2">Найдите нужный товар</h2>
       <p class="text-muted mb-3">Объявка — найдите то, что ищете</p>
-      <form class="d-flex mt-2">
-        <input class="form-control me-2 rounded-pill" placeholder="Поиск по объявлениям" type="text"/>
-        <button class="btn btn-primary rounded-pill">Найти</button>
-      </form>
+<form class="position-relative w-100" autocomplete="off">
+  <input id="searchInput" class="form-control rounded-pill" type="text" placeholder="Поиск по объявлениям..." />
+  <ul id="searchSuggestions" class="list-group position-absolute w-100 mt-2 shadow rounded d-none" style="z-index: 1000;"></ul>
+</form>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const suggestionsBox = document.getElementById('searchSuggestions');
+
+  const suggestions = [
+    'iPhone 13',
+    'Ноутбук ASUS',
+    'Квартира в центре',
+    'Вакансия программист',
+    'Toyota Camry',
+    'Сантехнические услуги',
+    'Сдам комнату',
+    'Пылесос Dyson',
+    'Продам гараж'
+  ];
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    suggestionsBox.innerHTML = '';
+    if (!query) {
+      suggestionsBox.classList.add('d-none');
+      return;
+    }
+
+    const matched = suggestions.filter(item => item.toLowerCase().includes(query)).slice(0, 5);
+    if (matched.length === 0) {
+      suggestionsBox.classList.add('d-none');
+      return;
+    }
+
+    matched.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item list-group-item-action';
+      li.textContent = item;
+      li.addEventListener('click', () => {
+        searchInput.value = item;
+        suggestionsBox.classList.add('d-none');
+      });
+      suggestionsBox.appendChild(li);
+    });
+
+    suggestionsBox.classList.remove('d-none');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('form')) {
+      suggestionsBox.classList.add('d-none');
+    }
+  });
+</script>
+
     </div>
   </div>
 <div class="container-section categories" id="categories">
