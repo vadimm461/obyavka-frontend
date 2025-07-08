@@ -89,34 +89,38 @@
       border-top: 2px solid var(--yellow);
     }
 
-    .dropdown .list-group-item:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown .active {
+    #searchBlock {
       background-color: var(--yellow);
-      color: #000;
-    }
-
-    .custom-active {
-      background-color: var(--yellow) !important;
-      color: #000 !important;
-    }
-
-    @media (max-width: 768px) {
-      .product-card {
-        margin-bottom: 20px;
-      }
-
-      #megaMenu {
-        width: 100% !important;
-        position: static !important;
-      }
-    }
-
-    #megaMenu {
-      background-color: #fdfdfd;
       border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: stretch;
+    }
+
+    #searchBlock .btn-outline-dark {
+      border-color: #000;
+      color: #000;
+      font-weight: 500;
+    }
+
+    #searchBlock .btn-outline-dark:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    #searchInput {
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 1rem;
+    }
+
+    #searchSuggestions {
+      top: 100%;
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     #backToTop {
@@ -133,35 +137,6 @@
       cursor: pointer;
       display: none;
       z-index: 1000;
-    }
-
-    #categoryToggle {
-      font-weight: 500;
-      font-size: 1rem;
-      transition: all 0.2s ease-in-out;
-    }
-
-    #categoryToggle:hover {
-      background-color: #f8f9fa;
-    }
-
-    .list-group-item {
-      font-size: 1rem;
-      transition: background-color 0.2s ease-in-out;
-    }
-
-    .list-group-item:hover {
-      background-color: #f1f1f1;
-    }
-
-    .hover-shadow:hover {
-      transform: scale(1.05);
-    }
-
-    #searchSuggestions {
-      max-height: 200px;
-      overflow-y: auto;
-      z-index: 1050;
     }
   </style>
 </head>
@@ -180,64 +155,17 @@
   </div>
 </nav>
 
-<!-- Категории + Поиск -->
-<div class="container-fluid py-4 px-3">
-  <div class="container-section d-flex gap-3 flex-column flex-md-row align-items-start">
-    <div class="dropdown position-relative w-100 w-md-auto">
-      <button class="btn btn-outline-dark px-4 py-2 rounded-pill shadow-sm" id="categoryToggle">
-        Все категории
-      </button>
-      <div class="d-none position-absolute bg-white shadow rounded-4 border mt-2 p-3" id="megaMenu" style="width: 100%; max-width: 800px; z-index: 999;">
-        <div class="row g-3">
-          <div class="col-12 col-md-4" id="mainCategories">
-            <div class="list-group list-group-flush rounded-4 overflow-hidden shadow-sm">
-              <button class="list-group-item list-group-item-action active rounded-0 border-0 py-3" data-cat="realty">🚗 Транспорт</button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">💻 Электроника</button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">👷 Работа</button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">🛠️ Услуги</button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">🏠 Недвижимость</button>
-            </div>
-          </div>
-          <div class="col-8 p-3" id="subCategories">
-            <div data-sub="realty">
-              <strong>Купить жильё</strong>
-              <ul><li>Квартиры</li><li>Вторичка</li><li>Новостройки</li></ul>
-              <strong class="mt-2">Снять жильё</strong>
-              <ul><li>Квартиры</li><li>Комнаты</li></ul>
-            </div>
-            <div class="d-none" data-sub="auto">
-              <strong>Легковые авто</strong>
-              <ul><li>С пробегом</li><li>Новые</li></ul>
-            </div>
-            <div class="d-none" data-sub="work">
-              <strong>Работа</strong>
-              <ul><li>IT</li><li>Строительство</li></ul>
-            </div>
-            <div class="d-none" data-sub="services">
-              <strong>Ремонт</strong>
-              <ul><li>Сантехник</li><li>Электрик</li></ul>
-            </div>
-            <div class="d-none" data-sub="home">
-              <strong>Квартира</strong>
-              <ul><li>Снять</li><li>Продать</li></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Новый поиск -->
-    <div class="flex-grow-1">
-      <form class="position-relative w-100" autocomplete="off">
-        <input id="searchInput" class="form-control rounded-pill" type="text" placeholder="Поиск по объявлениям..." />
-        <ul id="searchSuggestions" class="list-group position-absolute w-100 mt-2 shadow rounded d-none"></ul>
-      </form>
-    </div>
+<!-- Поисковый блок -->
+<div class="container my-4">
+  <div id="searchBlock">
+    <button class="btn btn-outline-dark align-self-start px-4 py-2" id="categoryToggle">Все категории</button>
+    <form class="position-relative w-100" autocomplete="off">
+      <input id="searchInput" class="form-control" type="text" placeholder="Поиск по объявлениям..." />
+      <ul id="searchSuggestions" class="list-group position-absolute w-100 mt-2 shadow d-none"></ul>
+    </form>
   </div>
 </div>
 
-<!-- Категории и объявления идут дальше (оставлены без изменений) -->
-<!-- Внимание: чтобы всё поместилось, продолжение будет во второй части ниже -->
 <div class="container-section categories" id="categories">
   <h3 class="text-center mb-4">Популярные категории</h3>
   <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
