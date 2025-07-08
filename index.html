@@ -4,34 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Объявка</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #000;
+      color: #ffd700;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      margin-left: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .ads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .ad-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .ad-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .ad-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .price-badge {
+      background: #ffd700;
+      color: black;
+      padding: 5px 10px;
+      display: inline-block;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .btn-more {
+      background: #ffd700;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .load-more {
+      display: block;
+      margin: 30px auto;
+      background: #000;
+      color: #ffd700;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Кнопка "вверх" */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #000;
+      color: #ffd700;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0.5;
+      display: none;
+      z-index: 1000;
+    }
+
+    #scrollTopBtn:hover {
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-  <header class="bg-black text-white py-3 px-4 flex justify-between items-center shadow">
-    <a href="/" class="flex items-center space-x-2 no-underline text-yellow-400 font-bold text-xl">
-      <img src="img/logo-icon.png" alt="Логотип" width="24" height="24" draggable="false" style="pointer-events: none;" />
+
+  <header>
+    <a href="/" class="logo">
+      <img src="logo.png" alt="Логотип Объявка" width="24" height="24" />
       <span>Объявка</span>
     </a>
-    <nav class="flex space-x-6 text-white text-sm font-medium">
-      <a href="/" class="hover:text-yellow-400">Главная</a>
-      <a href="#categories" class="hover:text-yellow-400">Категории</a>
-      <a href="#ads" class="hover:text-yellow-400">Объявления</a>
-      <a href="/login" class="hover:text-yellow-400">Войти</a>
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">Категории</a>
+      <a href="#">Объявления</a>
+      <a href="#">Войти</a>
     </nav>
   </header>
 
-  <main class="p-6">
-    <section class="text-center mb-8">
-      <h1 class="text-3xl font-bold mb-2">Найдите нужный товар</h1>
-      <p class="text-gray-600">Объявка — найдите то, что ищете</p>
-    </section>
+  <div class="container">
+    <h2>Найдите нужный товар</h2>
+    <div class="ads-grid" id="adsContainer"></div>
+    <button class="load-more" id="loadMoreBtn">Далее</button>
+  </div>
 
-    <!-- Далее категории и объявления -->
-    <!-- ... -->
-  </main>
+  <button id="scrollTopBtn" title="Наверх">↑</button>
 
-  <footer class="text-center text-sm text-gray-500 py-6">
-    © 2025 Объявка — Все права защищены.
-  </footer>
+  <script>
+    const ads = [
+      { title: "Коляска детская", price: "9700 ₽", img: "no-image.png" },
+      { title: "Велосипед взрослый", price: "14500 ₽", img: "no-image.png" },
+      { title: "Диван IKEA", price: "28000 ₽", img: "no-image.png" },
+      { title: "Пылесос Dyson", price: "11500 ₽", img: "no-image.png" },
+      { title: "Кофемашина Philips", price: "9800 ₽", img: "no-image.png" },
+      { title: "Часы Apple Watch", price: "22000 ₽", img: "no-image.png" },
+      { title: "Кроссовки Adidas", price: "6500 ₽", img: "no-image.png" },
+      { title: "Монитор LG 27\"", price: "15000 ₽", img: "no-image.png" },
+      { title: "Смартфон Samsung", price: "37000 ₽", img: "no-image.png" },
+      { title: "Стиральная машина", price: "25000 ₽", img: "no-image.png" },
+      { title: "Микроволновка", price: "5200 ₽", img: "no-image.png" },
+      { title: "Стол письменный", price: "8900 ₽", img: "no-image.png" },
+    ];
+
+    let currentIndex = 0;
+    const step = 9;
+
+    function renderAds() {
+      const container = document.getElementById("adsContainer");
+      const slice = ads.slice(currentIndex, currentIndex + step);
+      for (const ad of slice) {
+        const card = document.createElement("div");
+        card.className = "ad-card";
+        card.innerHTML = `
+          <img src="${ad.img}" alt="${ad.title}" onerror="this.src='no-image.png'" />
+          <h3>${ad.title}</h3>
+          <div class="price-badge">${ad.price}</div>
+          <button class="btn-more">Подробнее</button>
+        `;
+        container.appendChild(card);
+      }
+      currentIndex += step;
+      if (currentIndex >= ads.length) {
+        document.getElementById("loadMoreBtn").style.display = "none";
+      }
+    }
+
+    document.getElementById("loadMoreBtn").addEventListener("click", renderAds);
+    window.addEventListener("load", renderAds);
+
+    // scroll to top button
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  </script>
+
 </body>
 </html>
