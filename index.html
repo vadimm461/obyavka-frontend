@@ -1,52 +1,45 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Объявка</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Объявка</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
     :root {
       --yellow: #FFD600;
       --black: #000000;
       --gray: #f5f5f5;
     }
-
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--gray);
       margin: 0;
       padding: 0;
     }
-
     .navbar {
       background-color: var(--black);
       border-bottom: 2px solid var(--yellow);
     }
-
     .navbar-brand {
       color: var(--yellow) !important;
       font-weight: bold;
       font-size: 1.6rem;
+      pointer-events: none;
     }
-
     .nav-link {
       color: #fff !important;
       font-weight: 500;
     }
-
     .btn-primary, .btn-dark {
       background-color: var(--yellow);
       border: none;
       color: #000;
       border-radius: 10px;
     }
-
     .btn-primary:hover, .btn-dark:hover {
       background-color: #e6c200;
     }
-
     .container-section {
       background: #fff;
       border-radius: 16px;
@@ -54,19 +47,16 @@
       padding: 30px;
       margin-bottom: 30px;
     }
-
     .product-card {
       background: #fff;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: transform 0.2s ease;
     }
-
     .product-card:hover {
       transform: translateY(-5px);
     }
-
     .categories .card {
       border: none;
       border-radius: 14px;
@@ -75,11 +65,9 @@
       box-shadow: 0 1px 6px rgba(0,0,0,0.05);
       transition: transform 0.2s ease;
     }
-
     .categories .card:hover {
       transform: scale(1.05);
     }
-
     .footer {
       background-color: var(--black);
       color: #fff;
@@ -87,277 +75,185 @@
       padding: 30px 0;
       border-top: 2px solid var(--yellow);
     }
-
     .dropdown .list-group-item:hover {
       background-color: #f1f1f1;
     }
-
     .dropdown .active {
       background-color: var(--yellow);
       color: #000;
     }
-  .custom-active {
-  background-color: var(--yellow) !important;
-  color: #000 !important;
-}
-
-
-@media (max-width: 768px) {
-  .product-card {
-    margin-bottom: 20px;
-  }
-  #megaMenu {
-    width: 100% !important;
-    position: static !important;
-  }
-}
-
-#megaMenu {
-  background-color: #fdfdfd;
-  border-radius: 12px;
-}
-
-</style>
-<style>
-.product-card {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-}
-</style></head>
+    .custom-active {
+      background-color: var(--yellow) !important;
+      color: #000 !important;
+    }
+    @media (max-width: 768px) {
+      .product-card {
+        margin-bottom: 20px;
+      }
+      #megaMenu {
+        width: 100% !important;
+        position: static !important;
+      }
+    }
+    #megaMenu {
+      background-color: #fdfdfd;
+      border-radius: 12px;
+    }
+  </style>
+</head>
 <body>
-<nav class="navbar navbar-expand-lg">
-<div class="container">
-<a class="navbar-brand" href="#">🛍 Объявка</a>
-<div class="collapse navbar-collapse">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
-<li class="nav-item"><a class="nav-link" href="#categories">Категории</a></li>
-<li class="nav-item"><a class="nav-link" href="#new-ads">Объявления</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Войти</a></li>
-</ul>
-</div>
-</div>
-</nav>
-<div class="container my-5">
-<div class="container-section d-flex gap-3 flex-column flex-md-row align-items-start">
-<div class="dropdown position-relative">
-<button class="btn btn-outline-dark px-4" id="categoryToggle">Все категории</button>
-<div class="d-none position-absolute bg-white shadow rounded border mt-2" id="megaMenu" style="width: 700px; z-index: 999;">
-<div class="row g-0">
-<div class="col-4 border-end" id="mainCategories">
-<div class="list-group list-group-flush">
-<button class="list-group-item list-group-item-action custom-active" data-cat="realty">Недвижимость</button>
-<button class="list-group-item list-group-item-action" data-cat="auto">Транспорт</button>
-<button class="list-group-item list-group-item-action" data-cat="work">Работа</button>
-<button class="list-group-item list-group-item-action" data-cat="services">Услуги</button>
-</div>
-</div>
-<div class="col-8 p-3" id="subCategories">
-<div data-sub="realty">
-<strong>Купить жильё</strong>
-<ul><li>Квартиры</li><li>Вторичка</li><li>Новостройки</li></ul>
-<strong class="mt-2">Снять жильё</strong>
-<ul><li>Квартиры</li><li>Комнаты</li></ul>
-</div>
-<div class="d-none" data-sub="auto">
-<strong>Легковые авто</strong>
-<ul><li>С пробегом</li><li>Новые</li></ul>
-</div>
-<div class="d-none" data-sub="work">
-<strong>Работа</strong>
-<ul><li>IT</li><li>Строительство</li></ul>
-</div>
-<div class="d-none" data-sub="services">
-<strong>Ремонт</strong>
-<ul><li>Сантехник</li><li>Электрик</li></ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="flex-grow-1">
-<h2 class="mb-2">Найдите нужный товар</h2>
-<p class="text-muted mb-3">Объявка — найдите то, что ищете</p>
-<form class="d-flex mt-2">
-<input class="form-control me-2 rounded-pill" placeholder="Поиск по объявлениям" type="text"/>
-<button class="btn btn-primary rounded-pill">Найти</button>
-</form>
-</div>
-</div>
-<div class="container-section categories" id="categories">
-<h3 class="text-center mb-4">Популярные категории</h3>
-<div class="row text-center">
-<div class="col">
-<div class="card"><strong>Электроника</strong></div>
-</div>
-<div class="col">
-<div class="card"><strong>Одежда</strong></div>
-</div>
-<div class="col">
-<div class="card"><strong>Дом и сад</strong></div>
-</div>
-<div class="col">
-<div class="card"><strong>Авто</strong></div>
-</div>
-</div>
-</div>
-<div class="container-section" id="new-ads">
-<h3 class="text-center mb-4">Новые объявления</h3>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Ноутбук ASUS Vivobook</h5>
-<p class="text-muted">35000 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Кроссовки Nike Air</h5>
-<p class="text-muted">6000 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Стиральная машина Bosch</h5>
-<p class="text-muted">12500 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Шины зимние R16</h5>
-<p class="text-muted">8000 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img "="" alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Телевизор Samsung 43"</h5>
-<p class="text-muted">21000 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Смартфон Xiaomi Redmi Note</h5>
-<p class="text-muted">18000 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Холодильник LG</h5>
-<p class="text-muted">27500 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Микроволновка Panasonic</h5>
-<p class="text-muted">4500 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="product-card shadow rounded p-3 bg-white">
-<img alt="Нет фото" class="img-fluid rounded mb-3" src="https://via.placeholder.com/400x300?text=Нет+фото" style="height: 200px; width: 100%; object-fit: cover;"/>
-<div class="p-3">
-<h5>Стул офисный</h5>
-<p class="text-muted">3200 ₽</p>
-<a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
-</div>
-</div>
-</div>
-<div class="col">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">🛍 Объявка</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categories">Категории</a></li>
+          <li class="nav-item"><a class="nav-link" href="#new-ads">Объявления</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Войти</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-</div>
-<div class="col">
+  <div class="container my-5">
+    <div class="container-section d-flex gap-3 flex-column flex-md-row align-items-start">
+      <div class="dropdown position-relative">
+        <button class="btn btn-outline-dark px-4" id="categoryToggle">Все категории</button>
+        <div class="d-none position-absolute bg-white shadow rounded border mt-2" id="megaMenu" style="width: 700px; z-index: 999;">
+          <div class="row g-0">
+            <div class="col-4 border-end" id="mainCategories">
+              <div class="list-group list-group-flush">
+                <button class="list-group-item list-group-item-action custom-active" data-cat="realty">Недвижимость</button>
+                <button class="list-group-item list-group-item-action" data-cat="auto">Транспорт</button>
+                <button class="list-group-item list-group-item-action" data-cat="work">Работа</button>
+                <button class="list-group-item list-group-item-action" data-cat="services">Услуги</button>
+              </div>
+            </div>
+            <div class="col-8 p-3" id="subCategories">
+              <div data-sub="realty">
+                <strong>Купить жильё</strong>
+                <ul><li>Квартиры</li><li>Вторичка</li><li>Новостройки</li></ul>
+                <strong class="mt-2">Снять жильё</strong>
+                <ul><li>Квартиры</li><li>Комнаты</li></ul>
+              </div>
+              <div class="d-none" data-sub="auto">
+                <strong>Легковые авто</strong>
+                <ul><li>С пробегом</li><li>Новые</li></ul>
+              </div>
+              <div class="d-none" data-sub="work">
+                <strong>Работа</strong>
+                <ul><li>IT</li><li>Строительство</li></ul>
+              </div>
+              <div class="d-none" data-sub="services">
+                <strong>Ремонт</strong>
+                <ul><li>Сантехник</li><li>Электрик</li></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow-1">
+        <h2 class="mb-2">Найдите нужный товар</h2>
+        <p class="text-muted mb-3">Объявка — найдите то, что ищете</p>
+        <form class="d-flex mt-2">
+          <input class="form-control me-2 rounded-pill" placeholder="Поиск по объявлениям" type="text"/>
+          <button class="btn btn-primary rounded-pill">Найти</button>
+        </form>
+      </div>
+    </div>
 
-</div>
-<div class="col">
+    <div class="container-section categories" id="categories">
+      <h3 class="text-center mb-4">Популярные категории</h3>
+      <div class="row text-center">
+        <div class="col"><div class="card"><strong>Электроника</strong></div></div>
+        <div class="col"><div class="card"><strong>Одежда</strong></div></div>
+        <div class="col"><div class="card"><strong>Дом и сад</strong></div></div>
+        <div class="col"><div class="card"><strong>Авто</strong></div></div>
+      </div>
+    </div>
 
-</div>
-<div class="col">
+    <div class="container-section" id="new-ads">
+      <h3 class="text-center mb-4">Новые объявления</h3>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Объявления добавляются динамически -->
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-dark px-4 py-2">Показать ещё</button>
+      </div>
+    </div>
+  </div>
 
-</div>
-<div class="col">
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Объявка. Все права защищены.</p>
+    </div>
+  </footer>
 
-</div>
-<div class="col">
+  <script>
+    const toggle = document.getElementById('categoryToggle');
+    const megaMenu = document.getElementById('megaMenu');
+    const mainCats = document.querySelectorAll('#mainCategories button');
+    const subCats = document.querySelectorAll('#subCategories > div');
 
-</div>
-<div class="col">
-
-</div>
-<div class="col">
-
-</div>
-<div class="col">
-
-</div>
-<div class="col">
-
-</div>
-<div class="col">
-
-</div>
-</div>
-</div>
-</div>
-<footer class="footer">
-<div class="container">
-<p>© 2025 Объявка. Все права защищены.</p>
-</div>
-</footer>
-<script>
-  const toggle = document.getElementById('categoryToggle');
-  const megaMenu = document.getElementById('megaMenu');
-  const mainCats = document.querySelectorAll('#mainCategories button');
-  const subCats = document.querySelectorAll('#subCategories > div');
-
-  toggle.addEventListener('mouseenter', () => {
-    megaMenu.classList.remove('d-none');
-  });
-  megaMenu.addEventListener('mouseleave', () => {
-    megaMenu.classList.add('d-none');
-  });
-
-  mainCats.forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-      mainCats.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      subCats.forEach(div => {
-        div.classList.toggle('d-none', div.dataset.sub !== btn.dataset.cat);
+    toggle.addEventListener('mouseenter', () => {
+      megaMenu.classList.remove('d-none');
+    });
+    megaMenu.addEventListener('mouseleave', () => {
+      megaMenu.classList.add('d-none');
+    });
+    mainCats.forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        mainCats.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        subCats.forEach(div => {
+          div.classList.toggle('d-none', div.dataset.sub !== btn.dataset.cat);
+        });
       });
     });
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    const ads = [
+      { title: "Кофеварка Philips", price: "6500 ₽", image: "https://via.placeholder.com/400x300?text=Кофеварка" },
+      { title: "Игровая приставка PS4", price: "22000 ₽", image: "https://via.placeholder.com/400x300?text=PS4" },
+      { title: "Гитара акустическая", price: "9500 ₽", image: "https://via.placeholder.com/400x300?text=Гитара" },
+      { title: "Пылесос Dyson", price: "18500 ₽", image: "https://via.placeholder.com/400x300?text=Пылесос" },
+      { title: "Велосипед горный", price: "27000 ₽", image: "https://via.placeholder.com/400x300?text=Велосипед" },
+      { title: "Часы Apple Watch", price: "15000 ₽", image: "https://via.placeholder.com/400x300?text=Apple+Watch" },
+      { title: "Кресло-груша", price: "3000 ₽", image: "https://via.placeholder.com/400x300?text=Кресло" },
+      { title: "МФУ HP LaserJet", price: "8900 ₽", image: "https://via.placeholder.com/400x300?text=МФУ" },
+      { title: "Детская коляска", price: "11000 ₽", image: "https://via.placeholder.com/400x300?text=Коляска" }
+    ];
+
+    const adsContainer = document.querySelector("#new-ads .row");
+    const showMoreBtn = document.querySelector("#new-ads button");
+    let currentIndex = 0;
+    const batchSize = 3;
+
+    function renderAds() {
+      const batch = ads.slice(currentIndex, currentIndex + batchSize);
+      batch.forEach(ad => {
+        const col = document.createElement("div");
+        col.className = "col";
+        col.innerHTML = `
+          <div class="product-card shadow rounded p-3 bg-white">
+            <img alt="Нет фото" class="img-fluid rounded mb-3"
+              src="${ad.image}" style="height: 200px; width: 100%; object-fit: cover;" />
+            <div class="p-3">
+              <h5>${ad.title}</h5>
+              <p class="text-muted">${ad.price}</p>
+              <a class="btn btn-primary w-100 btn-sm" href="#">Подробнее</a>
+            </div>
+          </div>
+        `;
+        adsContainer.appendChild(col);
+      });
+      currentIndex += batchSize;
+      if (currentIndex >= ads.length) showMoreBtn.style.display = "none";
+    }
+
+    showMoreBtn.addEventListener("click", renderAds);
+    renderAds(); // Загружаем первую партию сразу
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
