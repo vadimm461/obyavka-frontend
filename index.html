@@ -151,20 +151,79 @@
   </div>
 </nav>
 
-<div class="container my-5">
+<div class="container-fluid py-4 px-3">
   <div class="container-section d-flex gap-3 flex-column flex-md-row align-items-start">
-    <div class="dropdown position-relative">
-      <button class="btn btn-outline-dark px-4" id="categoryToggle">Все категории</button>
-      <div class="d-none position-absolute bg-white shadow rounded border mt-2" id="megaMenu" style="width: 700px; z-index: 999;">
-        <div class="row g-0">
-          <div class="col-4 border-end" id="mainCategories">
-            <div class="list-group list-group-flush">
-              <button class="list-group-item list-group-item-action custom-active" data-cat="realty">Траспорт</button>
-              <button class="list-group-item list-group-item-action" data-cat="auto">Электроника</button>
-              <button class="list-group-item list-group-item-action" data-cat="work">Работа</button>
-              <button class="list-group-item list-group-item-action" data-cat="services">Услуги</button>
-              <button class="list-group-item list-group-item-action" data-cat="home">Недвижимость</button>
+    <div class="dropdown position-relative w-100 w-md-auto">
+      <button class="btn btn-outline-dark px-4 py-2 rounded-pill shadow-sm" id="categoryToggle">
+        Все категории
+      </button>
+      <div class="d-none position-absolute bg-white shadow rounded-4 border mt-2 p-3" id="megaMenu" style="width: 100%; max-width: 800px; z-index: 999;">
+        <div class="row g-3">
+          <div class="col-12 col-md-4" id="mainCategories">
+            <div class="list-group list-group-flush rounded-4 overflow-hidden shadow-sm">
+              <button class="list-group-item list-group-item-action custom-active rounded-0 border-0 py-3" data-cat="realty">
+                🚗 Транспорт
+              </button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">
+                💻 Электроника
+              </button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">
+                💼 Работа
+              </button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">
+                🛠️ Услуги
+              </button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">
+                🏠 Недвижимость
+              </button>
             </div>
+          </div>
+          <!-- Здесь можешь добавить подкатегории справа -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #categoryToggle {
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #categoryToggle:hover {
+    background-color: #f8f9fa;
+  }
+
+  #megaMenu {
+    border-radius: 1.5rem !important;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .list-group-item {
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .list-group-item:hover {
+    background-color: #f1f1f1;
+  }
+
+  .custom-active {
+    background-color: #ffd600;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    #megaMenu {
+      width: 100% !important;
+      left: 0;
+      right: 0;
+    }
+  }
+</style>
+
           </div>
           <div class="col-8 p-3" id="subCategories">
             <div data-sub="realty">
