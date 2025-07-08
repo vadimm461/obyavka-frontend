@@ -1,202 +1,179 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Объявка</title>
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #f9f9f9;
+    :root {
+      --yellow: #FFD600;
+      --black: #000;
+      --gray-light: #f9f9f9;
     }
-
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--gray-light); }
     header {
-      background-color: #000;
-      color: #ffd700;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--black); color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px; position: sticky; top:0; z-index:100;
     }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
+    .logo-link {
+      display: flex; align-items: center; text-decoration: none;
+      pointer-events: none; user-select: none;
     }
-
-    .logo span {
-      margin-left: 8px;
+    .logo-link img { width:24px; height:24px; }
+    .logo-link span {
+      color: var(--yellow); font-size:1.5rem; font-weight:700;
+      margin-left:8px;
     }
-
     nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
+      color:#fff; text-decoration:none; margin-left:20px;
+      font-weight:500; white-space: nowrap;
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .search-mega {
+      background:#fff; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      display:flex; align-items:center; gap:20px;
+      position: sticky; top:56px; z-index:90;
     }
-
+    .mega-btn {
+      padding:8px 16px; border:2px solid var(--black);
+      background:#fff; cursor:pointer; border-radius:6px;
+      font-weight:500;
+    }
+    .search-bar {
+      flex:1; display:flex; gap:8px;
+    }
+    .search-bar input {
+      flex:1; padding:8px 12px; border:2px solid #ccc;
+      border-radius:6px 0 0 6px;
+    }
+    .search-bar button {
+      padding:8px 16px; border:none; background:var(--black);
+      color:#fff; border-radius:0 6px 6px 0; cursor:pointer;
+    }
+    .container { max-width:1200px; margin:40px auto; padding:0 20px; }
+    h2 { margin-bottom:20px; font-size:1.75rem; color:#333; }
     .ads-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+      gap:20px;
     }
-
     .ad-card {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: relative;
+      position:relative; background:#fff; border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05); overflow:hidden;
+      display:flex; flex-direction:column;
     }
-
     .ad-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
+      width:100%; height:180px; object-fit:cover;
     }
-
-    .ad-card h3 {
-      margin: 10px 0 5px;
-    }
-
+    .ad-info { padding:16px; flex:1; display:flex; flex-direction:column; }
+    .ad-info h3 { margin-bottom:8px; font-size:1.1rem; color:#222; }
     .price-badge {
-      background: #ffd700;
-      color: black;
-      padding: 5px 10px;
-      display: inline-block;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-bottom: 10px;
+      background:var(--yellow); color:#000; padding:4px 8px;
+      border-radius:4px; font-weight:600; margin-bottom:12px;
+      display:inline-block;
     }
-
     .btn-more {
-      background: #ffd700;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 5px;
+      margin-top:auto; background:var(--yellow); border:none;
+      padding:10px; border-radius:6px; cursor:pointer;
+      font-weight:600;
     }
-
     .load-more {
-      display: block;
-      margin: 30px auto;
-      background: #000;
-      color: #ffd700;
-      padding: 10px 20px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 5px;
+      display:block; margin:40px auto 0; padding:12px 24px;
+      background:var(--black); color:#FFD600;
+      border:none; cursor:pointer; border-radius:6px;
+      font-size:1rem; font-weight:600;
     }
-
-    /* Кнопка "вверх" */
     #scrollTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #000;
-      color: #ffd700;
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 20px;
-      cursor: pointer;
-      opacity: 0.5;
-      display: none;
-      z-index: 1000;
+      position:fixed; bottom:30px; right:30px; width:45px; height:45px;
+      background:var(--black); color:var(--yellow); border:none;
+      border-radius:50%; font-size:24px; cursor:pointer;
+      opacity:0.5; display:none; align-items:center; justify-content:center;
+      z-index:1000;
     }
-
-    #scrollTopBtn:hover {
-      opacity: 0.8;
-    }
+    #scrollTopBtn:hover { opacity:0.8; }
+    /* скрытый пункт при пагинации */
+    .hidden { display:none!important; }
   </style>
 </head>
 <body>
 
+  <!-- Шапка -->
   <header>
-    <a href="/" class="logo">
-      <img src="logo.png" alt="Логотип Объявка" width="24" height="24" />
-      <span>Объявка</span>
+    <a href="/" class="logo-link">
+      <img src="logo-icon.png" alt="Логотип"/><span>Объявка</span>
     </a>
     <nav>
       <a href="#">Главная</a>
-      <a href="#">Категории</a>
-      <a href="#">Объявления</a>
-      <a href="#">Войти</a>
+      <a href="#categories">Категории</a>
+      <a href="#ads">Объявления</a>
+      <a href="#login">Войти</a>
     </nav>
   </header>
 
-  <div class="container">
-    <h2>Найдите нужный товар</h2>
-    <div class="ads-grid" id="adsContainer"></div>
-    <button class="load-more" id="loadMoreBtn">Далее</button>
+  <!-- Поиск + мегаменю -->
+  <div class="search-mega">
+    <button class="mega-btn" id="megaToggle">Все категории</button>
+    <form class="search-bar" onsubmit="return false;">
+      <input type="text" placeholder="Поиск по объявлениям…" />
+      <button type="submit">Найти</button>
+    </form>
   </div>
+
+  <main class="container">
+    <h2 id="ads">Найдите нужный товар</h2>
+    <div class="ads-grid" id="adsGrid"></div>
+    <button class="load-more" id="loadMoreBtn">Далее</button>
+  </main>
 
   <button id="scrollTopBtn" title="Наверх">↑</button>
 
   <script>
+    // Пример данных объявлений
     const ads = [
-      { title: "Коляска детская", price: "9700 ₽", img: "no-image.png" },
-      { title: "Велосипед взрослый", price: "14500 ₽", img: "no-image.png" },
-      { title: "Диван IKEA", price: "28000 ₽", img: "no-image.png" },
-      { title: "Пылесос Dyson", price: "11500 ₽", img: "no-image.png" },
-      { title: "Кофемашина Philips", price: "9800 ₽", img: "no-image.png" },
-      { title: "Часы Apple Watch", price: "22000 ₽", img: "no-image.png" },
-      { title: "Кроссовки Adidas", price: "6500 ₽", img: "no-image.png" },
-      { title: "Монитор LG 27\"", price: "15000 ₽", img: "no-image.png" },
-      { title: "Смартфон Samsung", price: "37000 ₽", img: "no-image.png" },
-      { title: "Стиральная машина", price: "25000 ₽", img: "no-image.png" },
-      { title: "Микроволновка", price: "5200 ₽", img: "no-image.png" },
-      { title: "Стол письменный", price: "8900 ₽", img: "no-image.png" },
+      { title:"Коляска детская", price:"9700 ₽" },
+      { title:"Велосипед взрослый", price:"14500 ₽" },
+      { title:"Диван IKEA", price:"28000 ₽" },
+      { title:"Пылесос Dyson", price:"11500 ₽" },
+      { title:"Кофемашина Philips", price:"9800 ₽" },
+      { title:"Часы Apple Watch", price:"22000 ₽" },
+      { title:"Кроссовки Adidas", price:"6500 ₽" },
+      { title:"Монитор LG 27\"", price:"15000 ₽" },
+      { title:"Смартфон Samsung", price:"37000 ₽" },
+      { title:"Стиральная машина", price:"25000 ₽" },
+      { title:"Микроволновка", price:"5200 ₽" },
+      { title:"Стол письменный", price:"8900 ₽" },
+      { title:"Игровая консоль", price:"15500 ₽" },
+      { title:"Гитара акустическая", price:"7200 ₽" },
+      { title:"Ремень кожаный", price:"1200 ₽" }
     ];
 
-    let currentIndex = 0;
-    const step = 9;
-
+    // Пагинация
+    let idx = 0, step = 9;
     function renderAds() {
-      const container = document.getElementById("adsContainer");
-      const slice = ads.slice(currentIndex, currentIndex + step);
-      for (const ad of slice) {
+      const grid = document.getElementById("adsGrid");
+      const slice = ads.slice(idx, idx + step);
+      slice.forEach(ad => {
         const card = document.createElement("div");
         card.className = "ad-card";
         card.innerHTML = `
-          <img src="${ad.img}" alt="${ad.title}" onerror="this.src='no-image.png'" />
-          <h3>${ad.title}</h3>
-          <div class="price-badge">${ad.price}</div>
-          <button class="btn-more">Подробнее</button>
-        `;
-        container.appendChild(card);
-      }
-      currentIndex += step;
-      if (currentIndex >= ads.length) {
-        document.getElementById("loadMoreBtn").style.display = "none";
-      }
+          <img src="no-image.png" alt="${ad.title}" loading="lazy" onerror="this.src='no-image.png'"/>
+          <div class="ad-info">
+            <h3>${ad.title}</h3>
+            <div class="price-badge">${ad.price}</div>
+            <button class="btn-more">Подробнее</button>
+          </div>`;
+        grid.appendChild(card);
+      });
+      idx += step;
+      if (idx >= ads.length) document.getElementById("loadMoreBtn").style.display = "none";
     }
+    document.getElementById("loadMoreBtn").onclick = renderAds;
+    window.onload = renderAds;
 
-    document.getElementById("loadMoreBtn").addEventListener("click", renderAds);
-    window.addEventListener("load", renderAds);
-
-    // scroll to top button
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = () => {
-      scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    // Кнопка "вверх"
+    const btn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => btn.style.display = window.scrollY > 300 ? "flex" : "none";
+    btn.onclick = () => window.scrollTo({top:0, behavior:"smooth"});
   </script>
-
 </body>
 </html>
