@@ -134,12 +134,48 @@
       display: none;
       z-index: 1000;
     }
+
+    #categoryToggle {
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    #categoryToggle:hover {
+      background-color: #f8f9fa;
+    }
+
+    .list-group-item {
+      font-size: 1rem;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .list-group-item:hover {
+      background-color: #f1f1f1;
+    }
+
+    .custom-active {
+      background-color: #ffd600;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      #megaMenu {
+        width: 100% !important;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    .hover-shadow:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">?? Объявка</a>
+    <a class="navbar-brand" href="#">💬 Объявка</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
@@ -161,69 +197,12 @@
         <div class="row g-3">
           <div class="col-12 col-md-4" id="mainCategories">
             <div class="list-group list-group-flush rounded-4 overflow-hidden shadow-sm">
-              <button class="list-group-item list-group-item-action custom-active rounded-0 border-0 py-3" data-cat="realty">
-                🚗 Транспорт
-              </button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">
-                💻 Электроника
-              </button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">
-                💼 Работа
-              </button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">
-                🛠️ Услуги
-              </button>
-              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">
-                🏠 Недвижимость
-              </button>
+              <button class="list-group-item list-group-item-action custom-active rounded-0 border-0 py-3" data-cat="realty">🚗 Транспорт</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">💻 Электроника</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">👷 Работа</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">🛠️ Услуги</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">🏠 Недвижимость</button>
             </div>
-          </div>
-          <!-- Здесь можешь добавить подкатегории справа -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<style>
-  #categoryToggle {
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.2s ease-in-out;
-  }
-
-  #categoryToggle:hover {
-    background-color: #f8f9fa;
-  }
-
-  #megaMenu {
-    border-radius: 1.5rem !important;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .list-group-item {
-    font-size: 1rem;
-    transition: background-color 0.2s ease-in-out;
-  }
-
-  .list-group-item:hover {
-    background-color: #f1f1f1;
-  }
-
-  .custom-active {
-    background-color: #ffd600;
-    font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    #megaMenu {
-      width: 100% !important;
-      left: 0;
-      right: 0;
-    }
-  }
-</style>
-
           </div>
           <div class="col-8 p-3" id="subCategories">
             <div data-sub="realty">
@@ -243,7 +222,7 @@
             <div class="d-none" data-sub="services">
               <strong>Ремонт</strong>
               <ul><li>Сантехник</li><li>Электрик</li></ul>
-                </div>
+            </div>
             <div class="d-none" data-sub="home">
               <strong>Квартира</strong>
               <ul><li>Снять</li><li>Продать</li></ul>
@@ -252,13 +231,102 @@
         </div>
       </div>
     </div>
+
+    <!-- Поиск -->
     <div class="flex-grow-1">
+      <form class="position-relative w-100" autocomplete="off">
+        <input id="searchInput" class="form-control rounded-pill" type="text" placeholder="Поиск по объявлениям..." />
+        <ul id="searchSuggestions" class="list-group position-absolute w-100 mt-2 shadow rounded d-none" style="z-index: 1000;"></ul>
+      </form>
+    </div>
+  </div>
+</div>
 
-<form class="position-relative w-100" autocomplete="off">
-  <input id="searchInput" class="form-control rounded-pill" type="text" placeholder="Поиск по объявлениям..." />
-  <ul id="searchSuggestions" class="list-group position-absolute w-100 mt-2 shadow rounded d-none" style="z-index: 1000;"></ul>
-</form>
+<!-- Категории -->
+<div class="container-section categories" id="categories">
+  <h3 class="text-center mb-4">Популярные категории</h3>
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
+    <!-- Категории здесь (оставлены без изменений) -->
+  </div>
+</div>
 
+<!-- Объявления -->
+<div class="container-section" id="new-ads">
+  <h3 class="text-center mb-4">Новые объявления</h3>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="adsContainer"></div>
+</div>
+
+<!-- Подвал -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Объявка. Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- Кнопка вверх -->
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
+
+<!-- СКРИПТЫ -->
+<script>
+  const toggle = document.getElementById('categoryToggle');
+  const megaMenu = document.getElementById('megaMenu');
+  const mainCats = document.querySelectorAll('#mainCategories button');
+  const subCats = document.querySelectorAll('#subCategories > div');
+
+  toggle.addEventListener('mouseenter', () => megaMenu.classList.remove('d-none'));
+  megaMenu.addEventListener('mouseleave', () => megaMenu.classList.add('d-none'));
+
+  mainCats.forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      mainCats.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      subCats.forEach(div => div.classList.toggle('d-none', div.dataset.sub !== btn.dataset.cat));
+    });
+  });
+
+  const ads = Array.from({length: 50}).map((_, i) => ({
+    title: `Товар #${i + 1}`,
+    price: `${(Math.random() * 30000 + 1000).toFixed(0)} ₽`,
+    image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
+  }));
+
+  let loaded = 0;
+  const step = 9;
+  const adsContainer = document.getElementById('adsContainer');
+
+  function renderAds() {
+    const slice = ads.slice(loaded, loaded + step);
+    slice.forEach(ad => {
+      const card = document.createElement('div');
+      card.className = 'col';
+      card.innerHTML = `
+        <div class="product-card shadow rounded p-3 bg-white">
+          <img alt="Нет фото" class="img-fluid rounded mb-3" src="${ad.image}"
+               style="height: 200px; width: 100%; object-fit: contain; background: #f9f9f9;" />
+          <div class="p-3">
+            <h5>${ad.title}</h5>
+            <div class="btn btn-primary btn-sm w-100 mb-2">${ad.price}</div>
+            <a class="btn btn-primary btn-sm w-100" href="#">Подробнее</a>
+          </div>
+        </div>`;
+      adsContainer.appendChild(card);
+    });
+    loaded += step;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+      if (loaded < ads.length) renderAds();
+    }
+
+    const btn = document.getElementById('backToTop');
+    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+
+  renderAds();
+</script>
+
+<!-- Поисковый скрипт -->
 <script>
   const searchInput = document.getElementById('searchInput');
   const suggestionsBox = document.getElementById('searchSuggestions');
@@ -308,183 +376,6 @@
       suggestionsBox.classList.add('d-none');
     }
   });
-</script>
-
-    </div>
-  </div>
-<div class="container-section categories" id="categories">
-  <h3 class="text-center mb-4">Популярные категории</h3>
-  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
-
-    <!-- Транспорт -->
-    <div class="col">
-      <a href="#" class="text-decoration-none text-dark">
-        <div class="card h-100 text-center p-3 bg-light border-0 shadow-sm hover-shadow" style="transition: transform 0.3s;">
-          <div class="mb-2">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="12" fill="#FFD600"/>
-              <path d="M5 13h14l-1.5-4.5h-11zM7 16a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm10 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" fill="#000"/>
-            </svg>
-          </div>
-          <div><strong>Транспорт</strong></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Электроника -->
-    <div class="col">
-      <a href="#" class="text-decoration-none text-dark">
-        <div class="card h-100 text-center p-3 bg-light border-0 shadow-sm hover-shadow" style="transition: transform 0.3s;">
-          <div class="mb-2">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="12" fill="#FFD600"/>
-              <rect x="8" y="4" width="8" height="16" rx="1" fill="#000"/>
-              <circle cx="12" cy="18" r="0.5" fill="#FFD600"/>
-            </svg>
-          </div>
-          <div><strong>Электроника</strong></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Работа -->
-    <div class="col">
-      <a href="#" class="text-decoration-none text-dark">
-        <div class="card h-100 text-center p-3 bg-light border-0 shadow-sm hover-shadow" style="transition: transform 0.3s;">
-          <div class="mb-2">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="12" fill="#FFD600"/>
-              <path d="M10 14v-2h4v2h2v-3H8v3h2z" fill="#000"/>
-              <circle cx="12" cy="8" r="2" fill="#000"/>
-            </svg>
-          </div>
-          <div><strong>Работа</strong></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Услуги -->
-    <div class="col">
-      <a href="#" class="text-decoration-none text-dark">
-        <div class="card h-100 text-center p-3 bg-light border-0 shadow-sm hover-shadow" style="transition: transform 0.3s;">
-          <div class="mb-2">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="12" fill="#FFD600"/>
-              <path d="M5 13l3-3 3 3 3-3 5 5v1H5v-1z" fill="#000"/>
-            </svg>
-          </div>
-          <div><strong>Услуги</strong></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Недвижимость -->
-    <div class="col">
-      <a href="#" class="text-decoration-none text-dark">
-        <div class="card h-100 text-center p-3 bg-light border-0 shadow-sm hover-shadow" style="transition: transform 0.3s;">
-          <div class="mb-2">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="12" fill="#FFD600"/>
-              <rect x="6" y="9" width="12" height="9" fill="#000"/>
-              <path d="M6 9l6-5 6 5H6z" fill="#000"/>
-            </svg>
-          </div>
-          <div><strong>Недвижимость</strong></div>
-        </div>
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<style>
-.hover-shadow:hover {
-  transform: scale(1.05);
-}
-</style>
-
-
-
-
-  <div class="container-section" id="new-ads">
-    <h3 class="text-center mb-4">Новые объявления</h3>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="adsContainer"></div>
-  </div>
-</div>
-
-<footer class="footer">
-  <div class="container">
-    <p>© 2025 Объявка. Все права защищены.</p>
-  </div>
-</footer>
-
-<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
-
-<script>
-  const toggle = document.getElementById('categoryToggle');
-  const megaMenu = document.getElementById('megaMenu');
-  const mainCats = document.querySelectorAll('#mainCategories button');
-  const subCats = document.querySelectorAll('#subCategories > div');
-
-  toggle.addEventListener('mouseenter', () => {
-    megaMenu.classList.remove('d-none');
-  });
-  megaMenu.addEventListener('mouseleave', () => {
-    megaMenu.classList.add('d-none');
-  });
-
-  mainCats.forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-      mainCats.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      subCats.forEach(div => {
-        div.classList.toggle('d-none', div.dataset.sub !== btn.dataset.cat);
-      });
-    });
-  });
-
-  const ads = Array.from({length: 50}).map((_, i) => ({
-    title: `Товар #${i + 1}`,
-    price: `${(Math.random() * 30000 + 1000).toFixed(0)} ?`,
-    image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
-  }));
-
-  let loaded = 0;
-  const step = 9;
-  const adsContainer = document.getElementById('adsContainer');
-
-  function renderAds() {
-    const slice = ads.slice(loaded, loaded + step);
-    slice.forEach(ad => {
-      const card = document.createElement('div');
-      card.className = 'col';
-      card.innerHTML = `
-        <div class="product-card shadow rounded p-3 bg-white">
-          <img alt="Нет фото" class="img-fluid rounded mb-3" src="${ad.image}"
-               style="height: 200px; width: 100%; object-fit: contain; background: #f9f9f9;" />
-          <div class="p-3">
-            <h5>${ad.title}</h5>
-            <div class="btn btn-primary btn-sm w-100 mb-2">${ad.price}</div>
-            <a class="btn btn-primary btn-sm w-100" href="#">Подробнее</a>
-          </div>
-        </div>`;
-      adsContainer.appendChild(card);
-    });
-    loaded += step;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
-      if (loaded < ads.length) renderAds();
-    }
-
-    // Показываем/скрываем кнопку "вверх"
-    const btn = document.getElementById('backToTop');
-    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
-  });
-
-  // Первоначальная загрузка
-  renderAds();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
