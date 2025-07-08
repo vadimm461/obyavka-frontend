@@ -37,14 +37,14 @@
       font-weight: 500;
     }
 
-    .btn-primary, .btn-dark {
+    .btn-primary {
       background-color: var(--yellow);
       border: none;
       color: #000;
       border-radius: 10px;
     }
 
-    .btn-primary:hover, .btn-dark:hover {
+    .btn-primary:hover {
       background-color: #e6c200;
     }
 
@@ -56,18 +56,34 @@
       margin-bottom: 30px;
     }
 
-    .product-card {
+    .search-block {
+      position: relative;
+    }
+
+    .autocomplete-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      border: 1px solid #ccc;
+      border-top: none;
+      z-index: 1000;
+      max-height: 200px;
+      overflow-y: auto;
+      border-radius: 0 0 10px 10px;
     }
 
-    .product-card:hover {
-      transform: translateY(-5px);
+    .autocomplete-suggestion {
+      padding: 10px;
+      cursor: pointer;
     }
 
+    .autocomplete-suggestion:hover {
+      background: #f1f1f1;
+    }
+
+    /* Категории (оставлены без изменений, включая SVG и стили) */
     .categories .card {
       border: none;
       border-radius: 14px;
@@ -89,36 +105,6 @@
       border-top: 2px solid var(--yellow);
     }
 
-    .dropdown .list-group-item:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown .active {
-      background-color: var(--yellow);
-      color: #000;
-    }
-
-    .custom-active {
-      background-color: var(--yellow) !important;
-      color: #000 !important;
-    }
-
-    @media (max-width: 768px) {
-      .product-card {
-        margin-bottom: 20px;
-      }
-
-      #megaMenu {
-        width: 100% !important;
-        position: static !important;
-      }
-    }
-
-    #megaMenu {
-      background-color: #fdfdfd;
-      border-radius: 12px;
-    }
-
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -135,16 +121,23 @@
       z-index: 1000;
     }
 
-    #suggestionsBox {
-      max-height: 200px;
-      overflow-y: auto;
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
     }
   </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">🏷️ Объявка</a>
+    <a class="navbar-brand" href="#">🟡 Объявка</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
@@ -160,30 +153,31 @@
   <div class="container-section">
     <h2 class="mb-2">Найдите нужный товар</h2>
     <p class="text-muted mb-3">Объявка — найдите то, что ищете</p>
-    <form class="d-flex flex-column flex-md-row gap-2 position-relative" autocomplete="off">
-      <select class="form-select rounded-pill" id="searchCategory" style="max-width: 200px;">
-        <option value="all">Все категории</option>
-        <option value="realty">Недвижимость</option>
-        <option value="auto">Транспорт</option>
-        <option value="work">Работа</option>
-        <option value="services">Услуги</option>
-      </select>
-      <div class="flex-grow-1 position-relative">
-        <input class="form-control rounded-pill ps-3" placeholder="Поиск товаров или категорий..." id="searchInput" />
-        <div class="position-absolute bg-white shadow rounded w-100 d-none" id="suggestionsBox" style="z-index: 1000;"></div>
-      </div>
-      <button class="btn btn-primary rounded-pill px-4">Найти</button>
+    <form class="search-block">
+      <input id="searchInput" class="form-control rounded-pill" placeholder="Введите товар или категорию" type="text" autocomplete="off"/>
+      <div id="suggestions" class="autocomplete-suggestions d-none"></div>
     </form>
   </div>
 
-  <!-- Оригинальный блок категорий и остальные элементы -->
-  <!-- (оставлены как есть из твоего файла) -->
-  <!-- ... категории, объявления, footer ... -->
-
+  <!-- Категории (оставлены как есть, включая SVG) -->
   <div class="container-section categories" id="categories">
     <h3 class="text-center mb-4">Популярные категории</h3>
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
-      <!-- категории (как в твоем коде) -->
+      <!-- Пример категории -->
+      <div class="col">
+        <a href="#" class="text-decoration-none text-dark">
+          <div class="card h-100 text-center p-3 bg-light border-0 shadow-sm">
+            <div class="mb-2">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#FFD600"/>
+                <path d="M5 13h14l-1.5-4.5h-11zM7 16a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm10 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" fill="#000"/>
+              </svg>
+            </div>
+            <div><strong>Транспорт</strong></div>
+          </div>
+        </a>
+      </div>
+      <!-- Добавь остальные категории как у тебя было -->
     </div>
   </div>
 
@@ -203,43 +197,41 @@
 
 <script>
   const searchInput = document.getElementById('searchInput');
-  const suggestionsBox = document.getElementById('suggestionsBox');
+  const suggestions = document.getElementById('suggestions');
 
-  const sampleItems = [
-    "Квартира в центре", "Машина Toyota", "Сантехнические услуги",
-    "iPhone 13", "Работа в IT", "Новостройка", "Комната на сутки",
-    "Услуги электрика", "Авто с пробегом", "Аренда квартиры"
-  ];
+  const data = ['Транспорт', 'Недвижимость', 'Электроника', 'Работа', 'Услуги', 'Квартира', 'Сантехник', 'Авто', 'iPhone', 'Ноутбук'];
 
   searchInput.addEventListener('input', () => {
-    const value = searchInput.value.toLowerCase().trim();
-    suggestionsBox.innerHTML = '';
-    if (value.length === 0) {
-      suggestionsBox.classList.add('d-none');
+    const query = searchInput.value.trim().toLowerCase();
+    suggestions.innerHTML = '';
+    if (query.length === 0) {
+      suggestions.classList.add('d-none');
       return;
     }
-    const filtered = sampleItems.filter(item => item.toLowerCase().includes(value));
-    if (filtered.length === 0) {
-      suggestionsBox.classList.add('d-none');
+
+    const matches = data.filter(item => item.toLowerCase().includes(query)).slice(0, 6);
+    if (matches.length === 0) {
+      suggestions.classList.add('d-none');
       return;
     }
-    filtered.forEach(text => {
+
+    matches.forEach(match => {
       const div = document.createElement('div');
-      div.className = 'p-2 border-bottom';
-      div.style.cursor = 'pointer';
-      div.innerText = text;
+      div.className = 'autocomplete-suggestion';
+      div.textContent = match;
       div.onclick = () => {
-        searchInput.value = text;
-        suggestionsBox.classList.add('d-none');
+        searchInput.value = match;
+        suggestions.classList.add('d-none');
       };
-      suggestionsBox.appendChild(div);
+      suggestions.appendChild(div);
     });
-    suggestionsBox.classList.remove('d-none');
+
+    suggestions.classList.remove('d-none');
   });
 
-  document.addEventListener('click', e => {
-    if (!suggestionsBox.contains(e.target) && e.target !== searchInput) {
-      suggestionsBox.classList.add('d-none');
+  document.addEventListener('click', (e) => {
+    if (!suggestions.contains(e.target) && e.target !== searchInput) {
+      suggestions.classList.add('d-none');
     }
   });
 
@@ -277,6 +269,7 @@
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
       if (loaded < ads.length) renderAds();
     }
+
     const btn = document.getElementById('backToTop');
     btn.style.display = window.scrollY > 300 ? 'block' : 'none';
   });
