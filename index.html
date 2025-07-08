@@ -205,61 +205,67 @@
 </nav>
 
 <!-- Категории + Поиск -->
-
-<div class="container-fluid py-4 px-3">
+<!-- Категории + Поиск -->
+<div class="container-fluid py-4 px-3 position-relative">
   <div class="search-bar d-flex flex-column flex-md-row align-items-center gap-3">
     <div class="d-flex align-items-center gap-3 w-100">
       <div class="logo fw-bold fs-4" style="white-space: nowrap;">📣 Объявка</div>
-      <div class="dropdown position-relative">
+
+      <!-- Кнопка -->
+      <div class="position-relative">
         <button class="btn btn-outline-dark px-4 py-2 rounded-pill shadow-sm" id="categoryToggle">
           Все категории
         </button>
-       <div class="d-none position-absolute bg-white shadow rounded-4 border mt-2 p-3 w-100 start-0 end-0" 
-     id="megaMenu" style="z-index: 999;">
-          <div class="row g-3">
-            <div class="col-12 col-md-4" id="mainCategories">
-              <div class="list-group list-group-flush rounded-4 overflow-hidden shadow-sm">
-                <button class="list-group-item list-group-item-action active rounded-0 border-0 py-3" data-cat="realty">🚗 Транспорт</button>
-                <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">💻 Электроника</button>
-                <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">💼 Работа</button>
-                <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">🛠️ Услуги</button>
-                <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">🏠 Недвижимость</button>
-              </div>
+      </div>
+
+      <!-- Меню вынесено отдельно -->
+      <div class="d-none position-absolute bg-white shadow rounded-4 border mt-2 p-3 w-100 start-0" 
+           id="megaMenu" style="z-index: 999; top: 100%;">
+        <div class="row g-3">
+          <div class="col-12 col-md-4" id="mainCategories">
+            <div class="list-group list-group-flush rounded-4 overflow-hidden shadow-sm">
+              <button class="list-group-item list-group-item-action active rounded-0 border-0 py-3" data-cat="realty">🚗 Транспорт</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">💻 Электроника</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">💼 Работа</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">🛠️ Услуги</button>
+              <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">🏠 Недвижимость</button>
             </div>
-            <div class="col-8 p-3" id="subCategories">
-              <div data-sub="realty">
-                <strong>Купить жильё</strong>
-                <ul><li>Квартиры</li><li>Вторичка</li><li>Новостройки</li></ul>
-                <strong class="mt-2">Снять жильё</strong>
-                <ul><li>Квартиры</li><li>Комнаты</li></ul>
-              </div>
-              <div class="d-none" data-sub="auto">
-                <strong>Легковые авто</strong>
-                <ul><li>С пробегом</li><li>Новые</li></ul>
-              </div>
-              <div class="d-none" data-sub="work">
-                <strong>Работа</strong>
-                <ul><li>IT</li><li>Строительство</li></ul>
-              </div>
-              <div class="d-none" data-sub="services">
-                <strong>Ремонт</strong>
-                <ul><li>Сантехник</li><li>Электрик</li></ul>
-              </div>
-              <div class="d-none" data-sub="home">
-                <strong>Квартира</strong>
-                <ul><li>Снять</li><li>Продать</li></ul>
-              </div>
+          </div>
+          <div class="col-8 p-3" id="subCategories">
+            <div data-sub="realty">
+              <strong>Купить жильё</strong>
+              <ul><li>Квартиры</li><li>Вторичка</li><li>Новостройки</li></ul>
+              <strong class="mt-2">Снять жильё</strong>
+              <ul><li>Квартиры</li><li>Комнаты</li></ul>
+            </div>
+            <div class="d-none" data-sub="auto">
+              <strong>Легковые авто</strong>
+              <ul><li>С пробегом</li><li>Новые</li></ul>
+            </div>
+            <div class="d-none" data-sub="work">
+              <strong>Работа</strong>
+              <ul><li>IT</li><li>Строительство</li></ul>
+            </div>
+            <div class="d-none" data-sub="services">
+              <strong>Ремонт</strong>
+              <ul><li>Сантехник</li><li>Электрик</li></ul>
+            </div>
+            <div class="d-none" data-sub="home">
+              <strong>Квартира</strong>
+              <ul><li>Снять</li><li>Продать</li></ul>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Поиск -->
       <form class="position-relative w-100" autocomplete="off">
         <input id="searchInput" class="form-control" type="text" placeholder="Поиск по объявлениям..." />
         <ul id="searchSuggestions" class="list-group position-absolute w-100 mt-2 shadow rounded d-none"></ul>
       </form>
     </div>
   </div>
+</div>
 </div>
 <div class="container-section categories" id="categories">
   <h3 class="text-center mb-4">Популярные категории</h3>
