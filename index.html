@@ -218,7 +218,6 @@
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 </style>
-
 <style>
 .navbar-nav .nav-link {
   color: #fff !important;
@@ -235,7 +234,17 @@
   text-decoration: none;
 }
 </style>
-</head>
+<style>
+.card-yellow {
+  background-color: #fff9d6;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.card-yellow:hover {
+  background-color: #ffe95a !important;
+  transform: translateY(-4px);
+}
+</style></head>
 <body>
 <nav class="navbar navbar-expand-lg">
 <div class="container">
@@ -304,6 +313,26 @@
 <input class="form-control" id="searchInput" placeholder="Поиск по объявлениям..." type="text"/>
 <ul class="list-group position-absolute w-100 mt-2 shadow rounded d-none" id="searchSuggestions"></ul>
 </form>
+</div>
+</div>
+</div>
+<!-- Рекламные карточки -->
+<div class="container my-4">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+<div class="col">
+<div class="card text-center p-3 shadow-sm card-yellow"><div class="fs-1">🚗</div><h6 class="mt-2">Поездки с питомцами</h6><small class="text-muted">999</small></div>
+</div>
+<div class="col">
+<div class="card text-center p-3 shadow-sm card-yellow"><div class="fs-1">🤝</div><h6 class="mt-2">Выиграй с CipAuto</h6><small class="text-muted">999</small></div>
+</div>
+<div class="col">
+<div class="card text-center p-3 shadow-sm card-yellow"><div class="fs-1">📦</div><h6 class="mt-2">Всё для переезда</h6><small class="text-muted">999</small></div>
+</div>
+<div class="col">
+<div class="card text-center p-3 shadow-sm card-yellow"><div class="fs-1">🕶️</div><h6 class="mt-2">Летний стиль</h6><small class="text-muted">999</small></div>
+</div>
+<div class="col">
+<div class="card text-center p-3 shadow-sm card-yellow"><div class="fs-1">🧳</div><h6 class="mt-2">Путешествуй выгодно</h6><small class="text-muted">999</small></div>
 </div>
 </div>
 </div>
