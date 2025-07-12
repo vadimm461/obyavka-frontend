@@ -247,7 +247,29 @@
   transform: scale(1.05);
   max-height: 800px;
 }
-</style></head>
+</style>
+<style>
+  @media (max-width: 768px) {
+    #adsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 12px;
+    }
+    #adsContainer .col {
+      flex: 0 0 calc(50% - 12px);
+      max-width: calc(50% - 12px);
+      display: flex;
+    }
+    .product-card {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+    }
+  }
+</style>
+
+</head>
 <body>
 <nav class="navbar navbar-expand-lg">
 <div class="container">
