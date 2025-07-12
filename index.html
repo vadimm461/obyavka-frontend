@@ -502,6 +502,10 @@
   });
 
   const ads = Array.from({length: 50}).map((_, i) => ({
+title: `Товар #${i + 1}`,
+price: `${(Math.random() * 30000 + 1000).toFixed(0)} ₽`,
+image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
+})).reverse();
     title: `Товар #${i + 1}`,
     price: `${(Math.random() * 30000 + 1000).toFixed(0)} ?`,
     image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
