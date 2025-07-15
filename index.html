@@ -267,6 +267,73 @@
       width: 100%;
     }
   }
+    <style>
+/* Современные рекламные карточки */
+.ad-modern {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 2px solid #FFD600;
+  border-radius: 20px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  text-align: center;
+  height: 100%;
+  user-select: none;
+}
+
+.ad-modern:hover {
+  background-color: #fffbe6;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.ad-modern h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.ad-modern p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+}
+
+.ad-modern .fs-1 {
+  font-size: 2.3rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Тёмная тема */
+@media (prefers-color-scheme: dark) {
+  .ad-modern {
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border-color: #FFD600;
+  }
+  .ad-modern h6 {
+    color: #fff;
+  }
+  .ad-modern p {
+    color: #ccc;
+  }
+}
+
+/* Горизонтальная прокрутка на мобильных */
+.ads-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.ads-scroll-wrapper .row {
+  flex-wrap: nowrap;
+}
+.ads-scroll-wrapper .col {
+  flex: 0 0 auto;
+  width: 220px;
+}
+</style>
+
 </style>
 
 </head>
@@ -341,50 +408,63 @@
 </div>
 </div>
 </div>
-<!-- Рекламные карточки -->
-<div class="container my-4" oncontextmenu="return false">
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-<div class="col">
-<a class="text-decoration-none" href="pets.html">
-<div class="card text-center p-3 shadow-sm card-yellow">
-<h6 class="mt-2">Ведите бизнес на Объявка</h6>
-<small class="text-muted"></small>
-</div>
-</a>
-</div>
-<div class="col">
-<a class="text-decoration-none" href="cipauto.html">
-<div class="card text-center p-3 shadow-sm card-yellow">
-<h6 class="mt-2">Продажи на высоких скоростях</h6>
-<small class="text-muted"></small>
-</div>
-</a>
-</div>
-<div class="col">
-<a class="text-decoration-none" href="move.html">
-<div class="card text-center p-3 shadow-sm card-yellow">
+<!-- Рекламные карточки с прокруткой -->
+<div class="container my-5 ads-scroll-wrapper" oncontextmenu="return false">
+  <div class="row g-3 justify-content-start flex-nowrap">
 
-<h6 class="mt-2">Находите сотрудников на Объявка</h6>
+    <div class="col">
+      <a href="pets.html" class="text-decoration-none">
+        <div class="ad-modern">
+          <div class="fs-1">🚗</div>
+          <h6>Бизнес с Объявка</h6>
+          <p>Решения для продавцов и компаний</p>
+        </div>
+      </a>
+    </div>
 
+    <div class="col">
+      <a href="cipauto.html" class="text-decoration-none">
+        <div class="ad-modern">
+          <div class="fs-1">🤝</div>
+          <h6>CipAuto Pro</h6>
+          <p>Покупка и продажа авто</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="move.html" class="text-decoration-none">
+        <div class="ad-modern">
+          <div class="fs-1">📦</div>
+          <h6>Всё для переезда</h6>
+          <p>Транспорт, грузчики, аренда</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="summer.html" class="text-decoration-none">
+        <div class="ad-modern">
+          <div class="fs-1">🕶️</div>
+          <h6>Летний стиль</h6>
+          <p>Мода, защита, пляж</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="travel.html" class="text-decoration-none">
+        <div class="ad-modern">
+          <div class="fs-1">🧳</div>
+          <h6>Путешествуй выгодно</h6>
+          <p>Отдых и дорога с умом</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
 </div>
-</a>
-</div>
-<div class="col">
-<a class="text-decoration-none" href="summer.html">
-<div class="card text-center p-3 shadow-sm card-yellow">
-<div class="fs-1"></div>
-<h6 class="mt-2">Реклама на Объявка</h6>
-<small class="text-muted">подробнее</small>
-</div>
-</a>
-</div>
-<div class="col">
-<a class="text-decoration-none" href="travel.html">
-<div class="card text-center p-3 shadow-sm card-yellow">
-<div class="fs-1"></div>
-<h6 class="mt-2">Реклама на Объявка</h6>
-<small class="text-muted">подробнее</small>
-</div>
+
 </a>
 </div>
 </div>
