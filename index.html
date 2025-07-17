@@ -248,79 +248,61 @@
   max-height: 800px;
 }
 </style>
+
+
+
 <style>
-  @media (max-width: 768px) {
-    #adsContainer {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row-reverse;
-      justify-content: center;
-      gap: 12px;
-    }
-    #adsContainer .col {
-      flex: 0 0 calc(50% - 12px);
-      max-width: calc(50% - 12px);
-      display: flex;
-    }
-    .product-card {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-    }
-  }
-    <style>
-/* Современные рекламные карточки */
-.ad-modern {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border: 2px solid #FFD600;
+:root {
+  color-scheme: light dark;
+}
+body.light-mode {
+  background-color: #f5f5f5;
+  color: #000;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #FFD600;
+  color: #000;
+  border: none;
   border-radius: 20px;
-  padding: 24px;
-  transition: all 0.3s ease;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.ad-modern {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: all 0.3s ease;
   height: 100%;
-  user-select: none;
 }
-
 .ad-modern:hover {
-  background-color: #fffbe6;
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-
 .ad-modern h6 {
   font-size: 1rem;
   font-weight: 600;
   color: #000;
-  margin-bottom: 0.5rem;
 }
-
 .ad-modern p {
   font-size: 0.85rem;
   color: #555;
-  margin: 0;
 }
-
 .ad-modern .fs-1 {
-  font-size: 2.3rem;
+  font-size: 2rem;
   margin-bottom: 0.75rem;
 }
-
-/* Тёмная тема */
-@media (prefers-color-scheme: dark) {
-  .ad-modern {
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    border-color: #FFD600;
-  }
-  .ad-modern h6 {
-    color: #fff;
-  }
-  .ad-modern p {
-    color: #ccc;
-  }
-}
-
-/* Горизонтальная прокрутка на мобильных */
 .ads-scroll-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -330,12 +312,35 @@
 }
 .ads-scroll-wrapper .col {
   flex: 0 0 auto;
-  width: 220px;
+  width: 150px;
+}
+@media (prefers-color-scheme: dark) {
+  body:not(.light-mode) {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  .ad-modern {
+    background: #1e1e1e;
+    color: #fff;
+  }
+  .ad-modern h6 {
+    color: #fff;
+  }
+  .ad-modern p {
+    color: #ccc;
+  }
+  .theme-toggle {
+    background-color: #333;
+    color: #FFD600;
+  }
+}
+@media (max-width: 767px) {
+  #adsContainer .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 </style>
-
-</style>
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -410,61 +415,55 @@
 </div>
 <!-- Рекламные карточки с прокруткой -->
 <div class="container my-5 ads-scroll-wrapper" oncontextmenu="return false">
-  <div class="row g-3 justify-content-start flex-nowrap">
-
-    <div class="col">
-      <a href="pets.html" class="text-decoration-none">
-        <div class="ad-modern">
-          <div class="fs-1">🚗</div>
-          <h6>Бизнес с Объявка</h6>
-          <p>Решения для продавцов и компаний</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col">
-      <a href="cipauto.html" class="text-decoration-none">
-        <div class="ad-modern">
-          <div class="fs-1">🤝</div>
-          <h6>CipAuto Pro</h6>
-          <p>Покупка и продажа авто</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col">
-      <a href="move.html" class="text-decoration-none">
-        <div class="ad-modern">
-          <div class="fs-1">📦</div>
-          <h6>Всё для переезда</h6>
-          <p>Транспорт, грузчики, аренда</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col">
-      <a href="summer.html" class="text-decoration-none">
-        <div class="ad-modern">
-          <div class="fs-1">🕶️</div>
-          <h6>Летний стиль</h6>
-          <p>Мода, защита, пляж</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="col">
-      <a href="travel.html" class="text-decoration-none">
-        <div class="ad-modern">
-          <div class="fs-1">🧳</div>
-          <h6>Путешествуй выгодно</h6>
-          <p>Отдых и дорога с умом</p>
-        </div>
-      </a>
-    </div>
-
-  </div>
+<div class="row g-3 justify-content-start flex-nowrap">
+<div class="col">
+<a class="text-decoration-none" href="pets.html">
+<div class="ad-modern">
+<div class="fs-1">🚗</div>
+<h6>Бизнес с Объявка</h6>
+<p>Решения для продавцов и компаний</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="#">Подробнее</a>
 </div>
-
+</a>
+</div>
+<div class="col">
+<a class="text-decoration-none" href="cipauto.html">
+<div class="ad-modern">
+<div class="fs-1">🤝</div>
+<h6>CipAuto Pro</h6>
+<p>Покупка и продажа авто</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="#">Подробнее</a>
+</div>
+</a>
+</div>
+<div class="col">
+<a class="text-decoration-none" href="move.html">
+<div class="ad-modern">
+<div class="fs-1">📦</div>
+<h6>Всё для переезда</h6>
+<p>Транспорт, грузчики, аренда</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="#">Подробнее</a>
+</div>
+</a>
+</div>
+<div class="col">
+<a class="text-decoration-none" href="summer.html">
+<div class="ad-modern">
+<div class="fs-1">🕶️</div>
+<h6>Летний стиль</h6>
+<p>Мода, защита, пляж</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="#">Подробнее</a>
+</div>
+</a>
+</div>
+<div class="col">
+<a class="text-decoration-none" href="travel.html">
+<div class="ad-modern">
+<div class="fs-1">🧳</div>
+<h6>Путешествуй выгодно</h6>
+<p>Отдых и дорога с умом</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="#">Подробнее</a>
+</div>
 </a>
 </div>
 </div>
@@ -554,13 +553,12 @@
 </div>
 <!-- Подвал -->
 <footer class="footer">
-  <div class="container">
-    <p>© 2025 Объявка. Все права защищены.</p>
-    <p class="mt-2">📞 <a href="tel:+37377701774" class="text-white text-decoration-none">+373 77701774</a><br/>
-       📧 <a href="mailto:vadimm461@gmail.com" class="text-white text-decoration-none">support@obyavka.md</a></p>
-  </div>
+<div class="container">
+<p>© 2025 Объявка. Все права защищены.</p>
+<p class="mt-2">📞 <a class="text-white text-decoration-none" href="tel:+37377701774">+373 77701774</a><br/>
+       📧 <a class="text-white text-decoration-none" href="mailto:vadimm461@gmail.com">support@obyavka.md</a></p>
+</div>
 </footer>
-
 <!-- Кнопка вверх -->
 <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
 <!-- СКРИПТЫ -->
@@ -675,7 +673,6 @@ image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
   });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <style>
   @media (max-width: 768px) {
     .card-yellow, .product-card {
@@ -706,13 +703,36 @@ image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
     }
   }
 </style>
-
 <div class="mobile-nav">
-  <a href="#">🏠</a>
-  <a href="#categories">📂</a>
-  <a href="#new-ads">📢</a>
-  <a href="#">👤</a>
+<a href="#">🏠</a>
+<a href="#categories">📂</a>
+<a href="#new-ads">📢</a>
+<a href="#">👤</a>
 </div>
 
+<button class="theme-toggle" onclick="toggleTheme()">🌗 Переключить тему</button>
+<script>
+function toggleTheme() {
+  const body = document.body;
+  if (body.classList.contains('dark-mode')) {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+  } else {
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const theme = localStorage.getItem('theme');
+  if (theme === 'dark') document.body.classList.add('dark-mode');
+  else if (theme === 'light') document.body.classList.add('light-mode');
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+    document.body.classList.add('dark-mode');
+  else
+    document.body.classList.add('light-mode');
+});
+</script>
 </body>
 </html>
