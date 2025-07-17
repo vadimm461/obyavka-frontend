@@ -332,6 +332,10 @@ body.dark-mode {
 <body>
 <nav class="navbar navbar-expand-lg">
 <div class="container">
+    <button id="themeToggleIcon" onclick="toggleTheme()" class="btn btn-sm ms-3" style="background: none; border: none; font-size: 1.3rem;">
+  🌗
+</button>
+
 <a class="navbar-brand" href="#"> Объявка</a>
 <div class="collapse navbar-collapse">
 <ul class="navbar-nav ms-auto">
@@ -721,5 +725,34 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('light-mode');
 });
 </script>
+    <script>
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.getElementById("themeToggleIcon");
+  if (body.classList.contains("dark-mode")) {
+    body.classList.remove("dark-mode");
+    body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+    if (icon) icon.textContent = "🌗";
+  } else {
+    body.classList.remove("light-mode");
+    body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+    if (icon) icon.textContent = "☀️";
+  }
+}
+window.addEventListener("DOMContentLoaded", () => {
+  const theme = localStorage.getItem("theme");
+  const icon = document.getElementById("themeToggleIcon");
+  if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.body.classList.add("dark-mode");
+    if (icon) icon.textContent = "☀️";
+  } else {
+    document.body.classList.add("light-mode");
+    if (icon) icon.textContent = "🌗";
+  }
+});
+</script>
+
 </body>
 </html>
