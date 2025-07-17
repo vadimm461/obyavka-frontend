@@ -551,16 +551,7 @@ body.dark-mode {
 </div>
 </footer>
 <!-- Кнопка вверх -->
-<button id="backToTop" onclick="window.scroll-to-top {position: fixed;
-  bottom: 80px; /* отступ от нижнего меню */
-  right: 20px;
-  z-index: 9999; /* выше нижнего меню */
-  background-color: #ffc107;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-})">^</button>
-
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
 <!-- СКРИПТЫ -->
 <script>
   const toggle = document.getElementById('categoryToggle');
