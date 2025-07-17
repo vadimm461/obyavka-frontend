@@ -411,7 +411,7 @@ body.dark-mode {
 <button class="list-group-item list-group-item-action active rounded-0 border-0 py-3" data-cat="realty">🚗 Транспорт</button>
 <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="auto">💻 Электроника</button>
 <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="work">💼 Работа</button>
-<button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">🛠️ Услуги</button>
+<button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="services">💼 Услуги</button>
 <button class="list-group-item list-group-item-action rounded-0 border-0 py-3" data-cat="home">🏠 Недвижимость</button>
 </div>
 </div>
@@ -784,7 +784,7 @@ function toggleTheme() {
     body.classList.remove("dark-mode");
     body.classList.add("light-mode");
     localStorage.setItem("theme", "light");
-    if (icon) icon.textContent = "🌗";
+    if (icon) icon.textContent = "🔦";
   } else {
     body.classList.remove("light-mode");
     body.classList.add("dark-mode");
@@ -800,7 +800,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (icon) icon.textContent = "☀️";
   } else {
     document.body.classList.add("light-mode");
-    if (icon) icon.textContent = "🌗";
+    if (icon) icon.textContent = "🔦";
   }
 });
 </script>
