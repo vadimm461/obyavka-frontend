@@ -373,6 +373,48 @@ body.dark-mode {
   }
 }
 </style>
+
+<style>
+/* ✅ Подвал на всю ширину и без ограничений контейнера */
+.footer {
+  width: 100%;
+  background-color: var(--black);
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+  border-top: 2px solid var(--yellow);
+}
+.footer .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 15px;
+}
+
+/* ✅ Нижнее меню только на мобильной версии */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
+/* ✅ На мобильных кнопка по центру как нужно */
+@media (max-width: 768px) {
+  .mobile-nav a.plus-btn {
+    background: #FFD600;
+    color: #000;
+    font-size: 2.3rem;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-top: -24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -593,14 +635,7 @@ body.dark-mode {
 <h3 class="text-center mb-4">Новые объявления</h3>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="adsContainer"></div>
 </div>
-<!-- Подвал -->
-<footer class="footer">
-<div class="container">
-<p>© 2025 Объявка. Все права защищены.</p>
-<p class="mt-2">📞 <a class="text-white text-decoration-none" href="tel:+37377701774">+373 77701774</a><br/>
-       📧 <a class="text-white text-decoration-none" href="mailto:vadimm461@gmail.com">support@obyavka.md</a></p>
-</div>
-</footer>
+
 <!-- Кнопка вверх -->
 <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
 <!-- СКРИПТЫ -->
@@ -869,4 +904,12 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
+  <!-- Подвал -->
+<footer class="footer">
+<div class="container">
+<p>© 2025 Объявка. Все права защищены.</p>
+<p class="mt-2">📞 <a class="text-white text-decoration-none" href="tel:+37377701774">+373 77701774</a><br/>
+       📧 <a class="text-white text-decoration-none" href="mailto:vadimm461@gmail.com">support@obyavka.md</a></p>
+</div>
+</footer>
 </html>
