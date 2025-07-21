@@ -5,7 +5,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Объявка</title>
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <style>
 .ads-scroll-wrapper {
@@ -293,9 +292,6 @@
   max-height: 800px;
 }
 </style>
-
-
-
 <style>
 :root {
   color-scheme: light dark;
@@ -373,7 +369,6 @@ body.dark-mode {
   }
 }
 </style>
-
 <style>
 /* ✅ Подвал на всю ширину и без ограничений контейнера */
 .footer {
@@ -414,15 +409,13 @@ body.dark-mode {
   }
 }
 </style>
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
 <div class="container">
-    <button id="themeToggleIcon" onclick="toggleTheme()" class="btn btn-sm ms-3" style="background: none; border: none; font-size: 1.3rem;">
+<button class="btn btn-sm ms-3" id="themeToggleIcon" onclick="toggleTheme()" style="background: none; border: none; font-size: 1.3rem;">
   🔦
 </button>
-
 <a class="navbar-brand" href="#"> Объявка!</a>
 <div class="collapse navbar-collapse">
 <ul class="navbar-nav ms-auto">
@@ -440,7 +433,6 @@ body.dark-mode {
 <div class="container-fluid py-4 px-3 position-relative">
 <div class="search-bar d-flex flex-column flex-md-row align-items-center gap-3">
 <div class="d-flex align-items-center gap-3 w-100">
-
 <!-- Кнопка -->
 <div class="position-relative">
 <button class="btn btn-outline-dark px-4 py-2 rounded-pill shadow-sm" id="categoryToggle">Категории</button>
@@ -493,66 +485,59 @@ body.dark-mode {
 </div>
 <!-- Рекламные карточки с прокруткой -->
 <div class="container my-5 ads-scroll-wrapper" oncontextmenu="return false">
-  <div class="d-flex gap-3 flex-nowrap">
-    
-    <!-- Карточка 1 -->
-    <div class="col">
-      <div class="ad-modern">
-        <div class="fs-1">💸</div>
-        <h6>Бизнес с Объявка</h6>
-        <p>Решения для продавцов и компаний</p>
-        <a class="btn btn-outline-dark btn-sm mt-2" href="busines.html">Подробнее</a>
-      </div>
-    </div>
-
-    <!-- Карточка 2 -->
-    <div class="col">
-      <div class="ad-modern">
-        <div class="fs-1">👫</div>
-        <h6>Наши партнеры</h6>
-        <p>Проверенные магазины</p>
-        <a class="btn btn-outline-dark btn-sm mt-2" href="partner.html">Подробнее</a>
-      </div>
-    </div>
-
-    <!-- Карточка 3 -->
-    <div class="col">
-      <div class="ad-modern">
-        <div class="fs-1">🍀</div>
-        <h6>Оплата Картой "клевер"</h6>
-        <p>Тарифы</p>
-        <a class="btn btn-outline-dark btn-sm mt-2" href="tarif.html">Подробнее</a>
-      </div>
-    </div>
-
-    <!-- Карточка 4 -->
-    <div class="col">
-      <div class="ad-modern">
-        <div class="fs-1">💰</div>
-        <h6>Твоя реклама</h6>
-        <p>Рекламное место 1</p>
-        <a class="btn btn-outline-dark btn-sm mt-2" href="reklam.html">Подробнее</a>
-      </div>
-    </div>
-
-    <!-- Карточка 5 -->
-    <div class="col">
-      <div class="ad-modern">
-        <div class="fs-1">💰</div>
-        <h6>Твоя реклама</h6>
-        <p>Рекламное место 2</p>
-        <a class="btn btn-outline-dark btn-sm mt-2" href="reklam.html">Подробнее</a>
-      </div>
-    </div>
-
-  </div>
+<div class="d-flex gap-3 flex-nowrap">
+<!-- Карточка 1 -->
+<div class="col">
+<div class="ad-modern">
+<div class="fs-1">💸</div>
+<h6>Бизнес с Объявка</h6>
+<p>Решения для продавцов и компаний</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="busines.html">Подробнее</a>
 </div>
-    
-</a>
+</div>
+<!-- Карточка 2 -->
+<div class="col">
+<div class="ad-modern">
+<div class="fs-1">👫</div>
+<h6>Наши партнеры</h6>
+<p>Проверенные магазины</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="partner.html">Подробнее</a>
+</div>
+</div>
+<!-- Карточка 3 -->
+<div class="col">
+<div class="ad-modern">
+<div class="fs-1">🍀</div>
+<h6>Оплата Картой "клевер"</h6>
+<p>Тарифы</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="tarif.html">Подробнее</a>
+</div>
+</div>
+<!-- Карточка 4 -->
+<div class="col">
+<div class="ad-modern">
+<div class="fs-1">💰</div>
+<h6>Твоя реклама</h6>
+<p>Рекламное место 1</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="reklam.html">Подробнее</a>
+</div>
+</div>
+<!-- Карточка 5 -->
+<div class="col">
+<div class="ad-modern">
+<div class="fs-1">💰</div>
+<h6>Твоя реклама</h6>
+<p>Рекламное место 2</p>
+<a class="btn btn-outline-dark btn-sm mt-2" href="reklam.html">Подробнее</a>
 </div>
 </div>
 </div>
-<div class="container-section categories" id="categories">
+</div>
+
+
+
+
+<div class="container-section"><div class="container-section categories" id="categories">
 <h3 class="text-center mb-4">Популярные категории</h3>
 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
 <!-- Транспорт -->
@@ -625,17 +610,17 @@ body.dark-mode {
 </svg>
 </div>
 <div><strong>Недвижимость</strong></div>
-
-</a>
+</div></a>
 </div>
 </div>
-</div>
+</div></div>
+<!-- Отступ между секциями -->
+<div style="height: 40px;"></div>
 <!-- Объявления -->
 <div class="container-section" id="new-ads">
 <h3 class="text-center mb-4">Новые объявления</h3>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="adsContainer"></div>
 </div>
-
 <!-- Кнопка вверх -->
 <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">^</button>
 <!-- СКРИПТЫ -->
@@ -835,17 +820,15 @@ image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
 }
   }
 </style>
-</style>
 
 <!-- Нижнее меню с плюсом по центру -->
 <div class="mobile-nav">
-  <a href="#">🏠</a>
-  <a href="#categories">📂</a>
-  <a href="#" class="plus-btn">➕</a>
-  <a href="#new-ads">📢</a>
-  <a href="#">👤</a>
+<a href="#">🏠</a>
+<a href="#categories">📂</a>
+<a class="plus-btn" href="#">➕</a>
+<a href="#new-ads">📢</a>
+<a href="#">👤</a>
 </div>
-
 <script>
 document.querySelector('.plus-btn').addEventListener('click', function() {
   alert('Создать новое объявление');
@@ -874,7 +857,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('light-mode');
 });
 </script>
-    <script>
+<script>
 function toggleTheme() {
   const body = document.body;
   const icon = document.getElementById("themeToggleIcon");
@@ -902,9 +885,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
-
 </body>
-  <!-- Подвал -->
+<!-- Подвал -->
 <footer class="footer">
 <div class="container">
 <p>© 2025 Объявка. Все права защищены.</p>
