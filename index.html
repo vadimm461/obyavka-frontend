@@ -662,18 +662,22 @@ body.dark-mode {
 </style>
 
 
+
+
 <style>
+/* Мобильная адаптация рекламных карточек */
 @media (max-width: 768px) {
   .ads-scroll-wrapper {
-    padding: 0 8px !important;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 12px;
+    margin: 0;
   }
 
   .ads-scroll-wrapper .d-flex {
-    gap: 12px !important;
     flex-wrap: nowrap !important;
-    overflow-x: scroll;
-    margin: 0;
+    gap: 12px;
+    width: max-content;
   }
 
   .ads-scroll-wrapper .col {
@@ -683,9 +687,8 @@ body.dark-mode {
 
   .ad-modern {
     width: 100%;
-    height: 100%;
+    height: auto;
     min-height: 180px;
-    text-align: center;
   }
 }
 </style>
@@ -765,7 +768,7 @@ body.dark-mode {
 </div>
 </div>
 <!-- Рекламные карточки с прокруткой -->
-<div class="container-fluid my-5 ads-scroll-wrapper px-2" oncontextmenu="return false">
+<div class="container my-5 ads-scroll-wrapper" oncontextmenu="return false">
 <div class="d-flex gap-3 flex-nowrap">
 <!-- Карточка 1 -->
 <div class="col">
