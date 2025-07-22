@@ -608,41 +608,54 @@ body.dark-mode {
 
 <style>
 @media (max-width: 768px) {
+  .container-section, #adsContainer {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   #adsContainer {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 4px;
-    padding: 4px;
-    margin: 0;
+    gap: 1px;
+    width: 100vw;
+    margin: 0 auto;
   }
 
   .product-card {
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 8px;
-    padding: 5px !important;
+    height: 50vh;
+    border-radius: 0;
     box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .product-card img {
-    height: 70px !important;
-    margin-bottom: 3px;
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0;
   }
 
   .product-card h5 {
-    font-size: 0.75rem;
-    margin: 0 0 3px 0;
+    font-size: 0.85rem;
+    margin: 4px;
+    text-align: center;
   }
 
   .ad-price {
-    font-size: 0.7rem;
-    margin-bottom: 3px;
+    font-size: 0.75rem;
+    margin: 0 4px 4px;
+    text-align: center;
   }
 
   .product-card .btn-primary {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+    margin: 0 4px 4px;
     padding: 4px;
   }
 }
