@@ -627,6 +627,87 @@ body.dark-mode {
       }
     }
 
+     <style>
+/* ✅ Десктоп: фиксированная ширина карточек и центрирование */
+@media (min-width: 769px) {
+  #adsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+  #adsContainer .col {
+    flex: 0 0 auto;
+    width: 300px;
+  }
+  .product-card {
+    height: 100%;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product-card img {
+    height: 180px;
+    object-fit: contain;
+  }
+}
+
+/* ✅ Мобильная версия — адаптивная сетка и ограничения */
+@media (max-width: 768px) {
+  #adsContainer {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  #adsContainer .col {
+    width: 100%;
+  }
+
+  .product-card {
+    min-height: 260px;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .product-card img {
+    height: 140px !important;
+    object-fit: contain;
+    margin-bottom: 8px;
+  }
+
+  .product-card h5 {
+    font-size: 1rem;
+    min-height: 2.2em;
+    margin-bottom: 4px;
+  }
+
+  .ad-price {
+    font-size: 1.2rem !important;
+    font-weight: 700;
+    margin-left: 0;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .product-card .btn-primary {
+    font-size: 1rem;
+    padding: 8px 12px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+</style>
   </style>
   
 
