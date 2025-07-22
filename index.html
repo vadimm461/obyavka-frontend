@@ -605,6 +605,49 @@ body.dark-mode {
 }
 </style>
 
+
+<style>
+@media (max-width: 768px) {
+  #adsContainer {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    padding: 4px;
+    margin: 0;
+  }
+
+  .product-card {
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    padding: 5px !important;
+    box-shadow: none;
+  }
+
+  .product-card img {
+    height: 70px !important;
+    margin-bottom: 3px;
+  }
+
+  .product-card h5 {
+    font-size: 0.75rem;
+    margin: 0 0 3px 0;
+  }
+
+  .ad-price {
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+  }
+
+  .product-card .btn-primary {
+    font-size: 0.65rem;
+    padding: 4px;
+  }
+}
+</style>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
