@@ -233,58 +233,28 @@
   width: 100%;
 }
 
-
 @media (max-width: 768px) {
   #adsContainer {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  .product-card {
-    width: 100%;
-    height: auto;
-    min-height: 280px;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .product-card img {
-    height: 160px !important;
-    object-fit: contain;
-    margin-bottom: 8px;
-  }
-  .product-card h5 {
-    font-size: 1rem;
-    margin-bottom: 4px;
-    min-height: 2.4em;
-  }
-  .ad-price {
-    font-size: 1.2rem !important;
-    font-weight: 700;
-    color: #000;
-    margin-left: 0;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  .product-card .btn-primary {
-    font-size: 1rem;
-    padding: 8px 12px;
-    margin-top: auto;
-    margin-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .product-card .p-3 {
-    padding: 0 !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
+}
+.ad-price {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+  margin-left: 4px;
 }
 
+
+@media (max-width: 768px) {
+  #adsContainer {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
   .product-card {
     width: 100%;
     aspect-ratio: 3/4;
