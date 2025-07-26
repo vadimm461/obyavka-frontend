@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Объявления</title>
+</head>
+<body>
+  <h1>Сайт объявлений</h1>
+  <div id="ads"></div>
+
+  <script>
+    async function loadAds() {
+      const res = await fetch("/api/ads");
+      const ads = await res.json();
+      const container = document.getElementById("ads");
+      container.innerHTML = ads.map(ad => \`<div><h2>\${ad.title}</h2><p>\${ad.description}</p></div>\`).join("");
+    }
+    loadAds();
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Админка</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    textarea { width: 100%; height: 300px; }
+    button { margin-top: 10px; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>Админка: Редактирование объявлений</h1>
+  <textarea id="adsInput"></textarea>
+  <br>
+  <button onclick="saveAds()">Сохранить</button>
+
+  <script>
+    async function loadAds() {
+      const res = await fetch("/api/ads");
+      const data = await res.json();
+      document.getElementById("adsInput").value = JSON.stringify(data, null, 2);
+    }
+
+    async function saveAds() {
+      const raw = document.getElementById("adsInput").value;
+      try {
+        const parsed = JSON.parse(raw);
+        await fetch("/api/ads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(parsed)
+        });
+        alert("Сохранено!");
+      } catch (e) {
+        alert("Ошибка: " + e.message);
+      }
+    }
+
+    loadAds();
+  </script>
+</body>
+</html>
