@@ -803,37 +803,47 @@ body.dark-mode {
     });
   });
 
-const ads = Array.from({length: 50}).map((_, i) => ({
-title: `Товар #${i + 1}`,
-price: `${(Math.random() * 30000 + 1000).toFixed(0)} ₽`,
-image: `https://cdn-icons-png.flaticon.com/512/2748/2748558.png`
-})).reverse();
+const adsContainer = document.getElementById('adsContainer');
+let loaded = 0;
+const step = 9;
+let ads = [];
 
+// Функция рендера части объявлений
+function renderAds() {
+  const slice = ads.slice(loaded, loaded + step);
+  slice.forEach(ad => {
+    const card = document.createElement('div');
+    card.className = 'col';
+    card.innerHTML = `
+      <div class="product-card shadow rounded p-3 bg-white">
+        <img alt="Нет фото" class="img-fluid rounded mb-3" src="${ad.image || 'https://cdn-icons-png.flaticon.com/512/2748/2748558.png'}"
+             style="height: 200px; width: 100%; object-fit: contain; background: #f9f9f9;" />
+        <div class="p-3">
+          <h5>${ad.title}</h5>
+          <div class="ad-price mb-2">${ad.price || ''}</div>
+          <a class="btn btn-primary btn-sm w-100" href="#">Подробнее</a>
+        </div>
+      </div>`;
+    adsContainer.appendChild(card);
+  });
+  loaded += step;
+}
 
-  let loaded = 0;
-  const step = 9;
-  const adsContainer = document.getElementById('adsContainer');
-
-  function renderAds() {
-    const slice = ads.slice(loaded, loaded + step);
-    slice.forEach(ad => {
-      const card = document.createElement('div');
-      card.className = 'col';
-      card.innerHTML = `
-        <div class="product-card shadow rounded p-3 bg-white">
-          <img alt="Нет фото" class="img-fluid rounded mb-3" src="${ad.image}"
-               style="height: 200px; width: 100%; object-fit: contain; background: #f9f9f9;" />
-          <div class="p-3">
-            <h5>${ad.title}</h5>
-            <div class="ad-price mb-2">${ad.price}</div>
-            <a class="btn btn-primary btn-sm w-100" href="#">Подробнее</a>
-          </div>
-        </div>`;
-      adsContainer.appendChild(card);
-    });
-    loaded += step;
-  }
-
+// Загрузка данных с сервера и запуск рендера
+fetch('/api/ads')
+  .then(res => res.json())
+  .then(data => {
+    // Преобразуй данные, если в data нет поля price или image — добавь по умолчанию
+    ads = data.map(ad => ({
+      title: ad.title,
+      price: ad.price || '',   // если price нет, оставить пустым
+      image: ad.image || 'https://cdn-icons-png.flaticon.com/512/2748/2748558.png'
+    }));
+    renderAds();
+  })
+  .catch(err => {
+    console.error('Ошибка загрузки объявлений:', err);
+  });
   window.addEventListener('scroll', () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
       if (loaded < ads.length) renderAds();
