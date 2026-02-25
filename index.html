@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ СЂР°СЃСЃСЂРѕС‡РєРё</title>
+<title>Калькулятор рассрочки</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@
         display: flex;
         gap: 20px;
         justify-content: space-between;
-        flex-wrap: wrap; /* Р°РґР°РїС‚Р°С†РёСЏ РЅР° СѓР·РєРёС… СЌРєСЂР°РЅР°С… */
+        flex-wrap: wrap; /* адаптация на узких экранах */
     }
     .calculator {
         background: #ffffff;
@@ -63,11 +63,11 @@
     .btn:active {
         transform: scale(0.98);
     }
-    /* Р“СЂР°РґРёРµРЅС‚С‹ РґР»СЏ РєРЅРѕРїРѕРє СЂР°СЃС‡РµС‚Р° */
+    /* Градиенты для кнопок расчета */
     .btn-calc {
         background: linear-gradient(to right, #1976d2, #0d47a1);
     }
-    /* РќРѕРІС‹Рµ РєРЅРѕРїРєРё РїРѕРґ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°РјРё */
+    /* Новые кнопки под калькуляторами */
     .btn-non-cash {
         background: linear-gradient(to right, #43a047, #2e7d32);
     }
@@ -96,7 +96,7 @@
         font-weight: bold;
     }
 
-    /* РљРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ РґРІСѓС… РЅРѕРІС‹С… РєРЅРѕРїРѕРє */
+    /* Контейнер для двух новых кнопок */
     .bottom-buttons {
         width: 100%;
         margin-top: 20px;
@@ -115,60 +115,60 @@
 
 <div class="wrapper">
 
-    <!-- РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ 1 вЂ“ РђР“Р РћРџР РћРњР‘РђРќРљ -->
+    <!-- Калькулятор 1 – АГРОПРОМБАНК -->
     <div class="calculator">
-        <div class="title">РљРђР›Р¬РљРЈР›РЇРўРћР  Р РђРЎРЎР РћР§РљР</div>
-        <div class="subtitle">РђР“Р РћРџР РћРњР‘РђРќРљ</div>
-        <div class="hint">Р’РІРµРґРёС‚Рµ РѕР±С‰СѓСЋ СЃСѓРјРјСѓ С‡РµРєР° Рё РЅР°Р¶РјРёС‚Рµ СЂР°СЃСЃС‡РёС‚Р°С‚СЊ</div>
+        <div class="title">КАЛЬКУЛЯТОР РАССРОЧКИ</div>
+        <div class="subtitle">АГРОПРОМБАНК</div>
+        <div class="hint">Введите общую сумму чека и нажмите рассчитать</div>
         <input type="number" class="input sum">
-        <button class="btn btn-calc">Р РђРЎРЎР§РРўРђРўР¬</button>
+        <button class="btn btn-calc">РАССЧИТАТЬ</button>
         <table>
-            <tr><th>Р РђРЎРЎР РћР§РљРђ</th><th>РљРћР­Р¤Р¤.</th><th>РРўРћР“Рћ, СЂСѓР±</th></tr>
-            <tr><td>РђРџР‘ 3 РјРµСЃ.</td><td class="coef">0.955</td><td class="result"></td></tr>
-            <tr><td>РђРџР‘ 6 РјРµСЃ.</td><td class="coef">0.93</td><td class="result"></td></tr>
-            <tr><td>РђРџР‘ 9 РјРµСЃ.</td><td class="coef">0.90</td><td class="result"></td></tr>
-            <tr><td>РђРџР‘ 12 РјРµСЃ.</td><td class="coef">0.875</td><td class="result"></td></tr>
+            <tr><th>РАССРОЧКА</th><th>КОЭФФ.</th><th>ИТОГО, руб</th></tr>
+            <tr><td>АПБ 3 мес.</td><td class="coef">0.955</td><td class="result"></td></tr>
+            <tr><td>АПБ 6 мес.</td><td class="coef">0.93</td><td class="result"></td></tr>
+            <tr><td>АПБ 9 мес.</td><td class="coef">0.90</td><td class="result"></td></tr>
+            <tr><td>АПБ 12 мес.</td><td class="coef">0.875</td><td class="result"></td></tr>
         </table>
     </div>
 
-    <!-- РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ 2 вЂ“ Р­РљРЎРРњР‘РђРќРљ -->
+    <!-- Калькулятор 2 – ЭКСИМБАНК -->
     <div class="calculator">
-        <div class="title">РљРђР›Р¬РљРЈР›РЇРўРћР  Р РђРЎРЎР РћР§РљР</div>
-        <div class="subtitle">Р­РљРЎРРњР‘РђРќРљ</div>
-        <div class="hint">Р’РІРµРґРёС‚Рµ РѕР±С‰СѓСЋ СЃСѓРјРјСѓ С‡РµРєР° Рё РЅР°Р¶РјРёС‚Рµ СЂР°СЃСЃС‡РёС‚Р°С‚СЊ</div>
+        <div class="title">КАЛЬКУЛЯТОР РАССРОЧКИ</div>
+        <div class="subtitle">ЭКСИМБАНК</div>
+        <div class="hint">Введите общую сумму чека и нажмите рассчитать</div>
         <input type="number" class="input sum">
-        <button class="btn btn-calc">Р РђРЎРЎР§РРўРђРўР¬</button>
+        <button class="btn btn-calc">РАССЧИТАТЬ</button>
         <table>
-            <tr><th>Р РђРЎРЎР РћР§РљРђ</th><th>РљРћР­Р¤Р¤.</th><th>РРўРћР“Рћ, СЂСѓР±</th></tr>
-            <tr><td>Р­РєСЃРёРјР‘Р°РЅРє 3 РјРµСЃ.</td><td class="coef">0.955</td><td class="result"></td></tr>
-            <tr><td>Р­РєСЃРёРјР‘Р°РЅРє 6 РјРµСЃ.</td><td class="coef">0.93</td><td class="result"></td></tr>
-            <tr><td>Р­РєСЃРёРјР‘Р°РЅРє 9 РјРµСЃ.</td><td class="coef">0.90</td><td class="result"></td></tr>
-            <tr><td>Р­РєСЃРёРјР‘Р°РЅРє 12 РјРµСЃ.</td><td class="coef">0.886</td><td class="result"></td></tr>
+            <tr><th>РАССРОЧКА</th><th>КОЭФФ.</th><th>ИТОГО, руб</th></tr>
+            <tr><td>ЭксимБанк 3 мес.</td><td class="coef">0.955</td><td class="result"></td></tr>
+            <tr><td>ЭксимБанк 6 мес.</td><td class="coef">0.93</td><td class="result"></td></tr>
+            <tr><td>ЭксимБанк 9 мес.</td><td class="coef">0.90</td><td class="result"></td></tr>
+            <tr><td>ЭксимБанк 12 мес.</td><td class="coef">0.886</td><td class="result"></td></tr>
         </table>
     </div>
 
-    <!-- РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ 3 вЂ“ РЎР‘Р•Р Р‘РђРќРљ -->
+    <!-- Калькулятор 3 – СБЕРБАНК -->
     <div class="calculator">
-        <div class="title">РљРђР›Р¬РљРЈР›РЇРўРћР  Р РђРЎРЎР РћР§РљР</div>
-        <div class="subtitle">РЎР‘Р•Р Р‘РђРќРљ</div>
-        <div class="hint">Р’РІРµРґРёС‚Рµ РѕР±С‰СѓСЋ СЃСѓРјРјСѓ С‡РµРєР° Рё РЅР°Р¶РјРёС‚Рµ СЂР°СЃСЃС‡РёС‚Р°С‚СЊ</div>
+        <div class="title">КАЛЬКУЛЯТОР РАССРОЧКИ</div>
+        <div class="subtitle">СБЕРБАНК</div>
+        <div class="hint">Введите общую сумму чека и нажмите рассчитать</div>
         <input type="number" class="input sum">
-        <button class="btn btn-calc">Р РђРЎРЎР§РРўРђРўР¬</button>
+        <button class="btn btn-calc">РАССЧИТАТЬ</button>
         <table>
-            <tr><th>Р РђРЎРЎР РћР§РљРђ</th><th>РљРћР­Р¤Р¤.</th><th>РРўРћР“Рћ, СЂСѓР±</th></tr>
-            <tr><td>РЎР±РµСЂР‘Р°РЅРє 3 РјРµСЃ.</td><td class="coef">0.96</td><td class="result"></td></tr>
-            <tr><td>РЎР±РµСЂР‘Р°РЅРє 6 РјРµСЃ.</td><td class="coef">0.93</td><td class="result"></td></tr>
-            <tr><td>РЎР±РµСЂР‘Р°РЅРє 9 РјРµСЃ.</td><td class="coef">0.90</td><td class="result"></td></tr>
-            <tr><td>РЎР±РµСЂР‘Р°РЅРє 12 РјРµСЃ.</td><td class="coef">0.88</td><td class="result"></td></tr>
+            <tr><th>РАССРОЧКА</th><th>КОЭФФ.</th><th>ИТОГО, руб</th></tr>
+            <tr><td>СберБанк 3 мес.</td><td class="coef">0.96</td><td class="result"></td></tr>
+            <tr><td>СберБанк 6 мес.</td><td class="coef">0.93</td><td class="result"></td></tr>
+            <tr><td>СберБанк 9 мес.</td><td class="coef">0.90</td><td class="result"></td></tr>
+            <tr><td>СберБанк 12 мес.</td><td class="coef">0.88</td><td class="result"></td></tr>
         </table>
     </div>
 
 </div>
 
-<!-- РќРёР¶РЅРёРµ РєРЅРѕРїРєРё -->
+<!-- Нижние кнопки -->
 <div class="bottom-buttons">
-    <button class="btn btn-non-cash">РћР¤РћР РњРРўР¬ Р‘Р•Р—РќРђР›</button>
-    <button class="btn btn-close-shift">Р—РђРљР Р«РўРР• РЎРњР•РќР«</button>
+    <button class="btn btn-non-cash">ОФОРМИТЬ БЕЗНАЛ</button>
+    <button class="btn btn-close-shift">ЗАКРЫТИЕ СМЕНЫ</button>
 </div>
 
 <script>
@@ -185,7 +185,7 @@ document.querySelectorAll('.calculator').forEach(calc => {
         });
     });
 
-    // СЂР°СЃС‡РµС‚ РїСЂРё Enter
+    // расчет при Enter
     calc.querySelector('.sum').addEventListener('keydown', e => {
         if (e.key === 'Enter') btn.click();
     });
@@ -194,4 +194,3 @@ document.querySelectorAll('.calculator').forEach(calc => {
 
 </body>
 </html>
-
